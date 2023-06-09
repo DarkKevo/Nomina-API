@@ -42,8 +42,8 @@ const swagerSpect = {
   apis: [`${path.join(__dirname, './docs/documentation.js')}`],
 };
 
-/* //Deployment
-import './controllers/Deploy/Deploy.js'; */
+//Deployment
+import './Db/DeployDatabase.js';
 
 const app = Express();
 
