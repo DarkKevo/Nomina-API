@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empresas` (
   `direccion` VARCHAR(500) NOT NULL,
   `telefono` VARCHAR(500) NOT NULL,
   `correo` VARCHAR(500) NOT NULL,
+  `password` VARCHAR(1000) NOT NULL,
   PRIMARY KEY (`idEmpresas`))
 ENGINE = InnoDB;
 
