@@ -55,6 +55,28 @@
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     Empresas-Login:
+ *       type: object
+ *       properties:
+ *         nombre:
+ *           type: string
+ *           description: Nombre de la Empresa
+ *         clave:
+ *           type: string
+ *           description: Password de la Empresa
+ *       required:
+ *         -nombre
+ *         -clave
+ *       example:
+ *         nombre: Ferrevenca C.A
+ *         clave: 23452ffg&%^55
+ */
+
+
+/**
+ * @swagger
  * /CrearEmpresa:
  *   post:
  *     summary: Registra una nueva empresa
@@ -71,4 +93,24 @@
  *         description: Empresa Registrada
  *       400:
  *         description: Empresa ya Registrada
+ */
+
+/**
+ * @swagger
+ * /LoginEmpresa:
+ *   post:
+ *     summary: Inicia Sesion con tu Empresa
+ *     tags: [Empresas]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Empresas-Login'
+ *     responses:
+ *       200:
+ *         description: Empresa Registrada
+ *       401:
+ *         description: Empresa o Password erronea
  */
