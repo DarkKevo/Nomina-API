@@ -35,23 +35,23 @@ export const CrearEmpresa = (req, res) => {
     if (err) {
       console.log(err);
       conexion.end();
-      res.send(false);
+      res.sendStatus(400);
     } else {
       if (result.length == 0) {
         conexion.query(query, (err, results) => {
           if (err) {
             console.log(err);
             conexion.end();
-            res.send(false);
+            res.sendStatus(400);
           } else {
             console.log(results);
             conexion.end();
-            res.send(true);
+            res.sendStatus(200);
           }
         });
       } else {
         conexion.end();
-        res.send(false);
+        res.sendStatus(400);
       }
     }
   });

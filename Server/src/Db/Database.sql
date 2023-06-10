@@ -124,3 +124,37 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Administracion');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Finanzas');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Contabilidad');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Recursos Humanos');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Auditoria');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Marketing');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Relaciones Publicas');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Ventas');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Logistica');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Seguridad');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Investigacion y Desarrollo');
+INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Sistemas');
+
+INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('80');
+INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('100');
+INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('120');
+INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('150');
+INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('200');
+
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Director Ejecutivo (CEO)', '5');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Gestor de Seguridad', '4');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Reclutador', '2');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Analista Financiero', '3');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Supervisor', '3');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Auditor', '2');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Tesorero', '2');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Desarrollador Movil', '4');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Seguridad Informatica', '3');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Productor de Software', '5');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Analista de Mercado', '2');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Empleado (Normal)', '1');
+INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('15', 'Impuestos + Seguro de Salud');
+INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
