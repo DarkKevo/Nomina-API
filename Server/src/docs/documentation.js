@@ -114,3 +114,328 @@
  *       401:
  *         description: Empresa o Password erronea
  */
+
+//Esquema de Datos de los Cargos
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Cargos_Crear:
+ *       type: object
+ *       properties:
+ *         cargo:
+ *           type: string
+ *           description: Nombre del cargo (Tabla - cargos)
+ *         monto_salario: 
+ *           type: int
+ *           description: Monto del Salario (Tabla - salario)
+ *       required:
+ *         -cargo
+ *         -monto_salario 
+ *       example:
+ *         cargo: Analista de Sistema
+ *         monto_salario: 80
+ */
+
+/**
+ * @swagger
+ * /CrearCargo:
+ *   post:
+ *     summary: Registrar un nuevo cargo
+ *     tags: [Cargos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Cargos_Crear'
+ *     responses:
+ *       200:
+ *         description: Cargo Registrado
+ *       400:
+ *         description: Cargo ya Registrado (Existente)
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Cargos_Listar:
+ *       type: object
+ *       properties:
+ *         idcargos:
+ *           type: int
+ *           description: Identificador del cargo
+ *         cargo:
+ *           type: string
+ *           description: Nombre del cargo
+ *         codigo_salario: 
+ *           type: int
+ *           description: Identificador del salario
+ *       example:
+ *         idcargos: 1
+ *         cargo: Analista de Sistema
+ *         codigo_salario: 1
+ */
+
+/**
+ * @swagger
+ * /ListarCargo:
+ *   get:
+ *     summary: Listar los cargos existentes
+ *     tags: [Cargos]
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Cargos_Listar'
+ *     responses:
+ *       200:
+ *         description: Cargos Registrados
+ *       400:
+ *         description: No hay cargos existentes
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Cargos_Eliminar:
+ *       type: object
+ *       properties:
+ *         idcargos:
+ *           type: int
+ *           description: Identificador del cargo
+ *       required:
+ *         -idcargos
+ *       example:
+ *         idcargos: 13
+ */
+
+/**
+ * @swagger
+ * /EliminarCargo:
+ *   delete:
+ *     summary: Eliminar un cargo
+ *     tags: [Cargos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Cargos_Eliminar'
+ *     responses:
+ *       200:
+ *         description: Cargo Eliminado
+ *       400:
+ *         description: El cargo no existe
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Cargos_Actualizar:
+ *       type: object
+ *       properties:
+ *         idcargos:
+ *           type: int
+ *           description: Identificador del cargo que se va a actualizar
+ *         cargo:
+ *           type: string
+ *           description: Nombre del cargo
+ *         codigo_salario: 
+ *           type: int
+ *           description: Identificador del salario
+ *       required:
+ *         -idcargos
+ *         -cargo
+ *         -codigo_salario
+ *       example:
+ *         idcargos: 11
+ *         cargo: Analista de Mercado
+ *         codigo_salario: 1
+ */
+
+/**
+ * @swagger
+ * /ActualizarCargo:
+ *   put:
+ *     summary: Actualizar un cargo existente
+ *     tags: [Cargos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Cargos_Actualizar'
+ *     responses:
+ *       200:
+ *         description: Cargo Actualizado
+ *       400:
+ *         description: El cargo no existe
+ */
+
+
+//Esquema de Datos de los Salarios
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Salarios_Crear:
+ *       type: object
+ *       properties:
+ *         monto_salario: 
+ *           type: int
+ *           description: Monto del salario a agregar
+ *       required:
+ *         -monto_salario
+ *       example:
+ *         monto_salario: 300
+ */
+
+/**
+ * @swagger
+ * /CrearSalario:
+ *   post:
+ *     summary: Crear un nuevo salario
+ *     tags: [Salarios]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Salarios_Crear'
+ *     responses:
+ *       200:
+ *         description: Salario Creado
+ *       400:
+ *         description: Salario ya Registrado (Existente)
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Salarios_Listar:
+ *       type: object
+ *       properties:
+ *         idsalario:
+ *           type: int
+ *           description: Identificador del salario
+ *         monto_salario: 
+ *           type: int
+ *           description: Monto del salario
+ *       example:
+ *         idsalario: 5
+ *         monto_salario: 200
+ */
+
+/**
+ * @swagger
+ * /ListarSalario:
+ *   get:
+ *     summary: Listar los salarios existentes
+ *     tags: [Salarios]
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Salarios_Listar'
+ *     responses:
+ *       200:
+ *         description: Salarios Registrados
+ *       400:
+ *         description: No hay salarios existentes
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Salarios_Eliminar:
+ *       type: object
+ *       properties:
+ *         idsalario:
+ *           type: int
+ *           description: Identificador del salario
+ *       required:
+ *         -idsalario
+ *       example:
+ *         idsalario: 3
+ */
+
+/**
+ * @swagger
+ * /EliminarSalario:
+ *   delete:
+ *     summary: Eliminar un salario
+ *     tags: [Salarios]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Salarios_Eliminar'
+ *     responses:
+ *       200:
+ *         description: Salario Eliminado
+ *       400:
+ *         description: El salario no existe
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Salarios_Actualizar:
+ *       type: object
+ *       properties:
+ *         idsalario:
+ *           type: int
+ *           description: Identificador del salario que se va a actualizar
+ *         monto_salario: 
+ *           type: int
+ *           description: Monto del salario
+ *       required:
+ *         -idsalario
+ *         -monto_salario
+ *       example:
+ *         idsalario: 4
+ *         monto_salario: 300
+ */
+
+/**
+ * @swagger
+ * /ActualizarSalario:
+ *   put:
+ *     summary: Actualizar un salario existente
+ *     tags: [Salarios]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Salarios_Actualizar'
+ *     responses:
+ *       200:
+ *         description: Salario Actualizado
+ *       400:
+ *         description: El salario no existe
+ */
