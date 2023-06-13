@@ -439,3 +439,162 @@
  *       400:
  *         description: El salario no existe
  */
+
+
+//Esquema de Datos de los Cargos
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Departamentos_Crear:
+ *       type: object
+ *       properties:
+ *         Departamento:
+ *           type: string
+ *           description: Departamento (Tabla - Departamentos)
+ *       required:
+ *         -departamento
+ *       example:
+ *         Departamento: Sistemas
+ */
+
+
+/**
+ * @swagger
+ * /CrearDepartamento:
+ *   post:
+ *     summary: Crear un nuevo Departamento
+ *     tags: [Departamentos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Departamentos_Crear'
+ *     responses:
+ *       200:
+ *         description: Departamento Creado
+ *       400:
+ *         description: Departamento ya Registrado (Existente)
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Departamentos_Listar:
+ *       type: object
+ *       properties:
+ *         iddepartamentos:
+ *           type: int
+ *           description: Id
+ *         departamento: 
+ *           type: int
+ *           description: Departamento
+ *       example:
+ *         id: 1
+ *         departamento: Sistemas
+ */
+
+/**
+ * @swagger
+ * /ListarDepartamentos:
+ *   get:
+ *     summary: Listar los departamentos existentes
+ *     tags: [Departamentos]
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Departamentos_Listar'
+ *     responses:
+ *       200:
+ *         description: Departamentos Registrados
+ *       400:
+ *         description: No hay Departamentos existentes
+ */
+
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Departamentos_Eliminar:
+ *       type: object
+ *       properties:
+ *         iddepartamento:
+ *           type: int
+ *           description: Id
+ *       required:
+ *         -iddepartamento
+ *       example:
+ *         iddepartamento: 1
+ */
+
+/**
+ * @swagger
+ * /EliminarDepartamento:
+ *   delete:
+ *     summary: Eliminar un departamento
+ *     tags: [Departamentos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Departamentos_Eliminar'
+ *     responses:
+ *       200:
+ *         description: Departamento Eliminado
+ *       400:
+ *         description: El Departamento no existe
+ */
+
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Departamentos_Actualizar:
+ *       type: object
+ *       properties:
+ *         iddepartamento:
+ *           type: int
+ *           description: Id
+ *         departamento: 
+ *           type: string
+ *           description: Departamento
+ *       required:
+ *         -iddepartamento
+ *         -departamento
+ *       example:
+ *         iddepartamento: 1
+ *         Departamento: Recursos Humanos
+ */
+
+/**
+ * @swagger
+ * /ActualizarDepartamento:
+ *   put:
+ *     summary: Actualizar un Departamento existente
+ *     tags: [Departamentos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Departamentos_Actualizar'
+ *     responses:
+ *       200:
+ *         description: Departamentoo Actualizado
+ *       400:
+ *         description: El Departamento no existe
+ */
