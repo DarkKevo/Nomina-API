@@ -14,6 +14,11 @@ import { ListarSalario } from '../controllers/Salarios/Listar_Salario.js';
 import { EliminarSalario } from '../controllers/Salarios/Eliminar_Salario.js';
 import { ActualizarSalario } from '../controllers/Salarios/Actualizar_Salario.js';
 
+//Departamentos
+import { ListarDepartamento } from '../controllers/Departamentos/Listar_Departamento.js';
+import { CrearDepartamento } from '../controllers/Departamentos/Agregar_Departamento.js';
+import { ActualizarDepartamento } from '../controllers/Departamentos/Actualizar_Departamento.js';
+import { EliminarDepartamento } from '../controllers/Departamentos/Eliminar_Departamento.js';
 
 export const routes = Express.Router();
 
@@ -31,3 +36,9 @@ routes.post('/CrearSalario', CrearSalario);
 routes.get('/ListarSalario', ListarSalario);
 routes.delete('/EliminarSalario', EliminarSalario);
 routes.put('/ActualizarSalario', ActualizarSalario);
+
+//Departamentos
+routes.get('/ListarDepartamento', ListarDepartamento);
+routes.post('/CrearDepartamento', CrearDepartamento);
+routes.put('/ActualizarDepartamento', ActualizarDepartamento);
+routes.delete('/EliminarDepartamento', EliminarDepartamento);
