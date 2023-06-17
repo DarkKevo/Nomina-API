@@ -20,9 +20,9 @@ export const EliminarEmpleado = (req, res) => {
 
   const { id_empleado } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.empleados where `idcargos`= ' + `'${id_empleado}'`;
+  let verify = 'SELECT * FROM nomina_database.empleados where `idEmpleados`= ' + `'${id_empleado}'`;
 
-  let DELETE = 'DELETE FROM nomina_database.empleados where `idcargos`= ' + `'${id_empleado}'`;
+  let DELETE = 'DELETE FROM nomina_database.empleados where `idEmpleados`= ' + `'${id_empleado}'`;
 
   //Verificando la existencia del Empleado
   conexion.query(verify, (err, result) => {

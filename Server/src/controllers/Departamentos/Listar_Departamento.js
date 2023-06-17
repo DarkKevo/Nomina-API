@@ -35,7 +35,7 @@ export const ListarDepartamento = (req, res) => {
             //Cargos Listados
             console.log(result);
             conexion.end();
-            res.sendStatus(200);
+            res.send(result);
         }
     });
 };

@@ -33,7 +33,7 @@ export const EditarEmpleado = (req, res) => {
     estado,
   } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.cargos where `idEmpleados`= ' + `'${idEmpleados}'`;
+  let verify = 'SELECT * FROM nomina_database.empleados where `idEmpleados`= ' + `'${idEmpleados}'`;
 
   let update =
     'UPDATE nomina_database.empleados SET `cedula`= ' +

@@ -4,11 +4,19 @@ import Express from 'express';
 import { CrearEmpresa } from '../controllers/Empresas/Agregar_Empresa.js';
 import { IniciarSesion } from '../controllers/Empresas/IniciarSesion.js';
 
+//Empleados
+import { Crear_Empleado } from '../controllers/Empleados/Registrar_Empleado.js';
+import { ListarEmpleado } from '../controllers/Empleados/Listar_empleados.js';
+import { EliminarEmpleado } from '../controllers/Empleados/Eliminar_Empleados.js';
+import { EditarEmpleado } from '../controllers/Empleados/Editar_Empleado.js';
+
+//Cargos
 import { CrearCargo } from '../controllers/Cargos/Agregar_Cargo.js';
 import { ListarCargo } from '../controllers/Cargos/Listar_Cargo.js';
 import { EliminarCargo } from '../controllers/Cargos/Eliminar_Cargo.js';
 import { ActualizarCargo } from '../controllers/Cargos/Actualizar_Cargo.js';
 
+//Salarios
 import { CrearSalario } from '../controllers/Salarios/Agregar_Salario.js';
 import { ListarSalario } from '../controllers/Salarios/Listar_Salario.js';
 import { EliminarSalario } from '../controllers/Salarios/Eliminar_Salario.js';
@@ -22,6 +30,7 @@ import { EliminarDepartamento } from '../controllers/Departamentos/Eliminar_Depa
 
 export const routes = Express.Router();
 
+//Empresa
 routes.post('/CrearEmpresa', CrearEmpresa);
 routes.post('/LoginEmpresa', IniciarSesion);
 
@@ -42,3 +51,8 @@ routes.get('/ListarDepartamento', ListarDepartamento);
 routes.post('/CrearDepartamento', CrearDepartamento);
 routes.put('/ActualizarDepartamento', ActualizarDepartamento);
 routes.delete('/EliminarDepartamento', EliminarDepartamento);
+
+//Empleados
+routes.get('/pene', () => {
+    console.log('pene')
+});

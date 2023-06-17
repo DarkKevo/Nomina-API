@@ -7,10 +7,163 @@
  *     bearerAuth:
  *       type: http
  *       scheme: bearer
- *       bearerFormat: JWT 
- * */ 
+ *       bearerFormat: JWT
+ * */
 
 //Esquema de Datos de las Empresas
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Empleados:
+ *       type: object
+ *       properties:
+ *         cedula:
+ *           type: string
+ *           description: Cedula del Empleado
+ *         nombres:
+ *           type: string
+ *           description: Nombres del Empleado
+ *         apellidos:
+ *           type: string
+ *           description: Apellidos del Empleado
+ *         fecha_nacimiento:
+ *           type: string
+ *           description: fecha_nacimiento del Empleado
+ *         direccion:
+ *           type: string
+ *           description: direccion del Empleado
+ *         correo:
+ *           type: string
+ *           description: correo del Empleado
+ *         codigo_cargo:
+ *           type: string
+ *           description: codigo del Empleado de cargo
+ *         codigo_departamento:
+ *           type: string
+ *           description: codigo del Empleado de departamento
+ *         codigo_deduccion:
+ *           type: string
+ *           description: codigo del Empleado de deduccion
+ *         codigo_empresa:
+ *           type: string
+ *           description: codigo del Empleado de empresa
+ *         estado:
+ *           type: string
+ *           description: estado del Empleado
+ *       required:
+ *         -cedula
+ *         -nombres
+ *         -apellidos
+ *         -fecha_nacimiento
+ *         -direction
+ *         -correo
+ *         -codigo_cargo
+ *         -codigo_departamento
+ *         -codigo_deduccion
+ *         -codigo_empresa
+ *         -estado
+ *       example:
+ *         cedula: V-30259086
+ *         nombres: Kevin Alejandro
+ *         apellidos: Araujo Gonzalez
+ *         fecha_nacimiento: 07/02/2004
+ *         direction: La Arboleda
+ *         correo: kevinaraujogonzalez@gmail.com
+ *         codigo_cargo: 01
+ *         codigo_departamento: 02
+ *         codigo_deduccion: 01
+ *         codigo_empresa: 12
+ *         estado: activo
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Empleados-Eliminar:
+ *       type: object
+ *       properties:
+ *         id_empleado:
+ *           type: string
+ *           description: Id del Empleado a eliminar
+ *       required:
+ *         -id_empleado
+ *       example:
+ *         id_empleado: 3
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Empleados-Editar:
+ *       type: object
+ *       properties:
+ *         cedula:
+ *           type: string
+ *           description: Cedula del Empleado
+ *         nombres:
+ *           type: string
+ *           description: Nombres del Empleado
+ *         apellidos:
+ *           type: string
+ *           description: Apellidos del Empleado
+ *         fecha_nacimiento:
+ *           type: string
+ *           description: fecha_nacimiento del Empleado
+ *         direccion:
+ *           type: string
+ *           description: direccion del Empleado
+ *         correo:
+ *           type: string
+ *           description: correo del Empleado
+ *         codigo_cargo:
+ *           type: string
+ *           description: codigo del Empleado de cargo
+ *         codigo_departamento:
+ *           type: string
+ *           description: codigo del Empleado de departamento
+ *         codigo_deduccion:
+ *           type: string
+ *           description: codigo del Empleado de deduccion
+ *         codigo_empresa:
+ *           type: string
+ *           description: codigo del Empleado de empresa
+ *         estado:
+ *           type: string
+ *           description: estado del Empleado
+ *         idEmpleados:
+ *           type: string
+ *           description: id del empleado a editar
+ *       required:
+ *         -cedula
+ *         -nombres
+ *         -apellidos
+ *         -fecha_nacimiento
+ *         -direction
+ *         -correo
+ *         -codigo_cargo
+ *         -codigo_departamento
+ *         -codigo_deduccion
+ *         -codigo_empresa
+ *         -estado
+ *         -idEmpleados
+ *       example:
+ *         cedula: V-30259086
+ *         nombres: Kevin Alejandro
+ *         apellidos: Araujo Gonzalez
+ *         fecha_nacimiento: 07/02/2004
+ *         direction: La Arboleda
+ *         correo: kevinaraujogonzalez@gmail.com
+ *         codigo_cargo: 01
+ *         codigo_departamento: 02
+ *         codigo_deduccion: 01
+ *         codigo_empresa: 12
+ *         estado: activo
+ *         idEmpleados: 3
+ */
 
 /**
  * @swagger
@@ -25,13 +178,13 @@
  *         nombre:
  *           type: string
  *           description: Nombre de la Empresa
- *         direccion: 
+ *         direccion:
  *           type: string
  *           description: Direccion de la Empresa
  *         telefono:
  *           type: string
  *           description: Telefono de la Empresa
- *         correo: 
+ *         correo:
  *           type: string
  *           description: Correo de la Empresa
  *         clave:
@@ -40,7 +193,7 @@
  *       required:
  *         -rif
  *         -nombre
- *         -direccion 
+ *         -direccion
  *         -telefono
  *         -correo
  *         -clave
@@ -73,7 +226,6 @@
  *         nombre: Ferrevenca C.A
  *         clave: 23452ffg&%^55
  */
-
 
 /**
  * @swagger
@@ -127,12 +279,12 @@
  *         cargo:
  *           type: string
  *           description: Nombre del cargo (Tabla - cargos)
- *         monto_salario: 
+ *         monto_salario:
  *           type: int
  *           description: Monto del Salario (Tabla - salario)
  *       required:
  *         -cargo
- *         -monto_salario 
+ *         -monto_salario
  *       example:
  *         cargo: Analista de Sistema
  *         monto_salario: 80
@@ -158,7 +310,6 @@
  *         description: Cargo ya Registrado (Existente)
  */
 
-
 /**
  * @swagger
  * components:
@@ -172,7 +323,7 @@
  *         cargo:
  *           type: string
  *           description: Nombre del cargo
- *         codigo_salario: 
+ *         codigo_salario:
  *           type: int
  *           description: Identificador del salario
  *       example:
@@ -199,7 +350,6 @@
  *       400:
  *         description: No hay cargos existentes
  */
-
 
 /**
  * @swagger
@@ -237,7 +387,6 @@
  *         description: El cargo no existe
  */
 
-
 /**
  * @swagger
  * components:
@@ -251,7 +400,7 @@
  *         cargo:
  *           type: string
  *           description: Nombre del cargo
- *         codigo_salario: 
+ *         codigo_salario:
  *           type: int
  *           description: Identificador del salario
  *       required:
@@ -284,7 +433,6 @@
  *         description: El cargo no existe
  */
 
-
 //Esquema de Datos de los Salarios
 
 /**
@@ -294,7 +442,7 @@
  *     Salarios_Crear:
  *       type: object
  *       properties:
- *         monto_salario: 
+ *         monto_salario:
  *           type: int
  *           description: Monto del salario a agregar
  *       required:
@@ -323,7 +471,6 @@
  *         description: Salario ya Registrado (Existente)
  */
 
-
 /**
  * @swagger
  * components:
@@ -334,7 +481,7 @@
  *         idsalario:
  *           type: int
  *           description: Identificador del salario
- *         monto_salario: 
+ *         monto_salario:
  *           type: int
  *           description: Monto del salario
  *       example:
@@ -360,7 +507,6 @@
  *       400:
  *         description: No hay salarios existentes
  */
-
 
 /**
  * @swagger
@@ -398,7 +544,6 @@
  *         description: El salario no existe
  */
 
-
 /**
  * @swagger
  * components:
@@ -409,7 +554,7 @@
  *         idsalario:
  *           type: int
  *           description: Identificador del salario que se va a actualizar
- *         monto_salario: 
+ *         monto_salario:
  *           type: int
  *           description: Monto del salario
  *       required:
@@ -440,7 +585,6 @@
  *         description: El salario no existe
  */
 
-
 //Esquema de Datos de los Cargos
 
 /**
@@ -458,7 +602,6 @@
  *       example:
  *         Departamento: Sistemas
  */
-
 
 /**
  * @swagger
@@ -480,7 +623,6 @@
  *         description: Departamento ya Registrado (Existente)
  */
 
-
 /**
  * @swagger
  * components:
@@ -491,7 +633,7 @@
  *         iddepartamentos:
  *           type: int
  *           description: Id
- *         departamento: 
+ *         departamento:
  *           type: int
  *           description: Departamento
  *       example:
@@ -517,8 +659,6 @@
  *       400:
  *         description: No hay Departamentos existentes
  */
-
-
 
 /**
  * @swagger
@@ -556,8 +696,6 @@
  *         description: El Departamento no existe
  */
 
-
-
 /**
  * @swagger
  * components:
@@ -568,7 +706,7 @@
  *         iddepartamento:
  *           type: int
  *           description: Id
- *         departamento: 
+ *         departamento:
  *           type: string
  *           description: Departamento
  *       required:
@@ -597,4 +735,77 @@
  *         description: Departamentoo Actualizado
  *       400:
  *         description: El Departamento no existe
+ */
+
+/**
+ * @swagger
+ * /ListarEmpleado:
+ *   get:
+ *     summary: Listar los Empleados existentes
+ *     tags: [Empleados]
+ *     responses:
+ *       200:
+ *         description: Empleados Registrados
+ *       400:
+ *         description: No hay Empleados existentes
+ */
+
+/**
+ * @swagger
+ * /RegistrarEmpleado:
+ *   post:
+ *     summary: Crear un nuevo Empleado
+ *     tags: [Empleados]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Empleados'
+ *     responses:
+ *       200:
+ *         description: Empleado Creado
+ *       400:
+ *         description: Empleado ya Registrado (Existente)
+ */
+
+/**
+ * @swagger
+ * /EditarEmpleado:
+ *   put:
+ *     summary: Actualizar un Empleado existente
+ *     tags: [Empleados]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Empleados-Editar'
+ *     responses:
+ *       200:
+ *         description: Empleado Actualizado
+ *       400:
+ *         description: El Empleado no existe
+ */
+
+/**
+ * @swagger
+ * /EliminarEmpleado:
+ *   delete:
+ *     summary: Eliminar un Empleado
+ *     tags: [Empleados]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Empleados-Eliminar'
+ *     responses:
+ *       200:
+ *         description: Empleado Eliminado
+ *       400:
+ *         description: El Empleado no existe
  */

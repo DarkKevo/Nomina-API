@@ -2,7 +2,7 @@ import mysql from 'mysql2';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
 
-export const ListarCargo = (req, res) => {
+export const ListarEmpleado = (req, res) => {
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -20,7 +20,7 @@ export const ListarCargo = (req, res) => {
 
   let query = 'SELECT * FROM nomina_database.empleados';
 
-  //Verificando la existencia de los cargos
+  //Verificando la existencia de los empleados
   conexion.query(query, (err, result) => {
     if (err) {
       console.log(err);
