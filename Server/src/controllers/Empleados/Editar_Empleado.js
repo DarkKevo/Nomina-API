@@ -38,25 +38,25 @@ export const EditarEmpleado = (req, res) => {
   let update =
     'UPDATE nomina_database.empleados SET `cedula`= ' +
     `'${cedula}'` +
-    ', `nombres`= ' +
+    ',`nombres`= ' +
     `'${nombres}'` +
-    +', `apellidos`= ' +
+    ', `apellidos`= ' +
     `'${apellidos}'` +
-    +', `fecha_nacimiento`= ' +
+    ', `fecha_nacimiento`= ' +
     `'${fecha_nacimiento}'` +
-    +', `direccion`= ' +
+    ', `direccion`= ' +
     `'${direccion}'` +
-    +', `correo`= ' +
+    ', `correo`= ' +
     `'${correo}'` +
-    +', `codigo_cargo`= ' +
+    ', `codigo_cargo`= ' +
     `'${codigo_cargo}'` +
-    +', `codigo_departamento`= ' +
+    ', `codigo_departamento`= ' +
     `'${codigo_departamento}'` +
-    +', `codigo_deduccion`= ' +
+    ', `codigo_deduccion`= ' +
     `'${codigo_deduccion}'` +
-    +', `codigo_empresa`= ' +
+    ', `codigo_empresa`= ' +
     `'${codigo_empresa}'` +
-    +', `estado`= ' +
+    ', `estado`= ' +
     `'${estado}'` +
     'where `idEmpleados`= ' +
     `'${idEmpleados}'`;

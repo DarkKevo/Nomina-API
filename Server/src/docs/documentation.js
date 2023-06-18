@@ -68,13 +68,13 @@
  *         cedula: V-30259086
  *         nombres: Kevin Alejandro
  *         apellidos: Araujo Gonzalez
- *         fecha_nacimiento: 07/02/2004
- *         direction: La Arboleda
+ *         fecha_nacimiento: 2004/02/07
+ *         direccion: La Arboleda
  *         correo: kevinaraujogonzalez@gmail.com
  *         codigo_cargo: 01
  *         codigo_departamento: 02
  *         codigo_deduccion: 01
- *         codigo_empresa: 12
+ *         codigo_empresa: 1
  *         estado: activo
  */
 
@@ -154,8 +154,8 @@
  *         cedula: V-30259086
  *         nombres: Kevin Alejandro
  *         apellidos: Araujo Gonzalez
- *         fecha_nacimiento: 07/02/2004
- *         direction: La Arboleda
+ *         fecha_nacimiento: 2004/02/07
+ *         direccion: La Arboleda
  *         correo: kevinaraujogonzalez@gmail.com
  *         codigo_cargo: 01
  *         codigo_departamento: 02
@@ -338,12 +338,6 @@
  *   get:
  *     summary: Listar los cargos existentes
  *     tags: [Cargos]
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             $ref: '#/components/schemas/Cargos_Listar'
  *     responses:
  *       200:
  *         description: Cargos Registrados
@@ -495,12 +489,6 @@
  *   get:
  *     summary: Listar los salarios existentes
  *     tags: [Salarios]
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             $ref: '#/components/schemas/Salarios_Listar'
  *     responses:
  *       200:
  *         description: Salarios Registrados
@@ -647,12 +635,6 @@
  *   get:
  *     summary: Listar los departamentos existentes
  *     tags: [Departamentos]
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             $ref: '#/components/schemas/Departamentos_Listar'
  *     responses:
  *       200:
  *         description: Departamentos Registrados
@@ -739,7 +721,7 @@
 
 /**
  * @swagger
- * /ListarEmpleado:
+ * /ListarEmpleados:
  *   get:
  *     summary: Listar los Empleados existentes
  *     tags: [Empleados]

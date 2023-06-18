@@ -33,9 +33,8 @@ export const ListarCargo = (req, res) => {
       res.sendStatus(400);
     } else {
       //Cargos Listados
-      console.log(result);
       conexion.end();
-      res.sendStatus(200);
+      res.send(result);
     }
   });
 };

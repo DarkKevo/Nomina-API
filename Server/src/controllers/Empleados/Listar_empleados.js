@@ -33,9 +33,8 @@ export const ListarEmpleado = (req, res) => {
       res.sendStatus(400);
     } else {
       //Empleados Listados
-      console.log(result);
       conexion.end();
-      res.sendStatus(200);
+      res.send(result);
     }
   });
 };
