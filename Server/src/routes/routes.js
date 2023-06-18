@@ -28,7 +28,19 @@ import { CrearDepartamento } from '../controllers/Departamentos/Agregar_Departam
 import { ActualizarDepartamento } from '../controllers/Departamentos/Actualizar_Departamento.js';
 import { EliminarDepartamento } from '../controllers/Departamentos/Eliminar_Departamento.js';
 
+//Deducciones
+import { CrearDeduccion } from '../controllers/Deducciones/CrearDeduccion.js';
+import { ActualizarDeduccion } from '../controllers/Deducciones/EditarDeduccion.js';
+import { ListarDeduccion } from '../controllers/Deducciones/ListarDeducciones.js';
+import { EliminarDeduccion } from '../controllers/Deducciones/EliminarDeduccion.js';
+
 export const routes = Express.Router();
+
+//Deducciones
+routes.get('/ListarDeducciones', ListarDeduccion);
+routes.post('/RegistrarDeduccion', CrearDeduccion);
+routes.put('/EditarDeduccion', ActualizarDeduccion);
+routes.delete('/EliminarDeduccion', EliminarDeduccion);
 
 //Empleados
 routes.get('/ListarEmpleados', ListarEmpleado);

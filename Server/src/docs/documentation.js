@@ -16,6 +16,69 @@
  * @swagger
  * components:
  *   schemas:
+ *     Deducciones:
+ *       type: object
+ *       properties:
+ *         monto:
+ *           type: number
+ *           description: Monto de Dinero de la Deducción
+ *         descripcion:
+ *           type: string
+ *           description: Descripcion de la Deducción
+ *       required:
+ *         -monto
+ *         -descripcion
+ *       example:
+ *         monto: 2500
+ *         descripcion: Impuestos + Seguro + Transporte
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Deducciones-Edit:
+ *       type: object
+ *       properties:
+ *         iddeducciones:
+ *           type: string
+ *           description: Id de la Deduccion a editar
+ *         monto:
+ *           type: number
+ *           description: Monto de Dinero de la Deducción
+ *         descripcion:
+ *           type: string
+ *           description: Descripcion de la Deducción
+ *       required:
+ *         -monto
+ *         -descripcion
+ *         -iddeducciones
+ *       example:
+ *         iddeducciones: 1
+ *         monto: 2500
+ *         descripcion: Impuestos + Seguro + Transporte
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Deducciones-Eliminar:
+ *       type: object
+ *       properties:
+ *         iddeducciones:
+ *           type: string
+ *           description: Id de la Deduccion a Eliminar
+ *       required:
+ *         -iddeducciones
+ *       example:
+ *         iddeducciones: 1
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
  *     Empleados:
  *       type: object
  *       properties:
@@ -790,4 +853,77 @@
  *         description: Empleado Eliminado
  *       400:
  *         description: El Empleado no existe
+ */
+
+/**
+ * @swagger
+ * /ListarDeducciones:
+ *   get:
+ *     summary: Listar las Deducciones existentes
+ *     tags: [Deducciones]
+ *     responses:
+ *       200:
+ *         description: Deducciones Registradas
+ *       400:
+ *         description: No hay Empleados existentes
+ */
+
+/**
+ * @swagger
+ * /RegistrarDeduccion:
+ *   post:
+ *     summary: Crear una nueva Deduccion
+ *     tags: [Deducciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Deducciones'
+ *     responses:
+ *       200:
+ *         description: Deduccion Creada
+ *       400:
+ *         description: Deduccion ya Registrada (Existente)
+ */
+
+/**
+ * @swagger
+ * /EditarDeduccion:
+ *   put:
+ *     summary: Actualizar una deduccion existente
+ *     tags: [Deducciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Deducciones-Edit'
+ *     responses:
+ *       200:
+ *         description: Deduccion Actualizado
+ *       400:
+ *         description: La Deduccion no existe
+ */
+
+/**
+ * @swagger
+ * /EliminarDeduccion:
+ *   delete:
+ *     summary: Eliminar una Deduccion
+ *     tags: [Deducciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Deducciones-Eliminar'
+ *     responses:
+ *       200:
+ *         description: Deduccion Eliminado
+ *       400:
+ *         description: La Deduccion no existe
  */
