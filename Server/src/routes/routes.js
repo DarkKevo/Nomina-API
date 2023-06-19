@@ -4,6 +4,9 @@ import Express from 'express';
 import { CrearEmpresa } from '../controllers/Empresas/Agregar_Empresa.js';
 import { IniciarSesion } from '../controllers/Empresas/IniciarSesion.js';
 
+//Planilla
+import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
+
 //Empleados
 import { Crear_Empleado } from '../controllers/Empleados/Registrar_Empleado.js';
 import { ListarEmpleado } from '../controllers/Empleados/Listar_empleados.js';
@@ -57,6 +60,9 @@ routes.post('/CrearCargo', CrearCargo);
 routes.get('/ListarCargo', ListarCargo);
 routes.delete('/EliminarCargo', EliminarCargo);
 routes.put('/ActualizarCargo', ActualizarCargo);
+
+//Generar Pagos
+routes.get('/GenerarPagos', GenerarPagos);
 
 //Salarios
 routes.post('/CrearSalario', CrearSalario);

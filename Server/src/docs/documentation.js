@@ -37,6 +37,52 @@
  * @swagger
  * components:
  *   schemas:
+ *     Pagos:
+ *       type: object
+ *       properties:
+ *         cedula:
+ *           type: string
+ *           description: Cedula del Empleado
+ *         apellidos:
+ *           type: string
+ *           description: Apellidos del Empleado
+ *         nombres:
+ *           type: string
+ *           description: Nombres del Empleado
+ *         cargo:
+ *           type: string
+ *           description: Cargo del Empleado
+ *         monto_deduccion: 
+ *           type: string
+ *           description: Monto a Restar por Deduccion
+ *         descripcion:
+ *           type: string
+ *           description: Descripcion de la Deduccion
+ *         monto_de_pago: 
+ *           type: string
+ *           description: Monto a Pagar
+ *       required:
+ *         -cedula
+ *         -apellidos
+ *         -nombres
+ *         -cargo
+ *         -monto_deduccion
+ *         -descripcion
+ *         -monto_de_pago
+ *       example:
+ *         cedula: V-30259086
+ *         apellidos: Araujo Gonzalez
+ *         nombres: Kevin Alejandro
+ *         cargo: Gerente
+ *         monto_deduccion: 25
+ *         descripcion: Seguro Social
+ *         monto_de_pago: 230
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
  *     Deducciones-Edit:
  *       type: object
  *       properties:
@@ -926,4 +972,17 @@
  *         description: Deduccion Eliminado
  *       400:
  *         description: La Deduccion no existe
+ */
+
+/**
+ * @swagger
+ * /GenerarPagos:
+ *   get:
+ *     summary: Listar los Pagos 
+ *     tags: [Pagos]
+ *     responses:
+ *       200:
+ *         description: Pagos por Realizar
+ *       400:
+ *         description: No hay Pagos existentes
  */
