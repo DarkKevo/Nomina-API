@@ -18,7 +18,7 @@ export const ListarCargo = (req, res) => {
     }
   });
 
-  let query = 'SELECT * FROM nomina_database.cargos';
+  let query = 'SELECT c.idcargos as id, c.cargo as nombre, s.monto_salario as monto FROM nomina_database.cargos c INNER JOIN nomina_database.salario s ON c.codigo_salario = s.idsalario';
 
   //Verificando la existencia de los cargos
   conexion.query(query, (err, result) => {
