@@ -741,7 +741,7 @@
 
 /**
  * @swagger
- * /ListarDepartamentos:
+ * /ListarDepartamento:
  *   get:
  *     summary: Listar los departamentos existentes
  *     tags: [Departamentos]
