@@ -24,8 +24,16 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empresas` (
   `direccion` VARCHAR(500) NOT NULL,
   `telefono` VARCHAR(500) NOT NULL,
   `correo` VARCHAR(500) NOT NULL,
-  `password` VARCHAR(1000) NOT NULL,
   PRIMARY KEY (`idEmpresas`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `nomina_database`.`Usuarios` (
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) NOT NULL,
+  `apellido` VARCHAR(500) NOT NULL,
+  `username` VARCHAR(500) NOT NULL,
+  `password` VARCHAR(500) NOT NULL,
+  PRIMARY KEY (`idUsuario`))
 ENGINE = InnoDB;
 
 
@@ -158,3 +166,4 @@ INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Anal
 INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Empleado (Normal)', '1');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('15', 'Impuestos + Seguro de Salud');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
+INSERT INTO `nomina_database`.`empresas` (`rif`, `nombre`, `direccion`, `telefono`, `correo`) VALUES ('J-31356421-4', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@uvm.edu.ve');

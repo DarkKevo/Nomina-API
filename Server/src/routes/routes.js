@@ -1,9 +1,5 @@
 import Express from 'express';
 
-//Funciones
-import { CrearEmpresa } from '../controllers/Empresas/Agregar_Empresa.js';
-import { IniciarSesion } from '../controllers/Empresas/IniciarSesion.js';
-
 //Planilla
 import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
 
@@ -37,7 +33,15 @@ import { ActualizarDeduccion } from '../controllers/Deducciones/EditarDeduccion.
 import { ListarDeduccion } from '../controllers/Deducciones/ListarDeducciones.js';
 import { EliminarDeduccion } from '../controllers/Deducciones/EliminarDeduccion.js';
 
+//Usuarios
+import { newUser } from '../controllers/Usuarios/newUser.js';
+import { IniciarSesion } from '../controllers/Usuarios/loginUser.js';
+
 export const routes = Express.Router();
+
+//Usuarios
+routes.post('/newUser', newUser);
+routes.post('/loginUser', IniciarSesion);
 
 //Deducciones
 routes.get('/ListarDeducciones', ListarDeduccion);
@@ -50,10 +54,6 @@ routes.get('/ListarEmpleados', ListarEmpleado);
 routes.post('/RegistrarEmpleado', Crear_Empleado);
 routes.put('/EditarEmpleado', EditarEmpleado);
 routes.delete('/EliminarEmpleado', EliminarEmpleado);
-
-//Empresa
-routes.post('/CrearEmpresa', CrearEmpresa);
-routes.post('/LoginEmpresa', IniciarSesion);
 
 //Cargos
 routes.post('/CrearCargo', CrearCargo);

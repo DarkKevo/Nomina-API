@@ -278,102 +278,92 @@
  * @swagger
  * components:
  *   schemas:
- *     Empresas:
+ *     Usuarios:
  *       type: object
  *       properties:
- *         rif:
- *           type: string
- *           description: Rif de la Empresa
  *         nombre:
  *           type: string
- *           description: Nombre de la Empresa
- *         direccion:
+ *           description: nombre del empleado
+ *         apellido:
  *           type: string
- *           description: Direccion de la Empresa
- *         telefono:
+ *           description: apellido del empleado
+ *         user:
  *           type: string
- *           description: Telefono de la Empresa
- *         correo:
+ *           description: nombre de usuario
+ *         pass:
  *           type: string
- *           description: Correo de la Empresa
- *         clave:
- *           type: string
- *           description: Password de la Empresa
+ *           description: clave
  *       required:
- *         -rif
  *         -nombre
- *         -direccion
- *         -telefono
- *         -correo
- *         -clave
+ *         -apellido
+ *         -user
+ *         -pass
  *       example:
- *         rif: J-3164521
- *         nombre: Ferrevenca C.A
- *         direccion: Calle 13
- *         telefono: 0271896521
- *         correo: ferrevenca@gmail.com
- *         clave: 23452ffg&%^55
+ *         nombre: Kevin
+ *         apellido: Araujo
+ *         user: DarkKevo
+ *         pass: gew#$%^#dghd
  */
 
 /**
  * @swagger
  * components:
  *   schemas:
- *     Empresas-Login:
+ *     User-Login:
  *       type: object
  *       properties:
- *         nombre:
+ *         user:
  *           type: string
- *           description: Nombre de la Empresa
- *         clave:
+ *           description: usuario del empleado
+ *         pass:
  *           type: string
- *           description: Password de la Empresa
+ *           description: Password del empleado
  *       required:
- *         -nombre
- *         -clave
+ *         -user
+ *         -pass
  *       example:
- *         nombre: Ferrevenca C.A
- *         clave: 23452ffg&%^55
+ *         user: DarkKevo
+ *         pass: gew#$%^#dghd
  */
 
 /**
  * @swagger
- * /CrearEmpresa:
+ * /newUser:
  *   post:
- *     summary: Registra una nueva empresa
- *     tags: [Empresas]
+ *     summary: Registra un nuveo usuario
+ *     tags: [Usuarios]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
- *             $ref: '#/components/schemas/Empresas'
+ *             $ref: '#/components/schemas/Usuarios'
  *     responses:
  *       200:
- *         description: Empresa Registrada
+ *         description: Usuario Registrado
  *       400:
- *         description: Empresa ya Registrada
+ *         description: Usuario ya Registrado
  */
 
 /**
  * @swagger
- * /LoginEmpresa:
+ * /loginUser:
  *   post:
  *     summary: Inicia Sesion con tu Empresa
- *     tags: [Empresas]
+ *     tags: [Usuarios]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
- *             $ref: '#/components/schemas/Empresas-Login'
+ *             $ref: '#/components/schemas/User-Login'
  *     responses:
  *       200:
- *         description: Empresa Registrada
- *       401:
- *         description: Empresa o Password erronea
+ *         description: Usuario Registrado
+ *       400:
+ *         description: Clave erronea
  */
 
 //Esquema de Datos de los Cargos
