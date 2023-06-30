@@ -493,17 +493,17 @@
  *         cargo:
  *           type: string
  *           description: Nombre del cargo
- *         codigo_salario:
+ *         monto_salario:
  *           type: int
- *           description: Identificador del salario
+ *           description: Salario del cargo
  *       required:
  *         -idcargos
  *         -cargo
- *         -codigo_salario
+ *         -monto_salario
  *       example:
  *         idcargos: 11
  *         cargo: Analista de Mercado
- *         codigo_salario: 1
+ *         monto_salario: 200
  */
 
 /**
@@ -525,6 +525,7 @@
  *       400:
  *         description: El cargo no existe
  */
+
 
 //Esquema de Datos de los Salarios
 
@@ -730,7 +731,7 @@
 
 /**
  * @swagger
- * /ListarDepartamentos:
+ * /ListarDepartamento:
  *   get:
  *     summary: Listar los departamentos existentes
  *     tags: [Departamentos]
