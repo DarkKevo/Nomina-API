@@ -688,7 +688,7 @@
  *       required:
  *         -departamento
  *       example:
- *         Departamento: Sistemas
+ *         departamento: Sistemas
  */
 
 /**
@@ -795,8 +795,8 @@
  *         -iddepartamento
  *         -departamento
  *       example:
- *         iddepartamento: 1
- *         Departamento: Recursos Humanos
+ *         iddepartamentos: 1
+ *         departamento: Recursos Humanos
  */
 
 /**
