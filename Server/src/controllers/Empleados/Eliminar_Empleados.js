@@ -17,15 +17,15 @@ export const EliminarEmpleado = (req, res) => {
       return;
     }
   });
+  const { idEmpleados } = req.body;
 
-  const { id_empleado } = req.body;
+  let verify = 'SELECT * FROM nomina_database.empleados where `idEmpleados`= ' + `'${idEmpleados}'`;
 
-  let verify = 'SELECT * FROM nomina_database.empleados where `idEmpleados`= ' + `'${id_empleado}'`;
-
-  let DELETE = 'DELETE FROM nomina_database.empleados where `idEmpleados`= ' + `'${id_empleado}'`;
+  let DELETE = 'DELETE FROM nomina_database.empleados where `idEmpleados`= ' + `'${idEmpleados}'`;
 
   //Verificando la existencia del Empleado
   conexion.query(verify, (err, result) => {
+    
     if (err) {
       console.log(err);
       conexion.end();
