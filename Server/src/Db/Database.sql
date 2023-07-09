@@ -38,29 +38,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `nomina_database`.`salario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nomina_database`.`salario` (
-  `idsalario` INT NOT NULL AUTO_INCREMENT,
-  `monto_salario` INT NOT NULL,
-  PRIMARY KEY (`idsalario`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `nomina_database`.`cargos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nomina_database`.`cargos` (
   `idcargos` INT NOT NULL AUTO_INCREMENT,
   `cargo` VARCHAR(500) NOT NULL,
-  `codigo_salario` INT NOT NULL,
-  PRIMARY KEY (`idcargos`),
-  INDEX `fk_salario_idx` (`codigo_salario` ASC) VISIBLE,
-  CONSTRAINT `fk_salario`
-    FOREIGN KEY (`codigo_salario`)
-    REFERENCES `nomina_database`.`salario` (`idsalario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+  `salario` INT NOT NULL,
+  PRIMARY KEY (`idcargos`))
 ENGINE = InnoDB;
 
 
@@ -98,13 +82,11 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
   `correo` VARCHAR(100) NOT NULL,
   `codigo_cargo` INT NOT NULL,
   `codigo_departamento` INT NOT NULL,
-  `codigo_deduccion` INT NOT NULL,
   `codigo_empresa` INT NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEmpleados`),
   INDEX `fk_empleados_idx` (`codigo_empresa` ASC) VISIBLE,
   INDEX `fk_cargo_idx` (`codigo_cargo` ASC) VISIBLE,
-  INDEX `fk_deduccion_idx` (`codigo_deduccion` ASC) VISIBLE,
   INDEX `fk_departamento_idx` (`codigo_departamento` ASC) VISIBLE,
   CONSTRAINT `fk_empleados`
     FOREIGN KEY (`codigo_empresa`)
@@ -114,11 +96,6 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
   CONSTRAINT `fk_cargo`
     FOREIGN KEY (`codigo_cargo`)
     REFERENCES `nomina_database`.`cargos` (`idcargos`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_deduccion`
-    FOREIGN KEY (`codigo_deduccion`)
-    REFERENCES `nomina_database`.`deducciones` (`iddeducciones`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_departamento`
@@ -146,24 +123,19 @@ INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Segurida
 INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Investigacion y Desarrollo');
 INSERT INTO `nomina_database`.`departamentos` (`departamento`) VALUES ('Sistemas');
 
-INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('80');
-INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('100');
-INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('120');
-INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('150');
-INSERT INTO `nomina_database`.`salario` (`monto_salario`) VALUES ('200');
-
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Director Ejecutivo (CEO)', '5');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Gestor de Seguridad', '4');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Reclutador', '2');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Analista Financiero', '3');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Supervisor', '3');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Auditor', '2');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Tesorero', '2');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Desarrollador Movil', '4');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Seguridad Informatica', '3');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Productor de Software', '5');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Analista de Mercado', '2');
-INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ('Empleado (Normal)', '1');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Director Ejecutivo (CEO)', '200');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Gestor de Seguridad', '100');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Reclutador', '80');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Analista Financiero', '100');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Supervisor', '80');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Auditor', '80');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Tesorero', '100');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Desarrollador Movil', '100');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Seguridad Informatica', '100');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Productor de Software', '100');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Analista de Mercado', '100');
+INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Empleado (Normal)', '80');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('15', 'Impuestos + Seguro de Salud');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
 INSERT INTO `nomina_database`.`empresas` (`rif`, `nombre`, `direccion`, `telefono`, `correo`) VALUES ('J-31356421-4', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@uvm.edu.ve');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `estado`) VALUES ('V12954785', 'John Rolam', 'Doe Smile', '1990-01-01', '123 Main Street', 'john.doe@gmail.com', 1, 1, 1, 'Activo');
