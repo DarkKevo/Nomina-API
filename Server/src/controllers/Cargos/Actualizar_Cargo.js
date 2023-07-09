@@ -18,18 +18,11 @@ export const ActualizarCargo = (req, res) => {
     }
   });
 
-  const { idcargos, cargo, monto_salario } = req.body;
-
-  let codigo_salario;
+  const { idcargos, cargo, salario } = req.body;
 
   let verify = 'SELECT * FROM nomina_database.cargos where `idcargos`= ' + `'${idcargos}'`;
 
-  let get_id = 'SELECT idsalario FROM nomina_database.salario where `monto_salario`= ' + `'${monto_salario}'`;
-
-
-  let update =
-    'UPDATE nomina_database.cargos SET `cargo`= ' +
-    `'${cargo}'`;
+  let update = 'UPDATE nomina_database.cargos SET `cargo`= ' + `'${cargo}'` + ',`salario`= ' + `'${salario}'` + ' where `idcargos`= ' + `'${idcargos}'`;
 
   //Verificando la existencia del cargo
   conexion.query(verify, (err, result) => {
@@ -39,35 +32,17 @@ export const ActualizarCargo = (req, res) => {
       res.sendStatus(400);
     } else {
       if (result.length != 0) {
-        //Obteniendo el id del salario
-        conexion.query(get_id, (err, results) => {
+        //Actualizando el Cargo
+        conexion.query(update, (err, results) => {
           if (err) {
-            //No existe el salario
             console.log(err);
             conexion.end();
             res.sendStatus(400);
-          } else if (results == 0) {
-            console.log("El salario no existe");
-            conexion.end();
-            res.sendStatus(400);
           } else {
-            //Guardando id
-            codigo_salario = results[0].idsalario;
-            //Guardando query
-            update += ', `codigo_salario`= ' + `'${codigo_salario}'` + 'where `idcargos`= ' + `'${idcargos}'`;
-            //Actualizando el Cargo
-            conexion.query(update, (err, results) => {
-              if (err) {
-                console.log(err);
-                conexion.end();
-                res.sendStatus(400);
-              } else {
-                //Cargo Actualizado
-                console.log(results);
-                conexion.end();
-                res.sendStatus(200);
-              }
-            });
+            //Cargo Actualizado
+            console.log(results);
+            conexion.end();
+            res.sendStatus(200);
           }
         });
       } else {

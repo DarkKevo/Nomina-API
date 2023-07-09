@@ -18,17 +18,13 @@ export const CrearCargo = (req, res) => {
     }
   });
 
-  const { cargo, monto_salario } = req.body;
-
-  let codigo_salario;
+  const { cargo, salario } = req.body;
 
   let verify = 'SELECT * FROM nomina_database.cargos where `cargo`= ' + `'${cargo}'`;
 
-  let get_id = 'SELECT idsalario FROM nomina_database.salario where `monto_salario`= ' + `'${monto_salario}'`;
+  let query = 'INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ';
 
-  let query = 'INSERT INTO `nomina_database`.`cargos` (`cargo`, `codigo_salario`) VALUES ';
-
-  query += `('${cargo}',`;
+  query += `('${cargo}',` + ` ${salario})`;
 
   //Verificando la existencia del cargo
   conexion.query(verify, (err, result) => {
@@ -38,33 +34,19 @@ export const CrearCargo = (req, res) => {
       res.sendStatus(400);
     } else {
       if (result.length == 0) {
-        //Obteniendo el id del salario
-        conexion.query(get_id, (err, results) => {
+        //Agregando el Cargo
+        conexion.query(query, (err, results) => {
           if (err) {
             console.log(err);
             conexion.end();
             res.sendStatus(400);
           } else {
-            //Guardando id
-            codigo_salario = results[0].idsalario;
-            //Guardando query
-            query += ` ${codigo_salario})`;
-
-            //Agregando el Cargo
-            conexion.query(query, (err, results) => {
-              if (err) {
-                console.log(err);
-                conexion.end();
-                res.sendStatus(400);
-              } else {
-                console.log(results);
-                conexion.end();
-                res.sendStatus(200);
-              }
-            });
+            console.log(results);
+            conexion.end();
+            res.sendStatus(200);
           }
         });
-      } else {
+      }else {
         console.log('Ya existe el cargo');
         conexion.end();
         res.sendStatus(400);
