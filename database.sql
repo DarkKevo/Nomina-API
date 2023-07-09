@@ -27,14 +27,13 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empresas` (
   PRIMARY KEY (`idEmpresas`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `nomina_database`.`salario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nomina_database`.`salario` (
-  `idsalario` INT NOT NULL AUTO_INCREMENT,
-  `monto_salario` INT NOT NULL,
-  PRIMARY KEY (`idsalario`))
+CREATE TABLE IF NOT EXISTS `nomina_database`.`Usuarios` (
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) NOT NULL,
+  `apellido` VARCHAR(500) NOT NULL,
+  `username` VARCHAR(500) NOT NULL,
+  `password` VARCHAR(500) NOT NULL,
+  PRIMARY KEY (`idUsuario`))
 ENGINE = InnoDB;
 
 
@@ -44,14 +43,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `nomina_database`.`cargos` (
   `idcargos` INT NOT NULL AUTO_INCREMENT,
   `cargo` VARCHAR(500) NOT NULL,
-  `codigo_salario` INT NOT NULL,
-  PRIMARY KEY (`idcargos`),
-  INDEX `fk_salario_idx` (`codigo_salario` ASC) VISIBLE,
-  CONSTRAINT `fk_salario`
-    FOREIGN KEY (`codigo_salario`)
-    REFERENCES `nomina_database`.`salario` (`idsalario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+  `salario` INT NOT NULL,
+  PRIMARY KEY (`idcargos`))
 ENGINE = InnoDB;
 
 
@@ -89,13 +82,11 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
   `correo` VARCHAR(100) NOT NULL,
   `codigo_cargo` INT NOT NULL,
   `codigo_departamento` INT NOT NULL,
-  `codigo_deduccion` INT NOT NULL,
   `codigo_empresa` INT NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEmpleados`),
   INDEX `fk_empleados_idx` (`codigo_empresa` ASC) VISIBLE,
   INDEX `fk_cargo_idx` (`codigo_cargo` ASC) VISIBLE,
-  INDEX `fk_deduccion_idx` (`codigo_deduccion` ASC) VISIBLE,
   INDEX `fk_departamento_idx` (`codigo_departamento` ASC) VISIBLE,
   CONSTRAINT `fk_empleados`
     FOREIGN KEY (`codigo_empresa`)
@@ -105,11 +96,6 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
   CONSTRAINT `fk_cargo`
     FOREIGN KEY (`codigo_cargo`)
     REFERENCES `nomina_database`.`cargos` (`idcargos`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_deduccion`
-    FOREIGN KEY (`codigo_deduccion`)
-    REFERENCES `nomina_database`.`deducciones` (`iddeducciones`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_departamento`
