@@ -15,12 +15,6 @@ import { ListarCargo } from '../controllers/Cargos/Listar_Cargo.js';
 import { EliminarCargo } from '../controllers/Cargos/Eliminar_Cargo.js';
 import { ActualizarCargo } from '../controllers/Cargos/Actualizar_Cargo.js';
 
-//Salarios
-import { CrearSalario } from '../controllers/Salarios/Agregar_Salario.js';
-import { ListarSalario } from '../controllers/Salarios/Listar_Salario.js';
-import { EliminarSalario } from '../controllers/Salarios/Eliminar_Salario.js';
-import { ActualizarSalario } from '../controllers/Salarios/Actualizar_Salario.js';
-
 //Departamentos
 import { ListarDepartamento } from '../controllers/Departamentos/Listar_Departamento.js';
 import { CrearDepartamento } from '../controllers/Departamentos/Agregar_Departamento.js';
@@ -63,12 +57,6 @@ routes.put('/ActualizarCargo', ActualizarCargo);
 
 //Generar Pagos
 routes.get('/GenerarPagos', GenerarPagos);
-
-//Salarios
-routes.post('/CrearSalario', CrearSalario);
-routes.get('/ListarSalario', ListarSalario);
-routes.delete('/EliminarSalario', EliminarSalario);
-routes.put('/ActualizarSalario', ActualizarSalario);
 
 //Departamentos
 routes.get('/ListarDepartamento', ListarDepartamento);
