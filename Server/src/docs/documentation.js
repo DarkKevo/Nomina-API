@@ -152,9 +152,6 @@
  *         codigo_departamento:
  *           type: string
  *           description: codigo del Empleado de departamento
- *         codigo_deduccion:
- *           type: string
- *           description: codigo del Empleado de deduccion
  *         codigo_empresa:
  *           type: string
  *           description: codigo del Empleado de empresa
@@ -170,7 +167,6 @@
  *         -correo
  *         -codigo_cargo
  *         -codigo_departamento
- *         -codigo_deduccion
  *         -codigo_empresa
  *         -estado
  *       example:
@@ -182,7 +178,6 @@
  *         correo: kevinaraujogonzalez@gmail.com
  *         codigo_cargo: 01
  *         codigo_departamento: 02
- *         codigo_deduccion: 01
  *         codigo_empresa: 1
  *         estado: activo
  */
@@ -234,9 +229,6 @@
  *         codigo_departamento:
  *           type: string
  *           description: codigo del Empleado de departamento
- *         codigo_deduccion:
- *           type: string
- *           description: codigo del Empleado de deduccion
  *         codigo_empresa:
  *           type: string
  *           description: codigo del Empleado de empresa
@@ -255,7 +247,6 @@
  *         -correo
  *         -codigo_cargo
  *         -codigo_departamento
- *         -codigo_deduccion
  *         -codigo_empresa
  *         -estado
  *         -idEmpleados
@@ -268,7 +259,6 @@
  *         correo: kevinaraujogonzalez@gmail.com
  *         codigo_cargo: 01
  *         codigo_departamento: 02
- *         codigo_deduccion: 01
  *         codigo_empresa: 12
  *         estado: activo
  *         idEmpleados: 3
@@ -377,16 +367,16 @@
  *       properties:
  *         cargo:
  *           type: string
- *           description: Nombre del cargo (Tabla - cargos)
- *         monto_salario:
+ *           description: Nombre del cargo
+ *         salario:
  *           type: int
- *           description: Monto del Salario (Tabla - salario)
+ *           description: Monto del Salario
  *       required:
  *         -cargo
- *         -monto_salario
+ *         -salario
  *       example:
  *         cargo: Analista de Sistema
- *         monto_salario: 80
+ *         salario: 80
  */
 
 /**
@@ -422,13 +412,13 @@
  *         cargo:
  *           type: string
  *           description: Nombre del cargo
- *         codigo_salario:
+ *         salario:
  *           type: int
- *           description: Identificador del salario
+ *           description: Salario del cargo
  *       example:
  *         idcargos: 1
  *         cargo: Analista de Sistema
- *         codigo_salario: 1
+ *         salario: 100
  */
 
 /**
@@ -493,17 +483,17 @@
  *         cargo:
  *           type: string
  *           description: Nombre del cargo
- *         monto_salario:
+ *         salario:
  *           type: int
  *           description: Salario del cargo
  *       required:
  *         -idcargos
  *         -cargo
- *         -monto_salario
+ *         -salario
  *       example:
  *         idcargos: 11
  *         cargo: Analista de Mercado
- *         monto_salario: 200
+ *         salario: 200
  */
 
 /**
@@ -526,154 +516,7 @@
  *         description: El cargo no existe
  */
 
-
-//Esquema de Datos de los Salarios
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Salarios_Crear:
- *       type: object
- *       properties:
- *         monto_salario:
- *           type: int
- *           description: Monto del salario a agregar
- *       required:
- *         -monto_salario
- *       example:
- *         monto_salario: 300
- */
-
-/**
- * @swagger
- * /CrearSalario:
- *   post:
- *     summary: Crear un nuevo salario
- *     tags: [Salarios]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             $ref: '#/components/schemas/Salarios_Crear'
- *     responses:
- *       200:
- *         description: Salario Creado
- *       400:
- *         description: Salario ya Registrado (Existente)
- */
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Salarios_Listar:
- *       type: object
- *       properties:
- *         idsalario:
- *           type: int
- *           description: Identificador del salario
- *         monto_salario:
- *           type: int
- *           description: Monto del salario
- *       example:
- *         idsalario: 5
- *         monto_salario: 200
- */
-
-/**
- * @swagger
- * /ListarSalario:
- *   get:
- *     summary: Listar los salarios existentes
- *     tags: [Salarios]
- *     responses:
- *       200:
- *         description: Salarios Registrados
- *       400:
- *         description: No hay salarios existentes
- */
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Salarios_Eliminar:
- *       type: object
- *       properties:
- *         idsalario:
- *           type: int
- *           description: Identificador del salario
- *       required:
- *         -idsalario
- *       example:
- *         idsalario: 3
- */
-
-/**
- * @swagger
- * /EliminarSalario:
- *   delete:
- *     summary: Eliminar un salario
- *     tags: [Salarios]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             $ref: '#/components/schemas/Salarios_Eliminar'
- *     responses:
- *       200:
- *         description: Salario Eliminado
- *       400:
- *         description: El salario no existe
- */
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Salarios_Actualizar:
- *       type: object
- *       properties:
- *         idsalario:
- *           type: int
- *           description: Identificador del salario que se va a actualizar
- *         monto_salario:
- *           type: int
- *           description: Monto del salario
- *       required:
- *         -idsalario
- *         -monto_salario
- *       example:
- *         idsalario: 4
- *         monto_salario: 300
- */
-
-/**
- * @swagger
- * /ActualizarSalario:
- *   put:
- *     summary: Actualizar un salario existente
- *     tags: [Salarios]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             $ref: '#/components/schemas/Salarios_Actualizar'
- *     responses:
- *       200:
- *         description: Salario Actualizado
- *       400:
- *         description: El salario no existe
- */
-
-//Esquema de Datos de los Cargos
+//Esquema de Datos de los Departamentos
 
 /**
  * @swagger
