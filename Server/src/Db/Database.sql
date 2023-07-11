@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
   `fecha_nacimiento` DATE NOT NULL,
   `direccion` VARCHAR(10000) NOT NULL,
   `correo` VARCHAR(100) NOT NULL,
+  `telefono` VARCHAR(100) NOT NULL,
   `codigo_cargo` INT NOT NULL,
   `codigo_departamento` INT NOT NULL,
   `codigo_empresa` INT NOT NULL,
@@ -138,4 +139,4 @@ INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Empleado (N
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('15', 'Impuestos + Seguro de Salud');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
 INSERT INTO `nomina_database`.`empresas` (`rif`, `nombre`, `direccion`, `telefono`, `correo`) VALUES ('J-31356421-4', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@uvm.edu.ve');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `estado`) VALUES ('V12954785', 'John Rolam', 'Doe Smile', '1990-01-01', '123 Main Street', 'john.doe@gmail.com', 1, 1, 1, 'Activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `estado`) VALUES ('V12954785', 'John Rolam', 'Doe Smile', '1990-01-01', '123 Main Street', 'john.doe@gmail.com', '04125557481', 1, 1, 1, 'Activo');

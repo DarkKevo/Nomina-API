@@ -146,6 +146,9 @@
  *         correo:
  *           type: string
  *           description: correo del Empleado
+ *         telefono:
+ *           type: string
+ *           description: telefono del Empleado
  *         codigo_cargo:
  *           type: string
  *           description: codigo del Empleado de cargo
@@ -165,6 +168,7 @@
  *         -fecha_nacimiento
  *         -direction
  *         -correo
+ *         -telefono
  *         -codigo_cargo
  *         -codigo_departamento
  *         -codigo_empresa
@@ -176,6 +180,7 @@
  *         fecha_nacimiento: 2004/02/07
  *         direccion: La Arboleda
  *         correo: kevinaraujogonzalez@gmail.com
+ *         telefono: 04145789632
  *         codigo_cargo: 01
  *         codigo_departamento: 02
  *         codigo_empresa: 1
@@ -189,13 +194,29 @@
  *     Empleados-Eliminar:
  *       type: object
  *       properties:
- *         id_empleado:
- *           type: string
+ *         idEmpleados:
+ *           type: int
  *           description: Id del Empleado a eliminar
  *       required:
- *         -id_empleado
+ *         -idEmpleados
  *       example:
- *         id_empleado: 3
+ *         idEmpleados: 2
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Empleados-Buscar:
+ *       type: object
+ *       properties:
+ *         idEmpleados:
+ *           type: int
+ *           description: Id del Empleado a Buscar
+ *       required:
+ *         -idEmpleados
+ *       example:
+ *         idEmpleados: 2
  */
 
 /**
@@ -223,6 +244,9 @@
  *         correo:
  *           type: string
  *           description: correo del Empleado
+ *         telefono:
+ *           type: string
+ *           description: telefono del Empleado
  *         codigo_cargo:
  *           type: string
  *           description: codigo del Empleado de cargo
@@ -245,6 +269,7 @@
  *         -fecha_nacimiento
  *         -direction
  *         -correo
+ *         -telefono
  *         -codigo_cargo
  *         -codigo_departamento
  *         -codigo_empresa
@@ -257,9 +282,10 @@
  *         fecha_nacimiento: 2004/02/07
  *         direccion: La Arboleda
  *         correo: kevinaraujogonzalez@gmail.com
+ *         telefono: 04141236789
  *         codigo_cargo: 01
  *         codigo_departamento: 02
- *         codigo_empresa: 12
+ *         codigo_empresa: 1
  *         estado: activo
  *         idEmpleados: 3
  */
@@ -734,6 +760,27 @@
  *       400:
  *         description: El Empleado no existe
  */
+
+/**
+ * @swagger
+ * /BuscarEmpleado:
+ *   post:
+ *     summary: Buscar un Empleado
+ *     tags: [Empleados]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Empleados-Buscar'
+ *     responses:
+ *       200:
+ *         description: Empleado Encontrado
+ *       400:
+ *         description: El Empleado no existe
+ */
+
 
 /**
  * @swagger

@@ -8,6 +8,7 @@ import { Crear_Empleado } from '../controllers/Empleados/Registrar_Empleado.js';
 import { ListarEmpleado } from '../controllers/Empleados/Listar_empleados.js';
 import { EliminarEmpleado } from '../controllers/Empleados/Eliminar_Empleados.js';
 import { EditarEmpleado } from '../controllers/Empleados/Editar_Empleado.js';
+import { BuscarEmpleado } from '../controllers/Empleados/Buscar_Empleado.js';
 
 //Cargos
 import { CrearCargo } from '../controllers/Cargos/Agregar_Cargo.js';
@@ -48,6 +49,7 @@ routes.get('/ListarEmpleados', ListarEmpleado);
 routes.post('/RegistrarEmpleado', Crear_Empleado);
 routes.put('/EditarEmpleado', EditarEmpleado);
 routes.delete('/EliminarEmpleado', EliminarEmpleado);
+routes.post('/BuscarEmpleado', BuscarEmpleado);
 
 //Cargos
 routes.post('/CrearCargo', CrearCargo);
