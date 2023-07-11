@@ -26,6 +26,7 @@ export const EditarEmpleado = (req, res) => {
     fecha_nacimiento,
     direccion,
     correo,
+    telefono,
     codigo_cargo,
     codigo_departamento,
     codigo_empresa,
@@ -47,6 +48,8 @@ export const EditarEmpleado = (req, res) => {
     `'${direccion}'` +
     ', `correo`= ' +
     `'${correo}'` +
+    ', `telefono`= ' +
+    `'${telefono}'` +
     ', `codigo_cargo`= ' +
     `'${codigo_cargo}'` +
     ', `codigo_departamento`= ' +
