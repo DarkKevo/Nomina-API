@@ -181,9 +181,9 @@
  *         direccion: La Arboleda
  *         correo: kevinaraujogonzalez@gmail.com
  *         telefono: 04145789632
- *         codigo_cargo: 01
- *         codigo_departamento: 02
- *         codigo_empresa: 1
+ *         codigo_cargo: Director Ejecutivo (CEO)
+ *         codigo_departamento: Finanzas
+ *         codigo_empresa: Universidad Valle de Momboy
  *         estado: activo
  */
 
