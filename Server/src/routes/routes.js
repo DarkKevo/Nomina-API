@@ -3,6 +3,12 @@ import Express from 'express';
 //Planilla
 import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
 
+//Cargar Horas
+import { CargarHoras } from '../controllers/Carga_Horas/Cargar_horas.js';
+
+//Registros
+import { ListarRegistro } from '../controllers/Registro_De_Horas/ListarRegistro.js';
+
 //Empleados
 import { Crear_Empleado } from '../controllers/Empleados/Registrar_Empleado.js';
 import { ListarEmpleado } from '../controllers/Empleados/Listar_empleados.js';
@@ -33,6 +39,9 @@ import { newUser } from '../controllers/Usuarios/newUser.js';
 import { IniciarSesion } from '../controllers/Usuarios/loginUser.js';
 
 export const routes = Express.Router();
+
+//Cargar horas
+routes.post('/cargarHoras', CargarHoras);
 
 //Usuarios
 routes.post('/newUser', newUser);
@@ -65,3 +74,6 @@ routes.get('/ListarDepartamento', ListarDepartamento);
 routes.post('/CrearDepartamento', CrearDepartamento);
 routes.put('/ActualizarDepartamento', ActualizarDepartamento);
 routes.delete('/EliminarDepartamento', EliminarDepartamento);
+
+//Registros
+routes.get('/ListarRegistros', ListarRegistro);

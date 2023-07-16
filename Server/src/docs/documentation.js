@@ -37,6 +37,95 @@
  * @swagger
  * components:
  *   schemas:
+ *     Listar-Registro:
+ *       type: object
+ *       properties:
+ *         nombres:
+ *           type: string
+ *           description: Nombre del Empleado
+ *         apellidos:
+ *           type: string
+ *           description: apellido del Empleado
+ *         horas_laboradas:
+ *           type: string
+ *           description: Horas Laboradas
+ *         horas_extras:
+ *           type: string
+ *           description: Horas Extras
+ *         fecha: 
+ *           type: string
+ *           description: Fecha del Registro
+ *       required:
+ *         -nombres
+ *         -apellidos
+ *         -horas_laboradas
+ *         -horas_extras
+ *         -fecha
+ */
+
+/**
+ * @swagger
+ * /ListarRegistros:
+ *   get:
+ *     summary: Listar los Registros de Horas
+ *     tags: [Registros]
+ *     responses:
+ *       200:
+ *         description: Registros Cargados
+ *       400:
+ *         description: No hay Registros
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Carga_Horas:
+ *       type: object
+ *       properties:
+ *         id_empleado:
+ *           type: string
+ *           description: Id del Empleado a cargar horas
+ *         horas: 
+ *           type: string
+ *           description: Horas Laboradas
+ *         horas_extra:
+ *           type: string
+ *           description: Horas Extra laboradas
+ *       required:
+ *         -id_empleado
+ *         -horas
+ *         -horas_extra
+ *       example:
+ *         id_empleado: 1
+ *         horas: 10
+ *         horas_extra: 5
+ */
+
+/**
+ * @swagger
+ * /cargarHoras:
+ *   post:
+ *     summary: Registra Horas Laborales
+ *     tags: [Horas Laborales]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Carga_Horas'
+ *     responses:
+ *       200:
+ *         description: Horas Registradas
+ *       400:
+ *         description: Ha ocurrido un error 
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
  *     Pagos:
  *       type: object
  *       properties:
@@ -181,9 +270,9 @@
  *         direccion: La Arboleda
  *         correo: kevinaraujogonzalez@gmail.com
  *         telefono: 04145789632
- *         codigo_cargo: Director Ejecutivo (CEO)
- *         codigo_departamento: Finanzas
- *         codigo_empresa: Universidad Valle de Momboy
+ *         codigo_cargo: 01
+ *         codigo_departamento: 01
+ *         codigo_empresa: 01 
  *         estado: activo
  */
 

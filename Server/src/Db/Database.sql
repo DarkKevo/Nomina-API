@@ -68,6 +68,15 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`departamentos` (
   PRIMARY KEY (`iddepartamentos`))
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `nomina_database`.`registro_horas` (
+  `id_registro` INT NOT NULL AUTO_INCREMENT,
+  `nombres` VARCHAR(255) NOT NULL,
+  `apellidos` VARCHAR(255) NOT NULL,
+  `horas_laboradas` INT NOT NULL,
+  `horas_extras` INT NOT NULL,
+  `fecha` DATE NOT NULL,
+  PRIMARY KEY (`id_registro`))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `nomina_database`.`Empleados`
@@ -84,6 +93,8 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
   `codigo_cargo` INT NOT NULL,
   `codigo_departamento` INT NOT NULL,
   `codigo_empresa` INT NOT NULL,
+  `horas_trabajadas` INT NOT NULL,
+  `horas_extras` INT NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEmpleados`),
   INDEX `fk_empleados_idx` (`codigo_empresa` ASC) VISIBLE,
@@ -139,4 +150,3 @@ INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Empleado (N
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('15', 'Impuestos + Seguro de Salud');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
 INSERT INTO `nomina_database`.`empresas` (`rif`, `nombre`, `direccion`, `telefono`, `correo`) VALUES ('J-31356421-4', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@uvm.edu.ve');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `estado`) VALUES ('V12954785', 'John Rolam', 'Doe Smile', '1990-01-01', '123 Main Street', 'john.doe@gmail.com', '04125557481', 1, 1, 1, 'Activo');
