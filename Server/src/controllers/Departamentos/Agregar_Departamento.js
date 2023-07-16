@@ -11,6 +11,8 @@ export const CrearDepartamento = (req, res) => {
     multipleStatements: true,
   });
 
+  //
+
   conexion.connect(function (err) {
     if (err) {
       console.error('Error de conexion: ' + err.stack);
@@ -48,7 +50,7 @@ export const CrearDepartamento = (req, res) => {
           }
         });
       } else {
-        console.log('Ya existe el Departamento');
+        console.log('Ya existe el Departamento :D');
         conexion.end();
         res.sendStatus(400);
       }
