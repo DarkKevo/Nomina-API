@@ -30,7 +30,7 @@ export const ListarCargo = (req, res) => {
       //La Tabla de cargos no tiene datos
       console.log(result);
       conexion.end();
-      res.sendStatus(400);
+      res.status(400).send({error:'no hay datos'})
     } else {
       //Cargos Listados
       conexion.end();

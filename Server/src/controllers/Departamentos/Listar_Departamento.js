@@ -30,7 +30,7 @@ export const ListarDepartamento = (req, res) => {
       //La Tabla de departamentos no tiene datos
       console.log(result);
       conexion.end();
-      res.sendStatus(400);
+      res.status(400).send({error:'no hay departamentos'})
     } else {
       //Cargos Listados
       conexion.end();

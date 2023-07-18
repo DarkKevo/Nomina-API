@@ -48,7 +48,7 @@ and em.idEmpresas = e.codigo_empresa`;
       //La Tabla de empleados no tiene datos
       console.log(result);
       conexion.end();
-      res.sendStatus(400);
+      res.status(400).send({error:'no hay datos'})
     } else {
       //Empleados Listados
       conexion.end();
