@@ -14,6 +14,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `nomina_database` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci ;
 USE `nomina_database` ;
 
+CREATE TABLE IF NOT EXISTS `nomina_database`.`Bancos` (
+  `idbancos` INT NOT NULL AUTO_INCREMENT,
+  `codigo` numeric(4) not null,
+  `nombre` VARCHAR(5000) NOT NULL,
+  `cuenta` numeric(20) not null,
+  PRIMARY KEY (`idbancos`))
+  ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `nomina_database`.`Empresas`
 -- -----------------------------------------------------
@@ -104,6 +111,8 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
+
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
