@@ -956,3 +956,179 @@
  *       400:
  *         description: No hay Pagos existentes
  */
+
+
+
+
+//Esquema de Datos de los Bancos
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Bancos_Crear:
+ *       type: object
+ *       properties:
+ *         Bancos:
+ *           type: string
+ *           description: Bancos (Tabla - Bancos)
+ *       required:
+ *         -codigo
+ *         -nombre
+ *         -cuenta
+ *       example:
+ *         codigo: "0108"
+ *         nombre: Banco Provincial
+ *         cuenta: "0108037815010063774"
+ */
+
+/**
+ * @swagger
+ * /CrearBanco:
+ *   post:
+ *     summary: Crear un nuevo Banco
+ *     tags: [Bancos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Bancos_Crear'
+ *     responses:
+ *       200:
+ *         description: Banco Creado
+ *       400:
+ *         description: Banco ya Registrado (Existente)
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Bancos_Eliminar:
+ *       type: object
+ *       properties:
+ *         idbancos:
+ *           type: int
+ *           description: Id
+ *       required:
+ *         -idbancos
+ *       example:
+ *         idbancos: 1
+ */
+
+/**
+ * @swagger
+ * /EliminarBancos:
+ *   delete:
+ *     summary: Eliminar un Banco
+ *     tags: [Bancos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Bancos_Eliminar'
+ *     responses:
+ *       200:
+ *         description: Banco Eliminado
+ *       400:
+ *         description: El Banco no existe
+ */
+
+/**
+ * @swagger
+ * /ActualizaBanco:
+ *   put:
+ *     summary: Actualizar un Banco existente
+ *     tags: [Bancos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Bancos-Editar'
+ *     responses:
+ *       200:
+ *         description: Banco Actualizado
+ *       400:
+ *         description: El Banco no existe
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Bancos-Editar:
+ *       type: object
+ *       properties:
+ *         codigo:
+ *           type: string
+ *           description: Codigo del Banco
+ *         nombre:
+ *           type: string
+ *           description: Nombres del Banco
+ *         Cuenta:
+ *           type: string
+ *           description: Cuenta de la Empresa
+ *       required:
+ *         -codigo
+ *         -nombre
+ *         -cuenta
+ *       example:
+ *         codigo: "0102"
+ *         nombre: Banco Venezuela
+ *         cuenta: "0102000000000000000"
+ *         idbancos: 1
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Bancos_Listar:
+ *       type: object
+ *       properties:
+ *         idbancos:
+ *           type: int
+ *           description: Id
+ *         codigo:
+ *           type: int
+ *           description: Codigo del Banco
+ *         nombre:
+ *           type: string
+ *           description: Nombre del Banco
+ *         cuenta:
+ *           type: int
+ *           description: Cuenta del Banco
+ *       example:
+ *         idbancos: 1
+ *         codigo: "0102"
+ *         nombre: Banco de Venezuela
+ *         cuenta: "0102037815010067"
+ */
+
+/**
+ * @swagger
+ * /ListarBanco:
+ *   get:
+ *     summary: Listar los Bancos existentes
+ *     tags: [Bancos]
+ *     responses:
+ *       200:
+ *         description: Bancos Registrados
+ *       400:
+ *         description: No hay Bancos existentes
+ */
+ 
+
+
+
+
+
