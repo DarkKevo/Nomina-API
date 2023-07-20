@@ -118,6 +118,15 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
 ENGINE = InnoDB;
 
 
+CREATE TABLE IF NOT EXISTS `nomina_database`.`Bancos` (
+  `idbancos` INT NOT NULL AUTO_INCREMENT,
+  `codigo` numeric(4) not null,
+  `nombre` VARCHAR(5000) NOT NULL,
+  `cuenta` numeric(20) not null,
+  PRIMARY KEY (`idbancos`))
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -150,3 +159,5 @@ INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Empleado (N
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('15', 'Impuestos + Seguro de Salud');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
 INSERT INTO `nomina_database`.`empresas` (`rif`, `nombre`, `direccion`, `telefono`, `correo`) VALUES ('J-31356421-4', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@uvm.edu.ve');
+
+INSERT INTO `nomina_database`.`Bancos` (codigo   ,nombre    ,cuenta) VALUES (    0108       ,'Banco Provincial'     ,'010803781501000'    );
