@@ -38,6 +38,16 @@ import { EliminarDeduccion } from '../controllers/Deducciones/EliminarDeduccion.
 import { newUser } from '../controllers/Usuarios/newUser.js';
 import { IniciarSesion } from '../controllers/Usuarios/loginUser.js';
 
+//Bancos
+import { ListarBanco } from '../controllers/Bancos/Listar_Banco.js';
+import { ActualizaBanco } from '../controllers/Bancos/Actualizar_Bancos.js';
+import { CrearBanco } from '../controllers/Bancos/Agregar_bancos.js';
+import { EliminarBancos } from '../controllers/Bancos/Eliminar_Bancos.js';
+
+
+
+
+
 export const routes = Express.Router();
 
 //Cargar horas
@@ -77,3 +87,10 @@ routes.delete('/EliminarDepartamento', EliminarDepartamento);
 
 //Registros
 routes.get('/ListarRegistros', ListarRegistro);
+
+
+//Bancos
+routes.get('/ListarBanco', ListarBanco);
+routes.put('/ActualizaBanco', ActualizaBanco);
+routes.post('/CrearBanco', CrearBanco);
+routes.delete('/EliminarBancos', EliminarBancos);
