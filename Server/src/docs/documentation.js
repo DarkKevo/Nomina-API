@@ -247,6 +247,9 @@
  *         codigo_empresa:
  *           type: string
  *           description: codigo del Empleado de empresa
+ *         numero_cuenta:
+ *           type: string
+ *           description: numero de cuenta del empleado
  *         estado:
  *           type: string
  *           description: estado del Empleado
@@ -261,6 +264,7 @@
  *         -codigo_cargo
  *         -codigo_departamento
  *         -codigo_empresa
+ *         -numero_cuenta
  *         -estado
  *       example:
  *         cedula: V-30259086
@@ -269,9 +273,10 @@
  *         fecha_nacimiento: 2004/02/07
  *         direccion: La Arboleda
  *         correo: kevinaraujogonzalez@gmail.com
- *         telefono: 04145789632
+ *         telefono: '04145789632'
  *         codigo_cargo: 01
  *         codigo_departamento: 01
+ *         numero_cuenta: '01020304751247000125'
  *         codigo_empresa: 01 
  *         estado: activo
  */
@@ -345,6 +350,9 @@
  *         codigo_empresa:
  *           type: string
  *           description: codigo del Empleado de empresa
+ *         numero_cuenta:
+ *           type: string
+ *           description: numero de cuenta del empleado
  *         estado:
  *           type: string
  *           description: estado del Empleado
@@ -362,6 +370,7 @@
  *         -codigo_cargo
  *         -codigo_departamento
  *         -codigo_empresa
+ *         -numero_cuenta
  *         -estado
  *         -idEmpleados
  *       example:
@@ -371,10 +380,11 @@
  *         fecha_nacimiento: 2004/02/07
  *         direccion: La Arboleda
  *         correo: kevinaraujogonzalez@gmail.com
- *         telefono: 04141236789
+ *         telefono: '04141236789'
  *         codigo_cargo: 01
  *         codigo_departamento: 02
  *         codigo_empresa: 1
+ *         numero_cuenta: '01020304757888000025'
  *         estado: activo
  *         idEmpleados: 3
  */
