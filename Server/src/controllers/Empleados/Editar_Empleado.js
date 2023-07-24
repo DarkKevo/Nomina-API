@@ -30,6 +30,7 @@ export const EditarEmpleado = (req, res) => {
     codigo_cargo,
     codigo_departamento,
     codigo_empresa,
+    numero_cuenta,
     estado,
   } = req.body;
 
@@ -56,6 +57,8 @@ export const EditarEmpleado = (req, res) => {
     `'${codigo_departamento}'` +
     ', `codigo_empresa`= ' +
     `'${codigo_empresa}'` +
+    ', `numero_cuenta`= ' +
+    `'${numero_cuenta}'` +
     ', `estado`= ' +
     `'${estado}'` +
     'where `idEmpleados`= ' +

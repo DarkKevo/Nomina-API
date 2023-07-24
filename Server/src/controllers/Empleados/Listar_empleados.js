@@ -29,7 +29,8 @@ export const ListarEmpleado = (req, res) => {
 	c.cargo codigo_cargo,
 	d.departamento codigo_departamento,
 	em.nombre codigo_empresa, 
-	E.estado estado
+	E.estado estado,
+  E.numero_cuenta numero_cuenta
 FROM nomina_database.empleados E,
 nomina_database.cargos c,
 nomina_database.departamentos d,

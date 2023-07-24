@@ -1,6 +1,6 @@
-import mysql from 'mysql2';
+import mysql from "mysql2";
 
-import { host, port, username, password } from '../../Config/MySqlConfig.js';
+import { host, port, username, password } from "../../Config/MySqlConfig.js";
 
 export const BuscarEmpleado = (req, res) => {
   var conexion = mysql.createConnection({
@@ -13,14 +13,15 @@ export const BuscarEmpleado = (req, res) => {
 
   conexion.connect(function (err) {
     if (err) {
-      console.error('Error de conexion: ' + err.stack);
+      console.error("Error de conexion: " + err.stack);
       return;
     }
   });
 
-  const {idEmpleados} = req.body;
+  const { idEmpleados } = req.body;
 
-  let query = `SELECT E.idEmpleados,
+  let query =
+    `SELECT E.idEmpleados,
 	E.cedula cedula,
 	E.nombres nombres,
 	E.apellidos apellidos,
@@ -31,7 +32,8 @@ export const BuscarEmpleado = (req, res) => {
 	c.cargo codigo_cargo,
 	d.departamento codigo_departamento,
 	em.nombre codigo_empresa, 
-	E.estado estado
+	E.estado estado,
+  E.numero_cuenta numero_cuenta
 FROM nomina_database.empleados E,
 nomina_database.cargos c,
 nomina_database.departamentos d,
@@ -55,7 +57,7 @@ and e.idEmpleados =` + idEmpleados;
     } else {
       //Empleados Listados
       conexion.end();
-      res.send(result);
+      res.send(result[0]);
     }
   });
 };
