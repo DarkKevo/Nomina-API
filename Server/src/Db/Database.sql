@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
   `codigo_departamento` INT NOT NULL,
   `codigo_empresa` INT NOT NULL,
   `numero_cuenta` VARCHAR(20) NOT NULL,
+  `antiguedad` DATE NOT NULL,
   `horas_trabajadas` INT NOT NULL,
   `horas_extras` INT NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
