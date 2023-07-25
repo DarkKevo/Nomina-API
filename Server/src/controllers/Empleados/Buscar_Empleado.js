@@ -33,7 +33,8 @@ export const BuscarEmpleado = (req, res) => {
 	d.departamento codigo_departamento,
 	em.nombre codigo_empresa, 
 	E.estado estado,
-  E.numero_cuenta numero_cuenta
+  E.numero_cuenta numero_cuenta,
+  E.antiguedad antiguedad
 FROM nomina_database.empleados E,
 nomina_database.cargos c,
 nomina_database.departamentos d,

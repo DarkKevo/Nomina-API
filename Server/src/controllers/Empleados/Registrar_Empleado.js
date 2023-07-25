@@ -21,12 +21,15 @@ export const Crear_Empleado = (req, res) => {
   const { cedula, nombres, apellidos, fecha_nacimiento, direccion, correo, telefono, codigo_cargo, codigo_departamento, codigo_empresa, numero_cuenta,estado } =
     req.body;
 
+  const fecha = new Date();
+  const antiguedad = `${fecha.getFullYear()}-`+ `${fecha.getMonth() + 1}-`+`${fecha.getDate()}`;
+  
   let verify = 'SELECT * FROM nomina_database.empleados where `cedula`= ' + `'${cedula}'`;
 
   let query =
-    'INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ';
+    'INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ';
 
-  query += `('${cedula}', '${nombres}', '${apellidos}', '${fecha_nacimiento}', '${direccion}', '${correo}', '${telefono}', '${codigo_cargo}', '${codigo_departamento}', '${codigo_empresa}', '${numero_cuenta}', 0, 0, '${estado}')`;
+  query += `('${cedula}', '${nombres}', '${apellidos}', '${fecha_nacimiento}', '${direccion}', '${correo}', '${telefono}', '${codigo_cargo}', '${codigo_departamento}', '${codigo_empresa}', '${numero_cuenta}', '${antiguedad}', 0, 0, '${estado}')`;
 
   //Verificar la Existencia del Empleado
   conexion.query(verify, (err, result) => {
