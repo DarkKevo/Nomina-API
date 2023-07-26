@@ -18,7 +18,7 @@ export const ListarBanco = (req, res) => {
     }
   });
 
-  let query = 'SELECT * FROM nomina_database.bancos';
+  let query = 'SELECT * FROM nomina_database.Bancos';
 
   //Verificando la existencia de los Bancos
   conexion.query(query, (err, result) => {

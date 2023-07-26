@@ -81,7 +81,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `nomina_database`.`Empleados`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
+CREATE TABLE IF NOT EXISTS `nomina_database`.`empleados` (
   `idEmpleados` INT NOT NULL AUTO_INCREMENT,
   `cedula` VARCHAR(100) NOT NULL,
   `nombres` VARCHAR(500) NOT NULL,
@@ -99,9 +99,9 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
   `horas_extras` INT NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEmpleados`),
-  INDEX `fk_empleados_idx` (`codigo_empresa` ASC) VISIBLE,
-  INDEX `fk_cargo_idx` (`codigo_cargo` ASC) VISIBLE,
-  INDEX `fk_departamento_idx` (`codigo_departamento` ASC) VISIBLE,
+  INDEX `fk_empleados_idx` (`codigo_empresa` ASC) ,
+  INDEX `fk_cargo_idx` (`codigo_cargo` ASC) ,
+  INDEX `fk_departamento_idx` (`codigo_departamento` ASC) ,
   CONSTRAINT `fk_empleados`
     FOREIGN KEY (`codigo_empresa`)
     REFERENCES `nomina_database`.`Empresas` (`idEmpresas`)

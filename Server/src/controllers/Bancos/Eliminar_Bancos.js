@@ -20,9 +20,9 @@ export const EliminarBancos = (req, res) => {
 
   const { idbancos } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.bancos where `idbancos`= ' + `'${idbancos}'`;
+  let verify = 'SELECT * FROM nomina_database.Bancos where `idbancos`= ' + `'${idbancos}'`;
 
-  let DELETE = 'DELETE FROM nomina_database.bancos where `idbancos`= ' + `'${idbancos}'`;
+  let DELETE = 'DELETE FROM nomina_database.Bancos where `idbancos`= ' + `'${idbancos}'`;
 
   //Verificando la existencia del Banco
   conexion.query(verify, (err, result) => {

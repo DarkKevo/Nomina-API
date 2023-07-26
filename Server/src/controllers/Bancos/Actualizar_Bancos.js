@@ -20,7 +20,7 @@ export const ActualizaBanco = (req, res) => {
 
   const { idbancos, codigo, nombre, cuenta } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.bancos where `idbancos`= ' + `'${idbancos}'`;
+  let verify = 'SELECT * FROM nomina_database.Bancos where `idbancos`= ' + `'${idbancos}'`;
 
   let update =
     'UPDATE nomina_database.bancos SET `codigo`= ' +

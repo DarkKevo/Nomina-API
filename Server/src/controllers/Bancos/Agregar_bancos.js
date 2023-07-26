@@ -20,7 +20,7 @@ export const CrearBanco = (req, res) => {
 
   const {idbancos, codigo, nombre, cuenta } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.bancos where `idbancos`= ' + `'${idbancos}'`;
+  let verify = 'SELECT * FROM nomina_database.Bancos where `idbancos`= ' + `'${idbancos}'`;
 
   let query = 'INSERT INTO `nomina_database`.`bancos` (`codigo`, `nombre`, `cuenta`) VALUES ';
 
