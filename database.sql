@@ -112,6 +112,13 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Empleados` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `nomina_database`.`setup_banco_file` (
+  `idfile` INT NOT NULL AUTO_INCREMENT,
+  `idbancos` INT not null,
+  `separadores` VARCHAR(5000) NOT NULL,
+   `columnasfile` VARCHAR(5000) NOT NULL
+  PRIMARY KEY (`idfile`))
+  ENGINE = InnoDB;
 
 
 
