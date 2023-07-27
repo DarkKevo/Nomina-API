@@ -18,23 +18,24 @@ export const ListarEmpleado = (req, res) => {
     }
   });
 
-  let query = `SELECT idEmpleados,
-	cedula,
-	nombres,
-	apellidos,
-	fecha_nacimiento,
-	direccion,
-	correo,
-	telefono,
-  codigo_cargo,
-	codigo_departamento,
-	codigo_empresa, 
-	estado,
-  numero_cuenta,
-  antiguedad,
-  horas_trabajadas,
-  horas_extras
-FROM nomina_database.empleados`
+  let query =  `SELECT E.idEmpleados,
+	E.cedula cedula,
+	E.nombres nombres,
+	E.apellidos apellidos,
+	E.fecha_nacimiento fecha_nacimiento,
+	E.correo correo,
+	E.telefono telefono,
+	c.cargo codigo_cargo,
+	d.departamento codigo_departamento,
+	em.nombre codigo_empresa, 
+	E.estado estado
+FROM nomina_database.empleados E,
+nomina_database.cargos c,
+nomina_database.departamentos d,
+nomina_database.empresas EM
+where c.idcargos = e.codigo_cargo
+and d.iddepartamentos = e.codigo_departamento
+and em.idEmpresas = e.codigo_empresa`;
 
   //Verificando la existencia de los empleados
   conexion.query(query, (err, result) => {
