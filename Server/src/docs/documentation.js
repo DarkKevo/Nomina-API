@@ -1138,6 +1138,174 @@
  */
  
 
+//Esquema de Datos de los Setup
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Setup_Crear:
+ *       type: object
+ *       properties:
+ *         Setup_file:
+ *           type: string
+ *           description: setup_banco_file (Tabla - setup_banco_file)
+ *       required:
+ *         -idbancos
+ *         -tipofile
+ *         -columnasfile
+ *         -separadores
+ *       example:
+ *         idbancos: 1
+ *         nombre: "TXT"
+ *         columnasfile: "cuenta, cedula, monto, nombre, apellido"
+ *         separadores: " "
+ */
+
+/**
+ * @swagger
+ * /Agregarsetup:
+ *   post:
+ *     summary: Crear un nuevo Setup
+ *     tags: [Setup_file]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Setup_Crear'
+ *     responses:
+ *       200:
+ *         description: Setup Creado
+ *       400:
+ *         description: Setup ya Registrado (Existente)
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Setup_Eliminar:
+ *       type: object
+ *       properties:
+ *         idfile:
+ *           type: int
+ *           description: Id
+ *       required:
+ *         -idfile
+ *       example:
+ *         idfile: 1
+ */
+
+/**
+ * @swagger
+ * /EliminarSetup:
+ *   delete:
+ *     summary: Eliminar un Setup
+ *     tags: [Setup_file]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Setup_Eliminar'
+ *     responses:
+ *       200:
+ *         description: Configuracion Eliminada
+ *       400:
+ *         description: La configuracion no existe
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Setup_Listar:
+ *       type: object
+ *       properties:
+ *         idfile:
+ *           type: int
+ *           description: Id
+ *         idbancos:
+ *           type: int
+ *           description: Id del Banco
+ *         tipofile:
+ *           type: string
+ *           description: Tipo del Txt
+ *         columnasfile:
+ *           type: string
+ *           description: Columnas a usar en el txt
+ *       example:
+ *         idbancos: "1"
+ *         tipofile: Txt
+ *         columnasfile: "cuenta,cedula,monto, nombre, apellido"
+ *         separadores: " "
+ */
+
+/**
+ * @swagger
+ * /Listarsetup:
+ *   get:
+ *     summary: Listar los Setup existentes
+ *     tags: [Setup_file]
+ *     responses:
+ *       200:
+ *         description: Configuraciones Registradas para el banco
+ *       400:
+ *         description: No hay Configuraciones existentes para el banco
+ */
+
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Setup_Editar:
+ *       type: object
+ *       properties:
+ *         Setup_file:
+ *           type: string
+ *           description: setup_banco_file (Tabla - setup_banco_file)
+ *       required:
+ *         -idfile
+ *         -idbancos
+ *         -tipo_file
+ *         -columnasfile
+ *         -separadores
+ *       example:
+ *         idfile: 1
+ *         idbancos: 1
+ *         tipo_file: "TXT"
+ *         columnasfile : "cuenta, cedula, monto, nombre, apellido"
+ *         separadores: " "
+ */
+
+
+
+/**
+ * @swagger
+ * /ActualizarSetup:
+ *   put:
+ *     summary: Crear un nuevo Setup
+ *     tags: [Setup_file]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Setup_Editar'
+ *     responses:
+ *       200:
+ *         description: Setup Creado
+ *       400:
+ *         description: Setup ya Registrado (Existente)
+ */
+
 
 
 
