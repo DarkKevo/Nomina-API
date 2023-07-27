@@ -45,6 +45,12 @@ import { CrearBanco } from '../controllers/Bancos/Agregar_bancos.js';
 import { EliminarBancos } from '../controllers/Bancos/Eliminar_Bancos.js';
 
 
+//Setup
+import { Listarsetup } from '../controllers/setup_file/Listar_setup.js';
+import { ActualizarSetup } from '../controllers/setup_file/Actualizar_setup.js';
+import { Agregarsetup } from '../controllers/setup_file/Agregar_setup.js';
+import { EliminarSetup } from '../controllers/setup_file/Eliminar_setup.js';
+
 
 
 
@@ -94,3 +100,10 @@ routes.get('/ListarBanco', ListarBanco);
 routes.put('/ActualizaBanco', ActualizaBanco);
 routes.post('/CrearBanco', CrearBanco);
 routes.delete('/EliminarBancos', EliminarBancos);
+
+
+//Setup
+routes.get('/Listarsetup', Listarsetup);
+routes.put('/ActualizarSetup', ActualizarSetup);
+routes.post('/Agregarsetup', Agregarsetup);
+routes.delete('/EliminarSetup', EliminarSetup);
