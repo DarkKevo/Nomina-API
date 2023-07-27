@@ -21,7 +21,8 @@ export const CargarHoras = (req, res) => {
   const { id_empleado, horas, horas_extra } = req.body;
 
   let data =
-    'SELECT `nombres`, `apellidos`, `horas_trabajadas`, `horas_extras` FROM nomina_database.empleados where `idEmpleados`= ' + `'${id_empleado}'`;
+    'SELECT `nombres`, `apellidos`, `horas_trabajadas`, `horas_extras`, `idEmpleados` FROM nomina_database.empleados where `idEmpleados`= ' +
+    `'${id_empleado}'`;
 
   let fecha = new Date();
 
@@ -41,10 +42,10 @@ export const CargarHoras = (req, res) => {
           `'${id_empleado}'`;
 
         let registro =
-          'INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`) VALUES ' +
+          'INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ' +
           `('${result[0].nombres}', '${
             result[0].apellidos
-          }', '${horas}', '${horas_extra}', '${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDate()}')`;
+          }', '${horas}', '${horas_extra}', '${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDate()}', ${result[0].idEmpleados})`;
 
         conexion.query(carga, (err, result2) => {
           if (err) {

@@ -31,7 +31,9 @@ export const ListarEmpleado = (req, res) => {
 	codigo_empresa, 
 	estado,
   numero_cuenta,
-  antiguedad
+  antiguedad,
+  horas_trabajadas,
+  horas_extras
 FROM nomina_database.empleados`
 
   //Verificando la existencia de los empleados

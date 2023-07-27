@@ -19,23 +19,73 @@ export const GenerarPagos = (req, res) => {
   });
 
   let query =
-    'SELECT cedula, apellidos, nombres, cargo, monto_salario, descripcion, monto FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.salario on (cargos.codigo_salario = salario.idsalario) inner join nomina_database.deducciones on (empleados.codigo_deduccion = iddeducciones)';
+    'SELECT cedula, idEmpleados, apellidos, nombres, cargo, numero_cuenta, salario FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos)';
 
-  function GenerarData(Data) {
-    let Data_Planilla = [];
-    Data.forEach((element) => {
-      let Object = {
-        cedula: element.cedula,
-        apellidos: element.apellidos,
-        nombres: element.nombres,
-        cargo: element.cargo,
-        monto_deduccion: element.monto,
-        descripcion: element.descripcion,
-        monto_de_pago: parseInt(element.monto_salario) - parseInt(element.monto),
-      };
-      Data_Planilla.push(Object);
+  var data_pagos = [];
+
+  function resetRegistros() {
+    let resetRegistros = `DELETE FROM nomina_database.registro_horas;`;
+    let resetHoras = `UPDATE nomina_database.empleados set horas_trabajadas = 0, horas_extras = 0;`;
+
+    conexion.query(resetRegistros, (err, res) => {
+      if (err) {
+        console.log(err);
+        conexion.end();
+        res.sendStatus(400);
+      } else {
+        conexion.query(resetHoras, (err, res) => {
+          if (err) {
+            console.log(err);
+            conexion.end();
+            res.sendStatus(400);
+          } else {
+            res.sendStatus(200);
+            conexion.end();
+          }
+        });
+      }
     });
-    res.send(Data_Planilla);
+  }
+
+  function Calculo(array) {
+    array.forEach((element, index) => {
+      let days = `SELECT * FROM nomina_database.registro_horas WHERE idEmpleados = ${element.idEmpleados} and horas_extras > 0 and horas_laboradas > 0`;
+      let days2 = `SELECT * FROM nomina_database.registro_horas WHERE idEmpleados = ${element.idEmpleados} and horas_laboradas = 0`;
+      conexion.query(days, (err, resultado) => {
+        if (err) {
+          console.log(err);
+          conexion.end();
+          res.sendStatus(400);
+        } else {
+          conexion.query(days2, (err, resultado2) => {
+            if (err) {
+              conexion.end();
+              res.sendStatus(400);
+            } else {
+              console.log(`Laborados n ${resultado.length} extras ${resultado2.length}`);
+              let salario_diario = element.salario / 30;
+              let dias_laborados = resultado.length * salario_diario;
+              let dias_descanso = 4 * salario_diario;
+              let dias_extra = salario_diario * 1.5 * resultado2.length;
+              data_pagos.push({
+                nombre: `${element.nombres} ${element.apellidos}`,
+                cargo: element.cargo,
+                cuenta: element.numero_cuenta,
+                pago_de_dias_laborales: dias_laborados,
+                pago_de_dias_extras: dias_extra,
+                pago_dias_de_descanso: dias_descanso,
+                pago_correspondiente_total: dias_laborados + dias_extra + dias_descanso,
+              });
+              if (index == array.length - 1) {
+                conexion.end();
+                resetRegistros();
+                res.json(data_pagos);
+              }
+            }
+          });
+        }
+      });
+    });
   }
 
   conexion.query(query, (err, result) => {
@@ -48,8 +98,7 @@ export const GenerarPagos = (req, res) => {
       conexion.end();
       res.sendStatus(400);
     } else {
-      conexion.end();
-      GenerarData(result);
+      Calculo(result);
     }
   });
 };

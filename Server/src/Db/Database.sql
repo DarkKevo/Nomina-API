@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`registro_horas` (
   `horas_laboradas` INT NOT NULL,
   `horas_extras` INT NOT NULL,
   `fecha` DATE NOT NULL,
+  `idEmpleados` INT NOT NULL,
   PRIMARY KEY (`id_registro`))
 ENGINE = InnoDB;
 
@@ -160,6 +161,6 @@ INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Analista de
 INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Empleado (Normal)', '80');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('15', 'Impuestos + Seguro de Salud');
 INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
-INSERT INTO `nomina_database`.`empresas` (`rif`, `nombre`, `direccion`, `telefono`, `correo`) VALUES ('J-31356421-4', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@uvm.edu.ve');
+INSERT INTO `nomina_database`.`Empresas` (`rif`, `nombre`, `direccion`, `telefono`, `correo`) VALUES ('J-31356421-4', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@uvm.edu.ve');
 
 INSERT INTO `nomina_database`.`Bancos` (codigo   ,nombre    ,cuenta) VALUES (    0108       ,'Banco Provincial'     ,'010803781501000'    );
