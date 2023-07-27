@@ -130,6 +130,16 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Bancos` (
 ENGINE = InnoDB;
 
 
+CREATE TABLE IF NOT EXISTS `nomina_database`.`setup_banco_file` (
+  `idfile` INT NOT NULL AUTO_INCREMENT,
+  `idbancos` INT not null,
+  `separadores` VARCHAR(5000) NOT NULL,
+   `tipo_file` VARCHAR(5000) NOT NULL,
+   `columnasfile` VARCHAR(5000) NOT NULL,
+  PRIMARY KEY (`idfile`))
+  ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -164,3 +174,6 @@ INSERT INTO `nomina_database`.`deducciones` (`monto`, `descripcion`) VALUES ('30
 INSERT INTO `nomina_database`.`Empresas` (`rif`, `nombre`, `direccion`, `telefono`, `correo`) VALUES ('J-31356421-4', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@uvm.edu.ve');
 
 INSERT INTO `nomina_database`.`Bancos` (codigo   ,nombre    ,cuenta) VALUES (    0108       ,'Banco Provincial'     ,'010803781501000'    );
+
+
+INSERT INTO `nomina_database`.`setup_banco_file` (idfile   ,idbancos    , separadores, tipo_file, columnasfile) VALUES (   1 , 1, ' ', 'txt','cuenta,cedula,monto, nombre , apellido');
