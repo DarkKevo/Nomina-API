@@ -28,6 +28,8 @@ export const ListarEmpleado = (req, res) => {
 	c.cargo codigo_cargo,
 	d.departamento codigo_departamento,
 	em.nombre codigo_empresa, 
+  E.numero_cuenta numero_cuenta,
+	E.antiguedad antiguedad,
 	E.estado estado
 FROM nomina_database.empleados E,
 nomina_database.cargos c,
@@ -50,6 +52,7 @@ and em.idEmpresas = e.codigo_empresa`;
       res.status(400).send({error:'no hay datos'})
     } else {
       //Empleados Listados
+      console.log(result)
       conexion.end();
       res.send(result);
     }
