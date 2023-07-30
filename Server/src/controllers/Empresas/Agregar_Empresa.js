@@ -1,9 +1,6 @@
 import mysql from 'mysql2';
-import bcrypt from 'bcrypt';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
-
-import { SaltRounds } from '../../index.js';
 
 export const CrearEmpresa = (req, res) => {
   var conexion = mysql.createConnection({
@@ -21,15 +18,13 @@ export const CrearEmpresa = (req, res) => {
     }
   });
 
-  const { rif, nombre, direccion, telefono, correo, clave } = req.body;
+  const { rif, nombre, direccion, telefono, correo } = req.body;
 
-  var password_encriptada = bcrypt.hashSync(clave, parseInt(SaltRounds));
+  let verify = 'SELECT * FROM nomina_database.Empresas';
 
-  let verify = 'SELECT * FROM nomina_database.Empresas where `nombre`= ' + `'${nombre}'`;
+  let query = 'INSERT INTO `nomina_database`.`Empresas` (`rif`, `nombre`, `direccion` , `telefono` , `correo` ) VALUES ';
 
-  let query = 'INSERT INTO `nomina_database`.`Empresas` (`rif`, `nombre`, `direccion` , `telefono` , `correo` , `password`) VALUES ';
-
-  query += `('${rif}', '${nombre}', '${direccion}', '${telefono}', '${correo}', '${password_encriptada}')`;
+  query += `('${rif}', '${nombre}', '${direccion}', '${telefono}', '${correo}')`;
 
   conexion.query(verify, (err, result) => {
     if (err) {
