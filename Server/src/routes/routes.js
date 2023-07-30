@@ -21,6 +21,8 @@ import { CrearCargo } from '../controllers/Cargos/Agregar_Cargo.js';
 import { ListarCargo } from '../controllers/Cargos/Listar_Cargo.js';
 import { EliminarCargo } from '../controllers/Cargos/Eliminar_Cargo.js';
 import { ActualizarCargo } from '../controllers/Cargos/Actualizar_Cargo.js';
+import { BuscarCargo } from '../controllers/Cargos/Buscar_Cargo.js';
+
 
 //Departamentos
 import { ListarDepartamento } from '../controllers/Departamentos/Listar_Departamento.js';
@@ -81,6 +83,7 @@ routes.post('/CrearCargo', CrearCargo);
 routes.get('/ListarCargo', ListarCargo);
 routes.delete('/EliminarCargo', EliminarCargo);
 routes.put('/ActualizarCargo', ActualizarCargo);
+routes.post('/BuscarCargo', BuscarCargo);
 
 //Generar Pagos
 routes.get('/GenerarPagos', GenerarPagos);
