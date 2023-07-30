@@ -53,8 +53,10 @@ import { ActualizarSetup } from '../controllers/setup_file/Actualizar_setup.js';
 import { Agregarsetup } from '../controllers/setup_file/Agregar_setup.js';
 import { EliminarSetup } from '../controllers/setup_file/Eliminar_setup.js';
 
-
-
+//Empresas
+import { ListarEmpresa } from '../controllers/Empresas/Listar_Empresa.js';
+import { ActualizarEmpresa } from '../controllers/Empresas/Actualizar_Empresa.js';
+import { CrearEmpresa } from '../controllers/Empresas/Agregar_Empresa.js';
 
 export const routes = Express.Router();
 
@@ -110,3 +112,8 @@ routes.get('/Listarsetup', Listarsetup);
 routes.put('/ActualizarSetup', ActualizarSetup);
 routes.post('/Agregarsetup', Agregarsetup);
 routes.delete('/EliminarSetup', EliminarSetup);
+
+//Empresa
+routes.get('/ListarEmpresa', ListarEmpresa);
+routes.put('/ActualizaEmpresa', ActualizarEmpresa);
+routes.post('/CrearEmpresa', CrearEmpresa);

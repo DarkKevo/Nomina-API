@@ -10,7 +10,165 @@
  *       bearerFormat: JWT
  * */
 
-//Esquema de Datos de las Empresas
+
+//Esquema de Datos de los Empresas
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Empresa_Crear:
+ *       type: object
+ *       properties:
+ *         rif:
+ *           type: string
+ *           description: Rif de la empresa
+ *         nombre:
+ *           type: string
+ *           description: Nombre de la empresa
+ *         direccion:
+ *           type: string
+ *           description: Direccion de la empresa
+ *         telefono:
+ *           type: string
+ *           description: Telefono de la empresa
+ *         correo:
+ *           type: string
+ *           description: Correo de la empresa
+ *       required:
+ *         -rif
+ *         -nombre
+ *         -direccion
+ *         -telefono
+ *         -correo
+ *       example:
+ *         rif: "J-31356421-4"
+ *         nombre: "Universidad Valle de Momboy"
+ *         direccion: "Carvajal"
+ *         telefono: "02712351785"
+ *         correo: "universidad@edu.ve"
+ */
+
+/**
+ * @swagger
+ * /CrearEmpresa:
+ *   post:
+ *     summary: Registrar una Empresa
+ *     tags: [Empresa]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Empresa_Crear'
+ *     responses:
+ *       200:
+ *         description: Empresa Registrada
+ *       400:
+ *         description: Empresa ya Registrada (Existente)
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Empresa_Listar:
+ *       type: object
+ *       properties:
+ *         idEmpresas:
+ *           type: integer
+ *           description: ID de la empresa
+ *         rif:
+ *           type: string
+ *           description: Rif de la empresa
+ *         nombre:
+ *           type: string
+ *           description: Nombre de la empresa
+ *         direccion:
+ *           type: string
+ *           description: Direccion de la empresa
+ *         telefono:
+ *           type: string
+ *           description: Telefono de la empresa
+ *         correo:
+ *           type: string
+ *           description: Correo de la empresa
+ *       example:
+ *         idEmpresas: 1
+ *         rif: "J-31356421-4"
+ *         nombre: "Universidad Valle de Momboy"
+ *         direccion: "Carvajal"
+ *         telefono: "02712351785"
+ *         correo: "universidad@edu.ve"
+ */
+
+/**
+ * @swagger
+ * /ListarEmpresa:
+ *   get:
+ *     summary: Listar la Empresa existente
+ *     tags: [Empresa]
+ *     responses:
+ *       200:
+ *         description: Empresa Registrada
+ *       400:
+ *         description: No hay Empresa existente
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Empresa_Actualizar:
+ *       type: object
+ *       properties:
+ *         idEmpresas:
+ *           type: integer
+ *           description: ID de la empresa
+ *         rif:
+ *           type: string
+ *           description: Rif de la empresa
+ *         nombre:
+ *           type: string
+ *           description: Nombre de la empresa
+ *         direccion:
+ *           type: string
+ *           description: Direccion de la empresa
+ *         telefono:
+ *           type: string
+ *           description: Telefono de la empresa
+ *         correo:
+ *           type: string
+ *           description: Correo de la empresa
+ *       example:
+ *         idEmpresas: 1
+ *         rif: "J-31356421-4"
+ *         nombre: "Universidad Valle de Momboy"
+ *         direccion: "Carvajal"
+ *         telefono: "02712351785"
+ *         correo: "universidad@edu.ve"
+ */
+
+/**
+ * @swagger
+ * /ActualizaEmpresa:
+ *   put:
+ *     summary: Actualizar La Empresa
+ *     tags: [Empresa]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Empresa_Actualizar'
+ *     responses:
+ *       200:
+ *         description: Empresa Actualizado
+ *       400:
+ *         description: Error al actualizar la Empresa
+ */
 
 /**
  * @swagger
