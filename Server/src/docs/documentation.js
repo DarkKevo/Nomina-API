@@ -1464,7 +1464,42 @@
  *         description: Setup ya Registrado (Existente)
  */
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *    Download:
+ *       type: object
+ *       properties:
+ *         Download:
+ *           type: string
+ *           description: Download (Tabla - Download)
+ *       required:
+ *         -id_file
+ *         -fecha_init
+ *         -fecha_final
+ *       example:
+ *         id_file: 1
+ *         fecha_init: "2023-07-15"
+ *         fecha_final: "2023-07-31"
+ */
 
-
-
-
+/**
+ * @swagger
+ * /descargartxt:
+ *   get:
+ *     summary: Descargar archivo
+ *     tags: [Download]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Download'
+ *     responses:
+ *       200:
+ *         description: Descargado archivo
+ *       400:
+ *         description: No se pudo descargar
+ */
