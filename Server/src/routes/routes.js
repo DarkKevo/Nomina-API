@@ -58,6 +58,9 @@ import { ListarEmpresa } from '../controllers/Empresas/Listar_Empresa.js';
 import { ActualizarEmpresa } from '../controllers/Empresas/Actualizar_Empresa.js';
 import { CrearEmpresa } from '../controllers/Empresas/Agregar_Empresa.js';
 
+
+//Empresas
+import { descargartxt } from '../controllers/download_file/download.js';
 export const routes = Express.Router();
 
 //Cargar horas
@@ -117,3 +120,6 @@ routes.delete('/EliminarSetup', EliminarSetup);
 routes.get('/ListarEmpresa', ListarEmpresa);
 routes.put('/ActualizaEmpresa', ActualizarEmpresa);
 routes.post('/CrearEmpresa', CrearEmpresa);
+
+//Empresa
+routes.get('/descargartxt', descargartxt);
