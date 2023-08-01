@@ -22,9 +22,9 @@ export const CrearEmpresa = (req, res) => {
 
   let verify = 'SELECT * FROM nomina_database.Empresas';
 
-  let query = 'INSERT INTO `nomina_database`.`Empresas` (`rif`, `nombre`, `direccion` , `telefono` , `correo` ) VALUES ';
+  let query = 'INSERT INTO `nomina_database`.`Empresas` (`idEmpresas`,`rif`, `nombre`, `direccion` , `telefono` , `correo` ) VALUES ';
 
-  query += `('${rif}', '${nombre}', '${direccion}', '${telefono}', '${correo}')`;
+  query += `(1,'${rif}', '${nombre}', '${direccion}', '${telefono}', '${correo}')`;
 
   conexion.query(verify, (err, result) => {
     if (err) {
