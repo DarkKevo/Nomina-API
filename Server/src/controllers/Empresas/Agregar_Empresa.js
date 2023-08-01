@@ -45,8 +45,8 @@ export const CrearEmpresa = (req, res) => {
           }
         });
       } else {
+        res.status(400).send({error: 'ya existe una empresa'});
         conexion.end();
-        res.sendStatus(400);
       }
     }
   });
