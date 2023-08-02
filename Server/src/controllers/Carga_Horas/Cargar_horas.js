@@ -19,7 +19,6 @@ export const CargarHoras = (req, res) => {
   });
 
   const { id_empleado, horas, horas_extra } = req.body;
-
   let data =
     'SELECT `nombres`, `apellidos`, `horas_trabajadas`, `horas_extras`, `idEmpleados` FROM nomina_database.empleados where `idEmpleados`= ' +
     `'${id_empleado}'`;
