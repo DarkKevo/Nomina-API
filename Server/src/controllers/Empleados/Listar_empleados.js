@@ -34,7 +34,7 @@ export const ListarEmpleado = (req, res) => {
 FROM nomina_database.empleados E,
 nomina_database.cargos c,
 nomina_database.departamentos d,
-nomina_database.empresas EM
+nomina_database.Empresas em
 where c.idcargos = e.codigo_cargo
 and d.iddepartamentos = e.codigo_departamento
 and em.idEmpresas = e.codigo_empresa`;

@@ -1,4 +1,6 @@
 import mysql from 'mysql2';
+import bcrypt from 'bcrypt';
+import { SaltRounds } from '../../index.js';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
 
@@ -18,18 +20,37 @@ export const Crear_Empleado = (req, res) => {
     }
   });
 
-  const { cedula, nombres, apellidos, fecha_nacimiento, direccion, correo, telefono, codigo_cargo, codigo_departamento, codigo_empresa, numero_cuenta,estado } =
-    req.body;
+  const {
+    cedula,
+    nombres,
+    apellidos,
+    fecha_nacimiento,
+    direccion,
+    correo,
+    telefono,
+    codigo_cargo,
+    codigo_departamento,
+    codigo_empresa,
+    numero_cuenta,
+    estado,
+    pass,
+    codigo_deduccion,
+    codigo_bonificaciones,
+  } = req.body;
 
   const fecha = new Date();
-  const antiguedad = `${fecha.getFullYear()}-`+ `${fecha.getMonth() + 1}-`+`${fecha.getDate()}`;
-  
+  const antiguedad = `${fecha.getFullYear()}-` + `${fecha.getMonth() + 1}-` + `${fecha.getDate()}`;
+
   let verify = 'SELECT * FROM nomina_database.empleados where `cedula`= ' + `'${cedula}'`;
 
-  let query =
-    'INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ';
+  
 
-  query += `('${cedula}', '${nombres}', '${apellidos}', '${fecha_nacimiento}', '${direccion}', '${correo}', '${telefono}', '${codigo_cargo}', '${codigo_departamento}', '${codigo_empresa}', '${numero_cuenta}', '${antiguedad}', 0, 0, '${estado}')`;
+  let encripted_password = bcrypt.hashSync(pass, parseInt(SaltRounds));
+
+  let query =
+    'INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`, `pass`, `codigo_deduccion`, `codigo_bonificaciones` ) VALUES ';
+
+  query += `('${cedula}', '${nombres}', '${apellidos}', '${fecha_nacimiento}', '${direccion}', '${correo}', '${telefono}', '${codigo_cargo}', '${codigo_departamento}', '${codigo_empresa}', '${numero_cuenta}', '${antiguedad}', 0, 0, '${estado}', '${encripted_password}', '${codigo_deduccion}', '${codigo_bonificaciones}')`;
 
   //Verificar la Existencia del Empleado
   conexion.query(verify, (err, result) => {

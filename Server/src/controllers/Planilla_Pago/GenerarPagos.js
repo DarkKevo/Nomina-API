@@ -19,11 +19,28 @@ export const GenerarPagos = (req, res) => {
   });
 
   let query =
-    'SELECT cedula, idEmpleados, apellidos, nombres, cargo, numero_cuenta, salario FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos)';
+    'SELECT * FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.deducciones on (empleados.codigo_deduccion = deducciones.iddeducciones) inner join nomina_database.bonificaciones on (empleados.codigo_bonificaciones = bonificaciones.idbonificaciones)';
 
   var data_pagos = [];
 
-  function resetRegistros() {
+  function respaldo(array) {
+    array.forEach(element => {
+      let backup = 'INSERT INTO `nomina_database`.`respaldo_pagos` (`nombre`, `cargo`, `cuenta`, `pagoDiasLaborales`, `pagoDiasExtras`, `pagoDiasDescanso`, `pagoTotal`, `idEmpleado`, `fecha`) VALUES' + `('${element.nombre}', '${element.cargo}', '${element.cuenta}', '${element.pago_de_dias_laborales}', '${element.pago_de_dias_extras}', '${element.pago_dias_de_descanso}', '${element.pago_correspondiente_total}', '${element.idEmpleados}', '${element.fecha}')`;
+
+      conexion.query(backup, (err, res) => {
+        if (err) {
+          console.log(err);
+          res.status(400);
+          conexion.end();
+        } else {
+          resetRegistros(array)
+        }
+      })
+
+    });
+  }
+
+  function resetRegistros(array) {
     let resetRegistros = `DELETE FROM nomina_database.registro_horas;`;
     let resetHoras = `UPDATE nomina_database.empleados set horas_trabajadas = 0, horas_extras = 0;`;
 
@@ -31,15 +48,12 @@ export const GenerarPagos = (req, res) => {
       if (err) {
         console.log(err);
         conexion.end();
-        res.sendStatus(400);
       } else {
-        conexion.query(resetHoras, (err, res) => {
+        conexion.query(resetHoras, (err, res2) => {
           if (err) {
             console.log(err);
             conexion.end();
-            res.sendStatus(400);
           } else {
-            res.sendStatus(200);
             conexion.end();
           }
         });
@@ -54,32 +68,38 @@ export const GenerarPagos = (req, res) => {
       conexion.query(days, (err, resultado) => {
         if (err) {
           console.log(err);
+          res.status(400);
           conexion.end();
-          res.sendStatus(400);
         } else {
           conexion.query(days2, (err, resultado2) => {
             if (err) {
+              res.status(400);
               conexion.end();
-              res.sendStatus(400);
             } else {
               console.log(`Laborados n ${resultado.length} extras ${resultado2.length}`);
               let salario_diario = element.salario / 30;
               let dias_laborados = resultado.length * salario_diario;
               let dias_descanso = 4 * salario_diario;
               let dias_extra = salario_diario * 1.5 * resultado2.length;
+              let fecha = new Date();
               data_pagos.push({
+                idEmpleados: element.idEmpleados,
+                fecha: `${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDate()}`,
                 nombre: `${element.nombres} ${element.apellidos}`,
                 cargo: element.cargo,
                 cuenta: element.numero_cuenta,
                 pago_de_dias_laborales: dias_laborados,
                 pago_de_dias_extras: dias_extra,
                 pago_dias_de_descanso: dias_descanso,
-                pago_correspondiente_total: dias_laborados + dias_extra + dias_descanso,
+                deduccion: element.descripcion_deduccion,
+                deduccion_monto: element.monto_deduccion,
+                bonificacion: element.descripcion_bonificacion,
+                bonificacion_monto: element.monto_bonificacion,
+                pago_correspondiente_total: dias_laborados + dias_extra + dias_descanso + element.monto_bonificacion - element.monto_deduccion,
               });
               if (index == array.length - 1) {
-                conexion.end();
-                resetRegistros();
-                res.json(data_pagos);
+                respaldo(data_pagos)
+                res.json(data_pagos)
               }
             }
           });
@@ -91,12 +111,12 @@ export const GenerarPagos = (req, res) => {
   conexion.query(query, (err, result) => {
     if (err) {
       console.log(err);
+      res.status(400);
       conexion.end();
-      res.sendStatus(400);
     } else if (result.length == 0) {
       console.log(result);
+      res.status(400);
       conexion.end();
-      res.sendStatus(400);
     } else {
       Calculo(result);
     }

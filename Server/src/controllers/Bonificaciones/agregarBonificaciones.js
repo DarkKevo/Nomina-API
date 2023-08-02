@@ -2,7 +2,7 @@ import mysql from 'mysql2';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
 
-export const ActualizarDeduccion = (req, res) => {
+export const agregarBonificacion = (req, res) => {
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -18,41 +18,37 @@ export const ActualizarDeduccion = (req, res) => {
     }
   });
 
-  const { iddeducciones, monto, descripcion } = req.body;
+  const { descripcion, monto } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.deducciones where `iddeducciones`= ' + `'${iddeducciones}'`;
+  let verify = 'SELECT * FROM nomina_database.bonificaciones where `descripcion`= ' + `'${descripcion}'`;
 
-  let update =
-    'UPDATE nomina_database.deducciones SET `monto_deduccion`= ' +
-    `'${monto}', ` +
-    '`descripcion_deduccion`= ' +
-    `'${descripcion}'` +
-    'where `iddeducciones`= ' +
-    `'${iddeducciones}'`;
+  let query = 'INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ';
 
-  //Verificando la existencia de la Deduccion
+  query += `('${descripcion}', '${monto}')`;
+
+  //Verificando la existencia de la descripcion
   conexion.query(verify, (err, result) => {
     if (err) {
       console.log(err);
       conexion.end();
       res.sendStatus(400);
     } else {
-      if (result.length != 0) {
-        //Actualizando la Deduccion
-        conexion.query(update, (err, results) => {
+      if (result.length == 0) {
+        //Creando la Bonificacion
+        conexion.query(query, (err, results) => {
           if (err) {
             console.log(err);
             conexion.end();
             res.sendStatus(400);
           } else {
-            //Deduccion Actualizado
+            //Agregando la Bonificacion
             console.log(results);
             conexion.end();
             res.sendStatus(200);
           }
         });
       } else {
-        console.log('No existe la Deduccion');
+        console.log('Ya existe la Bonificacion');
         conexion.end();
         res.sendStatus(400);
       }
