@@ -41,6 +41,7 @@ import { EliminarDeduccion } from '../controllers/Deducciones/EliminarDeduccion.
 import { agregarBonificacion } from '../controllers/Bonificaciones/agregarBonificaciones.js';
 import { editarBonificacion } from '../controllers/Bonificaciones/editarBonificacion.js';
 import { listarBonificacion } from '../controllers/Bonificaciones/listarBonificaciones.js';
+import { EliminarBonificacion } from '../controllers/Bonificaciones/EliminarBonificacion.js';
 
 //Usuarios
 import { newUser } from '../controllers/Usuarios/newUser.js';
@@ -92,6 +93,7 @@ routes.delete('/EliminarDeduccion', EliminarDeduccion);
 routes.get('/ListarBonificacion', listarBonificacion);
 routes.post('/RegistrarBonificacion', agregarBonificacion);
 routes.put('/EditarBonificacion', editarBonificacion);
+routes.delete('/EliminarBonificacion', EliminarBonificacion);
 
 //Empleados
 routes.get('/ListarEmpleados', ListarEmpleado);

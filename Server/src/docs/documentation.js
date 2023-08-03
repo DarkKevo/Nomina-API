@@ -1682,3 +1682,143 @@
  *       400:
  *         description: Error al calcular o no Hay empleados
  */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Bonificaciones:
+ *       type: object
+ *       properties:
+ *         monto:
+ *           type: number
+ *           description: Monto de Dinero de la Bonificacion
+ *         descripcion:
+ *           type: string
+ *           description: Descripcion de la Bonificacion
+ *       required:
+ *         -monto
+ *         -descripcion
+ *       example:
+ *         monto: 2500
+ *         descripcion: Rendimiento
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Bonificaciones-Eliminar:
+ *       type: object
+ *       properties:
+ *         idbonificaciones:
+ *           type: string
+ *           description: Id de la Bonificacion a Eliminar
+ *       required:
+ *         -idbonificaciones
+ *       example:
+ *         idbonificaciones: 1
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Bonificaciones-Edit:
+ *       type: object
+ *       properties:
+ *         idbonificaciones:
+ *           type: string
+ *           description: Id de la Bonificacion a editar
+ *         monto:
+ *           type: number
+ *           description: Monto de Dinero de la Bonificacion
+ *         descripcion:
+ *           type: string
+ *           description: Descripcion de la Booificacion
+ *       required:
+ *         -monto
+ *         -descripcion
+ *         -idbonificaciones
+ *       example:
+ *         idbonificaciones: 1
+ *         monto: 2500
+ *         descripcion: Rendimiento
+ */
+
+
+/**
+ * @swagger
+ * /ListarBonificacion:
+ *   get:
+ *     summary: Listar las Bonificaciones existentes
+ *     tags: [Bonificaciones]
+ *     responses:
+ *       200:
+ *         description: Bonificaciones Registradas
+ *       400:
+ *         description: No hay 
+ */
+
+/**
+ * @swagger
+ * /RegistrarBonificacion:
+ *   post:
+ *     summary: Crear una nueva Bonificacion
+ *     tags: [Bonificaciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Bonificaciones'
+ *     responses:
+ *       200:
+ *         description: Bonificacion Creada
+ *       400:
+ *         description: Bonificacion ya Registrada (Existente)
+ */
+
+/**
+ * @swagger
+ * /EditarBonificacion:
+ *   put:
+ *     summary: Actualizar una Bonificacion existente
+ *     tags: [Bonificaciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Bonificaciones-Edit'
+ *     responses:
+ *       200:
+ *         description: Bonificacion Actualizado
+ *       400:
+ *         description: La Bonificacion no existe
+ */
+
+/**
+ * @swagger
+ * /EliminarBonificacion:
+ *   delete:
+ *     summary: Eliminar una Bonificacion
+ *     tags: [Bonificaciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Bonificaciones-Eliminar'
+ *     responses:
+ *       200:
+ *         description: bonificacion Eliminado
+ *       400:
+ *         description: La bonificacion no existe
+ */
