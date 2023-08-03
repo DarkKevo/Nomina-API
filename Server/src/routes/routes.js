@@ -5,7 +5,6 @@ import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
 
 //Cargar Horas
 import { CargarHoras } from '../controllers/Carga_Horas/Cargar_horas.js';
-import { ListarHoras } from '../controllers/Carga_Horas/Listar_Horas.js';
 
 //Registros
 import { ListarRegistro } from '../controllers/Registro_De_Horas/ListarRegistro.js';
@@ -66,7 +65,6 @@ export const routes = Express.Router();
 
 //Cargar horas
 routes.post('/cargarHoras', CargarHoras);
-routes.get('/listarHoras', ListarHoras);
 
 //Usuarios
 routes.post('/newUser', newUser);
