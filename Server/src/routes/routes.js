@@ -36,6 +36,11 @@ import { ActualizarDeduccion } from '../controllers/Deducciones/EditarDeduccion.
 import { ListarDeduccion } from '../controllers/Deducciones/ListarDeducciones.js';
 import { EliminarDeduccion } from '../controllers/Deducciones/EliminarDeduccion.js';
 
+//Bonificacion
+import { agregarBonificacion } from '../controllers/Bonificaciones/agregarBonificaciones.js';
+import { editarBonificacion } from '../controllers/Bonificaciones/editarBonificacion.js';
+import { listarBonificacion } from '../controllers/Bonificaciones/listarBonificaciones.js';
+
 //Usuarios
 import { newUser } from '../controllers/Usuarios/newUser.js';
 import { IniciarSesion } from '../controllers/Usuarios/loginUser.js';
@@ -75,6 +80,11 @@ routes.get('/ListarDeducciones', ListarDeduccion);
 routes.post('/RegistrarDeduccion', CrearDeduccion);
 routes.put('/EditarDeduccion', ActualizarDeduccion);
 routes.delete('/EliminarDeduccion', EliminarDeduccion);
+
+//Bonificaciones
+routes.get('/ListarBonificacion', listarBonificacion);
+routes.post('/RegistrarBonificacion', agregarBonificacion);
+routes.put('/EditarBonificacion', editarBonificacion);
 
 //Empleados
 routes.get('/ListarEmpleados', ListarEmpleado);

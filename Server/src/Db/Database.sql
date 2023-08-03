@@ -253,4 +253,5 @@ INSERT INTO `nomina_database`.`Bancos` (codigo   ,nombre    ,cuenta) VALUES (   
 
 INSERT INTO `nomina_database`.`setup_banco_file` (idfile   ,idbancos    , separadores, tipo_file, columnasfile) VALUES (   1 , 1, ' ', 'txt','cuenta,cedula,monto, nombre , apellido');
 
+INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ('Sin Bonificacion', 0);
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Maternidad', 150 );
