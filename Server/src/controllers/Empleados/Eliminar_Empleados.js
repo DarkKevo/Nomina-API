@@ -2,6 +2,8 @@ import mysql from 'mysql2';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
 
+import {EliminarVacaciones} from '../vacaciones/eliminar_vacaciones.js'
+
 export const EliminarEmpleado = (req, res) => {
   var conexion = mysql.createConnection({
     host: host,
@@ -42,6 +44,7 @@ export const EliminarEmpleado = (req, res) => {
             //Empleado Eliminado
             console.log(results);
             conexion.end();
+            EliminarVacaciones(idEmpleados);
             res.sendStatus(200);
           }
         });

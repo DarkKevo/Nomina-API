@@ -1,6 +1,7 @@
 import mysql from 'mysql2';
 import bcrypt from 'bcrypt';
 import { SaltRounds } from '../../index.js';
+import {AgregarVacaciones} from '../vacaciones/agregar_vacaciones.js'
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
 
@@ -68,6 +69,7 @@ export const Crear_Empleado = (req, res) => {
           } else {
             console.log(results);
             conexion.end();
+            AgregarVacaciones(results.insertId, nombres, apellidos)
             res.sendStatus(200);
           }
         });
