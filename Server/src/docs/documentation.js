@@ -1533,3 +1533,40 @@
  *       400:
  *         description: No se pudo descargar
  */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Filtrar_Pagos:
+ *       type: object
+ *       properties:
+ *         cedula:
+ *           type: string
+ *           description: Cedula del empleado
+ *       required:
+ *         -cedula
+ *       example:
+ *         cedula: "V-31356421"
+ */
+
+/**
+ * @swagger
+ * /FiltrarPagos:
+ *   post:
+ *     summary: Filtrar un pago por empleado
+ *     tags: [Pagos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Filtrar_Pagos'
+ *     responses:
+ *       200:
+ *         description: Pagos del empleado listado
+ *       400:
+ *         description: Empleado o registro de pagos no existe
+ */
+

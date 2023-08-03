@@ -2,6 +2,7 @@ import Express from 'express';
 
 //Planilla
 import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
+import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
 
 //Cargar Horas
 import { CargarHoras } from '../controllers/Carga_Horas/Cargar_horas.js';
@@ -102,6 +103,7 @@ routes.post('/BuscarCargo', BuscarCargo);
 
 //Generar Pagos
 routes.get('/GenerarPagos', GenerarPagos);
+routes.post('/FiltrarPagos', FiltrarPagos);
 
 //Departamentos
 routes.get('/ListarDepartamento', ListarDepartamento);
