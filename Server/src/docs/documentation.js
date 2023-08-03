@@ -1570,3 +1570,115 @@
  *         description: Empleado o registro de pagos no existe
  */
 
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Usar_Vacaciones:
+ *       type: object
+ *       properties:
+ *         usar:
+ *           type: integer
+ *           description: vacaciones a utilizar
+ *         id_empleado:
+ *           type: integer
+ *           description: id del empleado
+ *       required:
+ *         -usar
+ *         -id_empleado
+ *       example:
+ *         usar: 14
+ *         id_empleado: 1
+ */
+
+/**
+ * @swagger
+ * /UsarVacaciones:
+ *   post:
+ *     summary: Usar Vacaciones
+ *     tags: [Vacaciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Usar_Vacaciones'
+ *     responses:
+ *       200:
+ *         description: Vacaciones usadas
+ *       400:
+ *         description: Error o dias insuficientes
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Listar_Vacaciones:
+ *       type: object
+ *       properties:
+ *         id_vac:
+ *           type: int
+ *           description: Id
+ *         id_empleado:
+ *           type: int
+ *           description: Id del emplado
+ *         nombres:
+ *           type: string
+ *           description: Nombre del empleado
+ *         apellidos:
+ *           type: string
+ *           description: Apellidos del empleado
+ *         vacaciones_acumuladas:
+ *           type: integer
+ *           description: vacaciones acumuladas
+ *         vacaciones_usadas:
+ *           type: integer
+ *           description: vacaciones usadas
+ *       example:
+ *         id_vac: 1
+ *         id_empleado: 1
+ *         nombres: "Julio"
+ *         apellidos: "Araujo"
+ *         vacaciones_acumuladas: 3
+ *         vacaciones_usadas: 0
+ */
+
+/**
+ * @swagger
+ * /ListarVacaciones:
+ *   get:
+ *     summary: Listar vacaciones
+ *     tags: [Vacaciones]
+ *     responses:
+ *       200:
+ *         description: Vacaciones listadas
+ *       400:
+ *         description: No hay registros
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     CalcularVacaciones:
+ *       type: object
+ *       properties:
+ */
+
+/**
+ * @swagger
+ * /CalcularVacaciones:
+ *   get:
+ *     summary: Calcular vacaciones
+ *     tags: [Vacaciones]
+ *     responses:
+ *       200:
+ *         description: Vacaciones calculadas
+ *       400:
+ *         description: Error al calcular o no Hay empleados
+ */

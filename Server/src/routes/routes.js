@@ -69,6 +69,12 @@ import { CrearEmpresa } from '../controllers/Empresas/Agregar_Empresa.js';
 import { descargartxt } from '../controllers/download_file/download.js';
 export const routes = Express.Router();
 
+//Vacaciones
+import { ListarVacaciones } from '../controllers/vacaciones/Listar_vacaciones.js';
+import { CalcularVacaciones } from '../controllers/vacaciones/calcular_vacaciones.js';
+import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
+
+
 //Cargar horas
 routes.post('/cargarHoras', CargarHoras);
 
@@ -135,3 +141,8 @@ routes.post('/CrearEmpresa', CrearEmpresa);
 
 //Empresa
 routes.get('/descargartxt', descargartxt);
+
+//Vacaciones
+routes.get('/ListarVacaciones', ListarVacaciones);
+routes.get('/CalcularVacaciones', CalcularVacaciones);
+routes.post('/UsarVacaciones', UsarVacaciones);

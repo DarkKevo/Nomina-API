@@ -47,10 +47,26 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`Bancos` (
   `cuenta` DECIMAL(20,0) NOT NULL,
   PRIMARY KEY (`idbancos`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
 
+
+-- -----------------------------------------------------
+-- Table `nomina_database`.`vacaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nomina_database`.`vacaciones` (
+  `id_vac` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_empleado` INT NOT NULL,
+  `nombres` VARCHAR(400) NOT NULL,
+  `apellidos` VARCHAR(400) NOT NULL,
+  `vacaciones_acumuladas` INT NOT NULL,
+  `vacaciones_usadas` INT NOT NULL,
+  PRIMARY KEY (`id_vac`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_spanish2_ci;
 
 -- -----------------------------------------------------
 -- Table `nomina_database`.`Empresas`
@@ -92,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`cargos` (
   `salario` INT(11) NOT NULL,
   PRIMARY KEY (`idcargos`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
 
@@ -106,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`deducciones` (
   `descripcion_deduccion` VARCHAR(5000) NOT NULL,
   PRIMARY KEY (`iddeducciones`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
 
@@ -119,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`departamentos` (
   `departamento` VARCHAR(1000) NOT NULL,
   PRIMARY KEY (`iddepartamentos`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
 
@@ -199,7 +215,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
 
-
 -- -----------------------------------------------------
 -- Table `nomina_database`.`setup_banco_file`
 -- -----------------------------------------------------
@@ -211,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`setup_banco_file` (
   `columnasfile` VARCHAR(5000) NOT NULL,
   PRIMARY KEY (`idfile`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
 
