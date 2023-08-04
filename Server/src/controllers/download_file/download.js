@@ -4,6 +4,10 @@ import express from 'express';
 import fs from 'fs';
 
 export const descargartxt = async (req, res) => {
+   var id_file = req.body.id_file;
+   var fecha_init = req.body.fecha_init;
+   var fecha_final = req.body.fecha_final;
+  
    const conexion = mysql.createConnection({
       host: host,
       port: port,
@@ -11,7 +15,6 @@ export const descargartxt = async (req, res) => {
       password: password,
       multipleStatements: true,
    });
-
    try {
       await new Promise((resolve, reject) => {
          conexion.connect(function (err) {
@@ -23,12 +26,6 @@ export const descargartxt = async (req, res) => {
             }
          });
       });
-
-      const { id_file, fecha_init, fecha_final } = req.body;
-
-      console.log(fecha_init);
-      console.log(fecha_final);
-
       const query = `
       select 
       concat( (e.numero_cuenta)
@@ -50,10 +47,6 @@ export const descargartxt = async (req, res) => {
    and f.idfile = ${id_file}
    group by e.numero_cuenta, e.cedula, c.salario, e.horas_trabajadas, e.apellidos, e.nombres
    `;
-
-   console.log(fecha_init);
-      console.log(fecha_final);
-
       const result = await new Promise((resolve, reject) => {
          conexion.query(query, (err, result) => {
             if (err) {
