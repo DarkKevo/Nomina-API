@@ -2,7 +2,7 @@ import mysql from "mysql2";
 
 import { host, port, username, password } from "../../Config/MySqlConfig.js";
 
-export const CalcularVacaciones = (req, res) => {
+export const CalcularVacaciones = () => {
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -33,14 +33,12 @@ export const CalcularVacaciones = (req, res) => {
     if (err) {
       console.log(err);
       conexion.end();
-      res.sendStatus(400);
     } else {
       if (result.length != 0) {
         conexion.query(select_id, (err, results) => {
           if (err) {
             console.log(err);
             conexion.end();
-            res.sendStatus(400);
           } else {
             results.forEach((element, index) => {
               let verify2 =
@@ -50,7 +48,6 @@ export const CalcularVacaciones = (req, res) => {
                 if (err) {
                   console.log(err);
                   conexion.end();
-                  res.sendStatus(400);
                 } else {
                   const fecha_a = new Date(element.antiguedad);
                   const f =
@@ -67,7 +64,7 @@ export const CalcularVacaciones = (req, res) => {
 
                   let vacaciones = Math.trunc(numeroDias / dias_vac);
                   let usados = results3[0].vacaciones_usadas;
-                  let vacaciones_acumuladas = vacaciones - usados;
+                  let vacaciones_acumuladas = parseInt(vacaciones) - parseInt(usados);
 
                   const a_c = Math.trunc((vacaciones_acumuladas*dias_vac)/365);
                     if (a_c>1) {
@@ -78,20 +75,17 @@ export const CalcularVacaciones = (req, res) => {
                     }
 
                   let update =
-                    "UPDATE nomina_database.vacaciones SET `vacaciones_acumuladas`= " +
-                    `${vacaciones_acumuladas} where id_empleado= ` +
-                    `${element.idEmpleados}`;
+                    `UPDATE nomina_database.vacaciones SET vacaciones_acumuladas= ${vacaciones_acumuladas} where id_empleado= ${element.idEmpleados}`;
                   conexion.query(update, (err, results2) => {
                     if (err) {
                       console.log(err);
                       conexion.end();
-                      res.sendStatus(400);
                     }
                   });
 
                   if (index == results.length - 1) {
                     conexion.end();
-                    res.sendStatus(200);
+                    console.log("calculado");
                   }
                 }
               });
@@ -101,7 +95,6 @@ export const CalcularVacaciones = (req, res) => {
       } else {
         console.log("No hay datos");
         conexion.end();
-        res.sendStatus(400);
       }
     }
   });

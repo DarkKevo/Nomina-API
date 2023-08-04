@@ -1,6 +1,7 @@
 import mysql from "mysql2";
 
 import { host, port, username, password } from "../../Config/MySqlConfig.js";
+import {CalcularVacaciones} from './calcular_vacaciones.js'
 
 export const UsarVacaciones = (req, res) => {
   var conexion = mysql.createConnection({
@@ -36,7 +37,8 @@ export const UsarVacaciones = (req, res) => {
           res.sendStatus(400);
         } else {
           let suma = result[0].vacaciones_usadas;
-          const acu = suma + usar;
+          const acu = parseInt(suma) + parseInt(usar);
+
           let update =
             "UPDATE nomina_database.vacaciones SET `vacaciones_usadas`= " +
             `${acu}` +
@@ -48,8 +50,8 @@ export const UsarVacaciones = (req, res) => {
               conexion.end();
               res.sendStatus(400);
             } else {
-              console.log(results);
               conexion.end();
+              CalcularVacaciones()
               res.sendStatus(200);
             }
           });

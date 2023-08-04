@@ -1,6 +1,7 @@
 import mysql from 'mysql2';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
+import {CalcularVacaciones} from './calcular_vacaciones.js'
 
 export const ListarVacaciones = (req, res) => {
   var conexion = mysql.createConnection({
@@ -34,6 +35,7 @@ export const ListarVacaciones = (req, res) => {
     } else {
       //Vacaciones Listados
       conexion.end();
+      CalcularVacaciones()
       res.send(result);
     }
   });
