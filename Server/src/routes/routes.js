@@ -72,6 +72,9 @@ import { ListarVacaciones } from '../controllers/vacaciones/Listar_vacaciones.js
 import { CalcularVacaciones } from '../controllers/vacaciones/calcular_vacaciones.js';
 import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
 
+//Listar Pago
+import { ListarPago } from '../controllers/Planilla_Pago/listar_pago.js';
+
 
 //Cargar Horas
 import { CargarHoras } from '../controllers/Carga_Horas/Cargar_horas.js';
@@ -80,6 +83,9 @@ import { ListarHoras } from '../controllers/Carga_Horas/Listar_Horas.js';
 //Usuarios
 routes.post('/newUser', newUser);
 routes.post('/loginUser', IniciarSesion);
+
+//Pago
+routes.get('/ListarPago', ListarPago);
 
 //Deducciones
 routes.get('/ListarDeducciones', ListarDeduccion);
