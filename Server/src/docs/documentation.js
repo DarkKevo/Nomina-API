@@ -1517,7 +1517,7 @@
 /**
  * @swagger
  * /descargartxt:
- *   get:
+ *   post:
  *     summary: Descargar archivo
  *     tags: [Download]
  *     requestBody:
