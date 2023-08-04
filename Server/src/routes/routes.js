@@ -4,9 +4,6 @@ import Express from 'express';
 import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
 import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
 
-//Cargar Horas
-import { CargarHoras } from '../controllers/Carga_Horas/Cargar_horas.js';
-
 //Registros
 import { ListarRegistro } from '../controllers/Registro_De_Horas/ListarRegistro.js';
 
@@ -76,8 +73,9 @@ import { CalcularVacaciones } from '../controllers/vacaciones/calcular_vacacione
 import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
 
 
-//Cargar horas
-routes.post('/cargarHoras', CargarHoras);
+//Cargar Horas
+import { CargarHoras } from '../controllers/Carga_Horas/Cargar_horas.js';
+import { ListarHoras } from '../controllers/Carga_Horas/Listar_Horas.js';
 
 //Usuarios
 routes.post('/newUser', newUser);
@@ -141,14 +139,18 @@ routes.get('/ListarEmpresa', ListarEmpresa);
 routes.put('/ActualizaEmpresa', ActualizarEmpresa);
 routes.post('/CrearEmpresa', CrearEmpresa);
 
-//Txt
-routes.post('/descargartxt', descargartxt);
-
-
-
-
+//Empresa
+routes.get('/descargartxt', descargartxt);
 
 //Vacaciones
 routes.get('/ListarVacaciones', ListarVacaciones);
 routes.get('/CalcularVacaciones', CalcularVacaciones);
 routes.post('/UsarVacaciones', UsarVacaciones);
+
+
+//Cargar horas
+routes.post('/cargarHoras', CargarHoras);
+routes.get('/listarHoras', ListarHoras);
+
+//Txt
+routes.post('/descargartxt', descargartxt);
