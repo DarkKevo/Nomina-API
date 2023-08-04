@@ -20,7 +20,7 @@ export const CrearDeduccion = (req, res) => {
 
   const { monto, descripcion } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.deducciones where `descripcion`= ' + `'${descripcion}'`;
+  let verify = 'SELECT * FROM nomina_database.deducciones where `descripcion_deduccion`= ' + `'${descripcion}'`;
 
   let query = 'INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ';
 
