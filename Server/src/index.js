@@ -5,6 +5,7 @@ import { routes } from './routes/routes.js';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+import upload from './middleware/multer.js';
 
 //Dotenv Configuration
 dotenv.config({ path: './.env' });
@@ -52,6 +53,7 @@ let port = process.env.PORT;
 
 //Use APP
 app.use(cors());
+app.use(upload.single('imageURL'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/', routes);
