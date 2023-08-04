@@ -2,7 +2,7 @@ import mysql from 'mysql2';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
 
-export const agregarBonificacion = (req, res) => {
+export const EliminarBonificacion = (req, res) => {
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -18,37 +18,35 @@ export const agregarBonificacion = (req, res) => {
     }
   });
 
-  const { descripcion, monto } = req.body;
+  const { idbonificaciones } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.bonificaciones where `descripcion_bonificacion`= ' + `'${descripcion}'`;
+  let verify = 'SELECT * FROM nomina_database.bonificaciones where `idbonificaciones`= ' + `'${idbonificaciones}'`;
 
-  let query = 'INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ';
+  let DELETE = 'DELETE FROM nomina_database.bonificaciones where `idbonificaciones`= ' + `'${idbonificaciones}'`;
 
-  query += `('${descripcion}', '${monto}')`;
-
-  //Verificando la existencia de la descripcion
+  //Verificando la existencia de la Deduccion
   conexion.query(verify, (err, result) => {
     if (err) {
       console.log(err);
       conexion.end();
       res.sendStatus(400);
     } else {
-      if (result.length == 0) {
-        //Creando la Bonificacion
-        conexion.query(query, (err, results) => {
+      if (result.length != 0) {
+        //Eliminando la Deduccion
+        conexion.query(DELETE, (err, results) => {
           if (err) {
             console.log(err);
             conexion.end();
             res.sendStatus(400);
           } else {
-            //Agregando la Bonificacion
+            //Deduccion Eliminada
             console.log(results);
             conexion.end();
             res.sendStatus(200);
           }
         });
       } else {
-        console.log('Ya existe la Bonificacion');
+        console.log('No existe la Deduccion');
         conexion.end();
         res.sendStatus(400);
       }
