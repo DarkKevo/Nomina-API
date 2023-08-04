@@ -151,3 +151,6 @@ routes.post('/UsarVacaciones', UsarVacaciones);
 //Cargar horas
 routes.post('/cargarHoras', CargarHoras);
 routes.get('/listarHoras', ListarHoras);
+
+//Txt
+routes.post('/descargartxt', descargartxt);
