@@ -141,8 +141,12 @@ routes.get('/ListarEmpresa', ListarEmpresa);
 routes.put('/ActualizaEmpresa', ActualizarEmpresa);
 routes.post('/CrearEmpresa', CrearEmpresa);
 
-//Empresa
-routes.get('/descargartxt', descargartxt);
+//Txt
+routes.post('/descargartxt', descargartxt);
+
+
+
+
 
 //Vacaciones
 routes.get('/ListarVacaciones', ListarVacaciones);
