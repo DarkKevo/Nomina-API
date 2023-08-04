@@ -35,18 +35,23 @@
  *         correo:
  *           type: string
  *           description: Correo de la empresa
+ *         imageURL:
+ *           type: string
+ *           description: url de la imagen
  *       required:
  *         -rif
  *         -nombre
  *         -direccion
  *         -telefono
  *         -correo
+ *         -imageURL
  *       example:
  *         rif: "J-31356421-4"
  *         nombre: "Universidad Valle de Momboy"
  *         direccion: "Carvajal"
  *         telefono: "02712351785"
  *         correo: "universidad@edu.ve"
+ *         imageURL: "wwww.google.com"
  */
 
 /**
@@ -141,6 +146,9 @@
  *         correo:
  *           type: string
  *           description: Correo de la empresa
+ *         imageURL:
+ *           type: string
+ *           description: url de la imagen
  *       example:
  *         idEmpresas: 1
  *         rif: "J-31356421-4"
@@ -148,6 +156,7 @@
  *         direccion: "Carvajal"
  *         telefono: "02712351785"
  *         correo: "universidad@edu.ve"
+ *         imageURL: "www.youtube.com"
  */
 
 /**
