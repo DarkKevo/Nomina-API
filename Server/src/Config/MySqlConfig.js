@@ -7,4 +7,4 @@ export let password;
 host = 'localhost';
 port = '3306';
 username = 'root';
-password = '30259086v';
+password = 'victoria123';

@@ -1,8 +1,9 @@
-import mysql from 'mysql2';
+import mysql from "mysql2";
+const upload = require("../../middleware/multer.js");
+const cloudinary = require("../../utilities/cloudinary.js");
+import { host, port, username, password } from "../../Config/MySqlConfig.js";
 
-import { host, port, username, password } from '../../Config/MySqlConfig.js';
-
-export const CrearEmpresa = (req, res) => {
+export const CrearEmpresa = async (req, res) => {
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -13,18 +14,31 @@ export const CrearEmpresa = (req, res) => {
 
   conexion.connect(function (err) {
     if (err) {
-      console.error('Error de conexion: ' + err.stack);
+      console.error("Error de conexion: " + err.stack);
       return;
     }
   });
 
+  if (!req.file) {
+    return res
+      .status(400)
+      .json({ error: "No se proporcionó ningún archivo de imagen" });
+  }
+  const result = await cloudinary.uploader.upload(req.file.path);
+  if (!result || !result.secure_url) {
+    return res.status(500).json({ error: "Error al subir la imagen" });
+    
+  }
+
+  const imageUrl = result.secure_url
   const { rif, nombre, direccion, telefono, correo } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.Empresas';
+  let verify = "SELECT * FROM nomina_database.Empresas";
 
-  let query = 'INSERT INTO `nomina_database`.`Empresas` (`idEmpresas`,`rif`, `nombre`, `direccion` , `telefono` , `correo` ) VALUES ';
+  let query =
+    "INSERT INTO `nomina_database`.`Empresas` (`idEmpresas`,`imageURL`,`rif`, `nombre`, `direccion` , `telefono` , `correo` ) VALUES ";
 
-  query += `(1,'${rif}', '${nombre}', '${direccion}', '${telefono}', '${correo}')`;
+  query += `(1,'${rif}', '${imageUrl}', '${nombre}', '${direccion}', '${telefono}', '${correo}')`;
 
   conexion.query(verify, (err, result) => {
     if (err) {
@@ -45,7 +59,7 @@ export const CrearEmpresa = (req, res) => {
           }
         });
       } else {
-        res.status(400).send({error: 'ya existe una empresa'});
+        res.status(400).send({ error: "ya existe una empresa" });
         conexion.end();
       }
     }
