@@ -22,7 +22,7 @@ export const FiltrarPagos = (req, res) => {
 
   let query =
     "SELECT idEmpleados FROM nomina_database.empleados where cedula = " +
-    `${cedula}`;
+    `'${cedula}'`;
   let consulta =
     "SELECT * FROM nomina_database.respaldo_pagos where idEmpleado = ";
 
