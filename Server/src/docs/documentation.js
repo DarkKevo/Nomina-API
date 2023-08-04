@@ -1831,3 +1831,20 @@
  *       400:
  *         description: La bonificacion no existe
  */
+
+
+
+
+/**
+ * @swagger
+ * /ListarPago:
+ *   get:
+ *     summary: Listar los pagos existentes
+ *     tags: [Pagos]
+ *     responses:
+ *       200:
+ *         description: Pagos Registradas
+ *       400:
+ *         description: No hay 
+ */
+
