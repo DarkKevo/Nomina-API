@@ -76,7 +76,7 @@ import { FiltrarHistorialB } from '../controllers/HistorialBonificaciones/Filtra
 import { ListarHistorialD } from '../controllers/HistorialDeducciones/ListarHistoriaD.js';
 import { AgregarHistorialD } from '../controllers/HistorialDeducciones/Agregardeducciones.js';
 import { EliminarHistoriald } from '../controllers/HistorialDeducciones/EliminarhistorialD.js';
-// import { FiltrarHistoriald } from '../controllers/';
+import { filtrar_h_deducciones } from '../controllers/HistorialDeducciones/filtrar_h_deducciones.js';
 
 //Vacaciones
 import { ListarVacaciones } from '../controllers/vacaciones/Listar_vacaciones.js';
@@ -169,7 +169,7 @@ routes.post('/FiltrarHistorialB', FiltrarHistorialB);
 routes.get('/ListarHistorialD', ListarHistorialD);
 routes.post('/AgregarHistorialD', AgregarHistorialD);
 routes.delete('/EliminarHistorialD', EliminarHistoriald);
-// routes.post('/FiltrarHistorialB', FiltrarHistorialB);
+routes.post('/FiltrarHistorialD', filtrar_h_deducciones);
 
 
 // //Pago

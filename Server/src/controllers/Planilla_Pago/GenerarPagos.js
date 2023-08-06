@@ -19,7 +19,7 @@ export const GenerarPagos = (req, res) => {
   });
 
   let query =
-    "SELECT * FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.departamentos on (empleados.codigo_departamento = departamentos.iddepartamentos)";
+    "SELECT * FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.departamentos on (empleados.codigo_departamento = departamentos.iddepartamentos) where empleados.estado = 'activo'";
 
   var data_pagos = [];
 
@@ -69,6 +69,10 @@ export const GenerarPagos = (req, res) => {
         if (err) {
           console.log(err);
           res.status(400);
+          conexion.end();
+        } else if (resultado.length == 0) {
+          console.log(resultado);
+          res.status(400).send({error:'Los Empleados no tiene horas'})
           conexion.end();
         } else {
           console.log(resultado)
