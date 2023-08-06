@@ -63,9 +63,14 @@ import { ListarEmpresa } from '../controllers/Empresas/Listar_Empresa.js';
 import { ActualizarEmpresa } from '../controllers/Empresas/Actualizar_Empresa.js';
 import { CrearEmpresa } from '../controllers/Empresas/Agregar_Empresa.js';
 
-
 //Empresas
 import { descargartxt } from '../controllers/download_file/download.js';
+
+//Historial de Bonificaciones
+import { ListarHistorialB } from '../controllers/HistorialBonificaciones/ListarHistorialB.js';
+import { AgregarHistorialB } from '../controllers/HistorialBonificaciones/AñadirHistoriaB.js';
+import { EliminarHistorialB } from '../controllers/HistorialBonificaciones/EliminarHistorialB.js';
+import { FiltrarHistorialB } from '../controllers/HistorialBonificaciones/FiltrarHistorialB.js';
 
 //Vacaciones
 // import { ListarVacaciones } from '../controllers/vacaciones/Listar_vacaciones.js';
@@ -148,6 +153,12 @@ routes.get('/listarHoras', ListarHoras);
 //Txt
 routes.post('/descargartxt', descargartxt);
 
+//Historial Bonificaciones
+routes.get('/ListarHistorialB', ListarHistorialB);
+routes.post('/AgregarHistorialB', AgregarHistorialB);
+routes.delete('/EliminarHistorialB', EliminarHistorialB);
+routes.post('/FiltrarHistorialB', FiltrarHistorialB);
+
 
 // //Pago
 // routes.get('/ListarPago', ListarPago);
@@ -160,3 +171,4 @@ routes.post('/descargartxt', descargartxt);
 // routes.get('/ListarVacaciones', ListarVacaciones);
 // routes.get('/CalcularVacaciones', CalcularVacaciones);
 // routes.post('/UsarVacaciones', UsarVacaciones);
+
