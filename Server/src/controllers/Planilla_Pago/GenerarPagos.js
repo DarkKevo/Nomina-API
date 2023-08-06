@@ -23,6 +23,15 @@ export const GenerarPagos = (req, res) => {
 
   var data_pagos = [];
 
+  const fecha_corta = (f) => {
+    const fecha = new Date(f);
+    const fecha_c =
+      `${fecha.getFullYear()}-` +
+      `${fecha.getMonth() + 1}-` +
+      `${fecha.getDate()}`;
+    return fecha_c;
+  };
+
   function respaldo(array) {
     array.forEach((element) => {
       let backup =
@@ -63,51 +72,138 @@ export const GenerarPagos = (req, res) => {
   }
 
   function Calculo(array) {
-    array.forEach((element, index) => {
-      let days = `SELECT * FROM nomina_database.registro_horas WHERE idEmpleados = ${element.idEmpleados} and horas_extras > 0 or horas_laboradas > 0`;
-      conexion.query(days, (err, resultado) => {
-        if (err) {
-          console.log(err);
-          res.status(400);
+    let cont_day =
+      "SELECT MAX(fecha), MIN(fecha) FROM nomina_database.registro_horas";
+    conexion.query(cont_day, (err, r_cd) => {
+      if (err) {
+        console.log(err);
+        res.status(400);
+        conexion.end();
+      } else if (r_cd.length == 0) {
+        console.log(r_cd);
+        res.status(400).send({ error: "No hay dias registrados para pagar" });
+        conexion.end();
+      } else {
+        const fecha1 = fecha_corta(r_cd.fecha_minima);
+        const fecha2 = fecha_corta(r_cd.fecha_maxima);
+        const diferencia = fecha1 - fecha2;
+        const numeroDias = diferencia / (1000 * 60 * 60 * 24);
+        if (numeroDias < 14) {
+          console.log(numeroDias);
+          res.status(400).send({ error: "No hay suficientes dias para pagar (15)" });
           conexion.end();
-        } else if (resultado.length == 0) {
-          console.log(resultado);
-          res.status(400).send({error:'Los Empleados no tiene horas'})
-          conexion.end();
-        } else {
-          console.log(resultado)
-          
-          // let salario_diario = element.salario / 30;
-          // let dias_laborados = resultado.length * salario_diario;
-          // let dias_descanso = 4 * salario_diario;
-          // let dias_extra = salario_diario * 1.5 * resultado2.length;
-          // let fecha = new Date();
-          // data_pagos.push({
-          //   idEmpleados: element.idEmpleados,
-          //   fecha: `${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDate()}`,
-          //   nombre: `${element.nombres} ${element.apellidos}`,
-          //   cargo: element.cargo,
-          //   cuenta: element.numero_cuenta,
-          //   pago_de_dias_laborales: dias_laborados,
-          //   pago_de_dias_extras: dias_extra,
-          //   pago_dias_de_descanso: dias_descanso,
-          //   deduccion: element.descripcion_deduccion,
-          //   deduccion_monto: element.monto_deduccion,
-          //   bonificacion: element.descripcion_bonificacion,
-          //   bonificacion_monto: element.monto_bonificacion,
-          //   pago_correspondiente_total:
-          //     dias_laborados +
-          //     dias_extra +
-          //     dias_descanso +
-          //     element.monto_bonificacion -
-          //     element.monto_deduccion,
-          // });
-          // if (index == array.length - 1) {
-          //   respaldo(data_pagos);
-          //   res.json(data_pagos);
-          // }
         }
-      });
+        array.forEach((element, index) => {
+          let days = `SELECT * FROM nomina_database.registro_horas WHERE idEmpleados = ${element.idEmpleados} and horas_extras > 0 or horas_laboradas > 0`;
+          conexion.query(days, (err, resultado) => {
+            if (err) {
+              console.log(err);
+              res.status(400);
+              conexion.end();
+            } else if (resultado.length == 0) {
+              console.log(resultado);
+              console.log("El Empleado no tiene horas" );
+              conexion.end();
+            } else {
+              console.log(element);
+
+              let salario_diario = element.salario / 30;
+              let salario_hora = salario_diario / 9;
+              let salario_dias_trabajados =
+                element.horas_trabajadas * salario_hora;
+              let salarios_dias_descanso = 4 * salario_diario;
+              let Salario_horas_extra =
+                salario_hora * 1.5 * element.horas_extras;
+              let monto_base = salario_dias_trabajados + salarios_dias_descanso;
+
+              let suma_bonificaciones = 0;
+              let suma_deducciones = 0;
+              let Historial_B = `SELECT * FROM nomina_database.historialbonificacion WHERE idEmpleados = ${element.idEmpleados}`;
+              let Historial_D = `SELECT * FROM nomina_database.historialdeducciones WHERE idEmpleados = ${element.idEmpleados}`;
+              conexion.query(Historial_B, (err, r_b) => {
+                if (err) {
+                  console.log(err);
+                  res.status(400);
+                  conexion.end();
+                } else if (r_b.length == 0) {
+                  console.log("No tiene bonificaciones");
+                  conexion.end();
+                } else {
+                  r_b.forEach((e, i) => {
+                    let bonificacion =
+                      "SELECT * FROM nomina_database.bonificaciones where descripcion_bonificacion = " +
+                      `'${e.bonificacion}'`;
+                    conexion.query(bonificacion, (err, r_bon) => {
+                      if (err) {
+                        console.log(err);
+                        res.status(400);
+                        conexion.end();
+                      } else {
+                        suma_bonificaciones += r_bon[0].monto_bonificacion;
+                      }
+                    });
+                  });
+                }
+              });
+              conexion.query(Historial_D, (err, r_d) => {
+                if (err) {
+                  console.log(err);
+                  res.status(400);
+                  conexion.end();
+                } else if (r_d.length == 0) {
+                  console.log("No tiene Deducciones");
+                  conexion.end();
+                } else {
+                  r_d.forEach((e2, i) => {
+                    let deduccion =
+                      "SELECT * FROM nomina_database.deducciones where descripcion_deduccion = " +
+                      `'${e2.deducciones}'`;
+                    conexion.query(deduccion, (err, r_dec) => {
+                      if (err) {
+                        console.log(err);
+                        res.status(400);
+                        conexion.end();
+                      } else {
+                        suma_deducciones += r_dec[0].monto_deduccion;
+                      }
+                    });
+                  });
+                }
+              });
+              let total =
+                monto_base +
+                Salario_horas_extra +
+                suma_bonificaciones -
+                suma_deducciones;
+              let fecha = new Date();
+              let hoy = fecha_corta(fecha);
+
+              data_pagos.push({
+                idEmpleados: element.idEmpleados,
+                nombre: `${element.nombres} ${element.apellidos}`,
+                departamento: e.departamento,
+                cargo: element.cargo,
+                cuenta: element.numero_cuenta,
+                correo: element.correo,
+                dias: resultado.length,
+                dias_descanso: 4,
+                fechas: `${fecha1} al ${fecha2}`,
+                horas_trabajadas: element.horas_trabajadas,
+                monto_base: monto_base,
+                horas_extras: element.horas_extras,
+                monto_extra: Salario_horas_extra,
+                monto_deduccion: suma_deducciones,
+                monto_bonificacion: suma_bonificaciones,
+                pagoTotal: total,
+                fecha_pago: hoy
+              });
+              if (index == array.length - 1) {
+                respaldo(data_pagos);       
+              }
+            }
+          });
+        });
+      }
     });
   }
 
@@ -118,7 +214,7 @@ export const GenerarPagos = (req, res) => {
       conexion.end();
     } else if (result.length == 0) {
       console.log(result);
-      res.status(400).send({error:'no hay datos de empleados'})
+      res.status(400).send({ error: "no hay datos de empleados" });
       conexion.end();
     } else {
       Calculo(result);
