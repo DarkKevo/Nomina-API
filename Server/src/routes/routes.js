@@ -84,12 +84,12 @@ import { CalcularVacaciones } from '../controllers/vacaciones/calcular_vacacione
 import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
 
 //Listar Pago
-// import { ListarPago } from '../controllers/Planilla_Pago/listar_pago.js';
+ import { ListarPago } from '../controllers/Planilla_Pago/listar_pago.js';
 
 
 //Planilla
 import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
-// import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
+import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
 
 export const routes = Express.Router();
 
@@ -173,11 +173,11 @@ routes.post('/FiltrarHistorialD', filtrar_h_deducciones);
 
 
 // //Pago
-// routes.get('/ListarPago', ListarPago);
+routes.get('/ListarPago', ListarPago);
 
 // //Generar Pagos
 routes.get('/GenerarPagos', GenerarPagos);
-// routes.post('/FiltrarPagos', FiltrarPagos);
+ routes.post('/FiltrarPagos', FiltrarPagos);
 
 // //Vacaciones
 routes.get('/ListarVacaciones', ListarVacaciones);

@@ -35,8 +35,8 @@ export const GenerarPagos = (req, res) => {
   function respaldo(array) {
     array.forEach((element) => {
       let backup =
-        "INSERT INTO `nomina_database`.`respaldo_pagos` (`nombre`, `cargo`, `cuenta`, `pagoDiasLaborales`, `pagoDiasExtras`, `pagoDiasDescanso`, `pagoTotal`, `idEmpleado`, `fecha`) VALUES" +
-        `('${element.nombre}', '${element.cargo}', '${element.cuenta}', '${element.pago_de_dias_laborales}', '${element.pago_de_dias_extras}', '${element.pago_dias_de_descanso}', '${element.pago_correspondiente_total}', '${element.idEmpleados}', '${element.fecha}')`;
+        "INSERT INTO `nomina_database`.`respaldo_pagos` (`idEmpleado`,`nombre`,`departamento`. `cargo`, `cuenta`,`correo`,`dias`,`dias_descanso`,`fechas`,`horas_trabajadas`,`monto_base`, `horas_extras`, `monto_extra`, `monto_deduccion`, `monto_bonificacion`, `pagoTotal`, `fecha_pago`) VALUES" +
+        `('${element.idEmpleado}', '${element.nombre}', '${element.departamento}', '${element.cargo}', '${element.cuenta}', '${element.correo}', '${element.dias}', '${element.dias_descanso}', '${element.fechas}', '${element.horas_trabajadas}', '${element.monto_base}', '${element.horas_extras}', '${element.monto_extra}', '${element.monto_deduccion}', '${element.monto_bonificacion}', '${element.pagoTotal}', '${element.fecha_pago}')`;
 
       conexion.query(backup, (err, res) => {
         if (err) {
@@ -65,6 +65,7 @@ export const GenerarPagos = (req, res) => {
             conexion.end();
           } else {
             conexion.end();
+            res.status(200).send({message: "Empleados Pagados"});
           }
         });
       }
@@ -90,7 +91,9 @@ export const GenerarPagos = (req, res) => {
         const numeroDias = diferencia / (1000 * 60 * 60 * 24);
         if (numeroDias < 14) {
           console.log(numeroDias);
-          res.status(400).send({ error: "No hay suficientes dias para pagar (15)" });
+          res
+            .status(400)
+            .send({ error: "No hay suficientes dias para pagar (15)" });
           conexion.end();
         }
         array.forEach((element, index) => {
@@ -102,7 +105,7 @@ export const GenerarPagos = (req, res) => {
               conexion.end();
             } else if (resultado.length == 0) {
               console.log(resultado);
-              console.log("El Empleado no tiene horas" );
+              console.log("El Empleado no tiene horas");
               conexion.end();
             } else {
               console.log(element);
@@ -195,10 +198,10 @@ export const GenerarPagos = (req, res) => {
                 monto_deduccion: suma_deducciones,
                 monto_bonificacion: suma_bonificaciones,
                 pagoTotal: total,
-                fecha_pago: hoy
+                fecha_pago: hoy,
               });
               if (index == array.length - 1) {
-                respaldo(data_pagos);       
+                respaldo(data_pagos);
               }
             }
           });
