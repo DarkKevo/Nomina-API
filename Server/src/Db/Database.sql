@@ -80,7 +80,6 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`historialBonificacion` (
   `id_empleado` INT NOT NULL,
   `nombres` VARCHAR(400) NOT NULL,
   `bonificacion` VARCHAR(400) NOT NULL,
-  `monto` INT NOT NULL,
   PRIMARY KEY (`id_b`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -96,7 +95,6 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`historialDeducciones` (
   `id_empleado` INT NOT NULL,
   `nombres` VARCHAR(400) NOT NULL,
   `deducciones` VARCHAR(400) NOT NULL,
-  `monto` INT NOT NULL,
   PRIMARY KEY (`id_d`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -197,15 +195,10 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`empleados` (
   `horas_trabajadas` INT(11) NOT NULL,
   `horas_extras` INT(11) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
-  `codigo_deduccion` INT NOT NULL,
-  `pass` VARCHAR(100) NOT NULL,
-  `codigo_bonificaciones` INT NOT NULL,
   PRIMARY KEY (`idEmpleados`),
   INDEX `fk_empleados_idx` (`codigo_empresa` ASC) ,
   INDEX `fk_cargo_idx` (`codigo_cargo` ASC) ,
   INDEX `fk_departamento_idx` (`codigo_departamento` ASC) ,
-  INDEX `fk_deduccion_idx` (`codigo_deduccion` ASC) ,
-  INDEX `fk_bonificacion_idx` (`codigo_bonificaciones` ASC) ,
   CONSTRAINT `fk_cargo`
     FOREIGN KEY (`codigo_cargo`)
     REFERENCES `nomina_database`.`cargos` (`idcargos`)
@@ -219,16 +212,6 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`empleados` (
   CONSTRAINT `fk_empleados`
     FOREIGN KEY (`codigo_empresa`)
     REFERENCES `nomina_database`.`Empresas` (`idEmpresas`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_deduccion`
-    FOREIGN KEY (`codigo_deduccion`)
-    REFERENCES `nomina_database`.`deducciones` (`iddeducciones`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_bonificacion`
-    FOREIGN KEY (`codigo_bonificaciones`)
-    REFERENCES `nomina_database`.`bonificaciones` (`idbonificaciones`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
