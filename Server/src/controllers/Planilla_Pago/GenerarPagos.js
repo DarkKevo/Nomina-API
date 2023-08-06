@@ -19,7 +19,7 @@ export const GenerarPagos = (req, res) => {
   });
 
   let query =
-    'SELECT * FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.deducciones on (empleados.codigo_deduccion = deducciones.iddeducciones) inner join nomina_database.bonificaciones on (empleados.codigo_bonificaciones = bonificaciones.idbonificaciones)';
+    'SELECT * FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.departamentos on (empleados.codigo_departamento = departamentos.iddepartamentos)';
 
   var data_pagos = [];
 
@@ -63,19 +63,13 @@ export const GenerarPagos = (req, res) => {
 
   function Calculo(array) {
     array.forEach((element, index) => {
-      let days = `SELECT * FROM nomina_database.registro_horas WHERE idEmpleados = ${element.idEmpleados} and horas_extras > 0 and horas_laboradas > 0`;
-      let days2 = `SELECT * FROM nomina_database.registro_horas WHERE idEmpleados = ${element.idEmpleados} and horas_laboradas = 0`;
+      let days = `SELECT * FROM nomina_database.registro_horas WHERE idEmpleados = ${element.idEmpleados} and horas_extras > 0 or horas_laboradas > 0`;
       conexion.query(days, (err, resultado) => {
         if (err) {
           console.log(err);
           res.status(400);
           conexion.end();
         } else {
-          conexion.query(days2, (err, resultado2) => {
-            if (err) {
-              res.status(400);
-              conexion.end();
-            } else {
               console.log(`Laborados n ${resultado.length} extras ${resultado2.length}`);
               let salario_diario = element.salario / 30;
               let dias_laborados = resultado.length * salario_diario;
@@ -101,7 +95,6 @@ export const GenerarPagos = (req, res) => {
                 respaldo(data_pagos)
                 res.json(data_pagos)
               }
-            }
           });
         }
       });

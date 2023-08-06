@@ -74,14 +74,14 @@ import { FiltrarHistorialB } from '../controllers/HistorialBonificaciones/Filtra
 
 //Historial de Deducciones
 import { ListarHistorialD } from '../controllers/HistorialDeducciones/ListarHistoriaD.js';
-// import { AgregarHistoriald } from '../controllers/';
+import { AgregarHistorialD } from '../controllers/HistorialDeducciones/Agregardeducciones.js';
 // import { EliminarHistoriald } from '../controllers/';
 // import { FiltrarHistoriald } from '../controllers/';
 
 //Vacaciones
-// import { ListarVacaciones } from '../controllers/vacaciones/Listar_vacaciones.js';
-// import { CalcularVacaciones } from '../controllers/vacaciones/calcular_vacaciones.js';
-// import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
+import { ListarVacaciones } from '../controllers/vacaciones/Listar_vacaciones.js';
+import { CalcularVacaciones } from '../controllers/vacaciones/calcular_vacaciones.js';
+import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
 
 //Listar Pago
 // import { ListarPago } from '../controllers/Planilla_Pago/listar_pago.js';
@@ -165,9 +165,9 @@ routes.post('/AgregarHistorialB', AgregarHistorialB);
 routes.delete('/EliminarHistorialB', EliminarHistorialB);
 routes.post('/FiltrarHistorialB', FiltrarHistorialB);
 
-//Historial Bonificaciones
+//Historial Deducciones
 routes.get('/ListarHistorialD', ListarHistorialD);
-// routes.post('/AgregarHistorialB', AgregarHistorialB);
+routes.post('/AgregarHistorialD', AgregarHistorialD);
 // routes.delete('/EliminarHistorialB', EliminarHistorialB);
 // routes.post('/FiltrarHistorialB', FiltrarHistorialB);
 
@@ -180,7 +180,7 @@ routes.get('/ListarHistorialD', ListarHistorialD);
 // routes.post('/FiltrarPagos', FiltrarPagos);
 
 // //Vacaciones
-// routes.get('/ListarVacaciones', ListarVacaciones);
-// routes.get('/CalcularVacaciones', CalcularVacaciones);
-// routes.post('/UsarVacaciones', UsarVacaciones);
+routes.get('/ListarVacaciones', ListarVacaciones);
+routes.get('/CalcularVacaciones', CalcularVacaciones);
+routes.post('/UsarVacaciones', UsarVacaciones);
 
