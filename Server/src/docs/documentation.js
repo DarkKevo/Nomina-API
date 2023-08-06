@@ -10,7 +10,6 @@
  *       bearerFormat: JWT
  * */
 
-
 //Esquema de Datos de los Empresas
 
 /**
@@ -442,9 +441,6 @@
  *         -codigo_empresa
  *         -numero_cuenta
  *         -estado
- *         -pass
- *         -codigo_deduccion
- *         -codigo_bonificaciones
  *       example:
  *         cedula: V-30259086
  *         nombres: Kevin Alejandro
@@ -458,9 +454,6 @@
  *         numero_cuenta: '01020304751247000125'
  *         codigo_empresa: 01 
  *         estado: activo
- *         pass: '30259086'
- *         codigo_deduccion: 01
- *         codigo_bonificaciones: 01
  */
 
 /**
@@ -541,15 +534,6 @@
  *         idEmpleados:
  *           type: string
  *           description: id del empleado a editar
- *         pass:
- *           type: string
- *           description: pass del Empleado
- *         codigo_deduccion:
- *           type: string
- *           description: codigo del Empleado Deduccion
- *         codigo_bonificaciones:
- *           type: string
- *           description: codigo de bonificacion del Empleado
  *       required:
  *         -cedula
  *         -nombres
@@ -564,9 +548,6 @@
  *         -numero_cuenta
  *         -estado
  *         -idEmpleados
- *         -pass
- *         -codigo_deduccion
- *         -codigo_bonificaciones
  *       example:
  *         cedula: V-30259086
  *         nombres: Kevin Alejandro
@@ -581,9 +562,6 @@
  *         numero_cuenta: '01020304757888000025'
  *         estado: activo
  *         idEmpleados: 3
- *         pass: '302590865'
- *         codigo_deduccion: 02
- *         codigo_bonificaciones: 02
  */
 
 /**

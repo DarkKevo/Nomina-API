@@ -19,7 +19,7 @@ export const GenerarPagos = (req, res) => {
   });
 
   let query =
-    "SELECT * FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.departamentos on (empleados.codigo_departamento = departamentos.iddepartamentos) where empleados.estado = 'activo'";
+    "SELECT * FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.departamentos on (empleados.codigo_departamento = departamentos.iddepartamentos) where empleados.estado = 'activo' and empleados.horas_trabajadas > 0 ";
 
   var data_pagos = [];
 
@@ -109,7 +109,7 @@ export const GenerarPagos = (req, res) => {
                 conexion.end();
               } else {
                 let salario_diario = element.salario / 30;
-                let salario_hora = salario_diario / 9;
+                let salario_hora = salario_diario / 8;
                 let salario_dias_trabajados =
                   element.horas_trabajadas * salario_hora;
                 let salarios_dias_descanso = 4 * salario_diario;
@@ -217,7 +217,7 @@ export const GenerarPagos = (req, res) => {
       conexion.end();
     } else if (result.length == 0) {
       console.log(result);
-      res.status(400).send({ error: "no hay datos de empleados" });
+      res.status(400).send({ error: "El empleado no esta registrado o no tiene horas agregadas" });
       conexion.end();
     } else {
       Calculo(result);
