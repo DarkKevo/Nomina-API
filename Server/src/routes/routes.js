@@ -75,7 +75,7 @@ import { FiltrarHistorialB } from '../controllers/HistorialBonificaciones/Filtra
 //Historial de Deducciones
 import { ListarHistorialD } from '../controllers/HistorialDeducciones/ListarHistoriaD.js';
 import { AgregarHistorialD } from '../controllers/HistorialDeducciones/Agregardeducciones.js';
-// import { EliminarHistoriald } from '../controllers/';
+import { EliminarHistoriald } from '../controllers/HistorialDeducciones/EliminarhistorialD.js';
 // import { FiltrarHistoriald } from '../controllers/';
 
 //Vacaciones
@@ -88,7 +88,7 @@ import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
 
 
 //Planilla
-// import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
+import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
 // import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
 
 export const routes = Express.Router();
@@ -168,7 +168,7 @@ routes.post('/FiltrarHistorialB', FiltrarHistorialB);
 //Historial Deducciones
 routes.get('/ListarHistorialD', ListarHistorialD);
 routes.post('/AgregarHistorialD', AgregarHistorialD);
-// routes.delete('/EliminarHistorialB', EliminarHistorialB);
+routes.delete('/EliminarHistorialD', EliminarHistoriald);
 // routes.post('/FiltrarHistorialB', FiltrarHistorialB);
 
 
@@ -176,7 +176,7 @@ routes.post('/AgregarHistorialD', AgregarHistorialD);
 // routes.get('/ListarPago', ListarPago);
 
 // //Generar Pagos
-// routes.get('/GenerarPagos', GenerarPagos);
+routes.get('/GenerarPagos', GenerarPagos);
 // routes.post('/FiltrarPagos', FiltrarPagos);
 
 // //Vacaciones
