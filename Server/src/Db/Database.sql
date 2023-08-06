@@ -22,17 +22,20 @@ ENGINE = InnoDB;
 -- Table `mydb`.`respaldo_pagos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nomina_database`.`respaldo_pagos` (
-  `idrespaldo_pagos` INT NOT NULL AUTO_INCREMENT,
+  `id_pagos` INT NOT NULL AUTO_INCREMENT,
+  `idEmpleado` INT NOT NULL,
   `nombre` VARCHAR(500) NOT NULL,
+  `departamento` VARCHAR(500) NOT NULL,
   `cargo` VARCHAR(500) NOT NULL,
   `cuenta` VARCHAR(500) NOT NULL,
-  `pagoDiasLaborales` INT NOT NULL,
-  `pagoDiasExtras` INT NOT NULL,
-  `pagoDiasDescanso` INT NOT NULL,
+  `fechas` DATE NOT NULL,
+  `monto_base` INT NOT NULL,
+  `monto_extra` INT NOT NULL,
+  `monto_deduccion` INT NOT NULL,
+  `monto_bonificacion` INT NOT NULL,
   `pagoTotal` INT NOT NULL,
-  `idEmpleado` INT NOT NULL,
-  `fecha` DATE NOT NULL,
-  PRIMARY KEY (`idrespaldo_pagos`))
+  `fecha_pago` DATE NOT NULL,
+  PRIMARY KEY (`id_pagos`))
 ENGINE = InnoDB;
 
 USE `nomina_database` ;
@@ -67,6 +70,39 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
+
+
+-- -----------------------------------------------------
+-- Table `nomina_database`.`bonificaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nomina_database`.`historialBonificacion` (
+  `id_b` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_empleado` INT NOT NULL,
+  `nombres` VARCHAR(400) NOT NULL,
+  `bonificacion` VARCHAR(400) NOT NULL,
+  `monto` INT NOT NULL,
+  PRIMARY KEY (`id_b`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_spanish2_ci;
+
+
+-- -----------------------------------------------------
+-- Table `nomina_database`.`deducciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nomina_database`.`historialDeducciones` (
+  `id_d` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_empleado` INT NOT NULL,
+  `nombres` VARCHAR(400) NOT NULL,
+  `deducciones` VARCHAR(400) NOT NULL,
+  `monto` INT NOT NULL,
+  PRIMARY KEY (`id_d`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_spanish2_ci;
+
 
 -- -----------------------------------------------------
 -- Table `nomina_database`.`Empresas`
