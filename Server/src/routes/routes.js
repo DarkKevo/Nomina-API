@@ -72,6 +72,12 @@ import { AgregarHistorialB } from '../controllers/HistorialBonificaciones/Añadi
 import { EliminarHistorialB } from '../controllers/HistorialBonificaciones/EliminarHistorialB.js';
 import { FiltrarHistorialB } from '../controllers/HistorialBonificaciones/FiltrarHistorialB.js';
 
+//Historial de Deducciones
+import { ListarHistorialD } from '../controllers/HistorialDeducciones/ListarHistoriaD.js';
+// import { AgregarHistoriald } from '../controllers/';
+// import { EliminarHistoriald } from '../controllers/';
+// import { FiltrarHistoriald } from '../controllers/';
+
 //Vacaciones
 // import { ListarVacaciones } from '../controllers/vacaciones/Listar_vacaciones.js';
 // import { CalcularVacaciones } from '../controllers/vacaciones/calcular_vacaciones.js';
@@ -158,6 +164,12 @@ routes.get('/ListarHistorialB', ListarHistorialB);
 routes.post('/AgregarHistorialB', AgregarHistorialB);
 routes.delete('/EliminarHistorialB', EliminarHistorialB);
 routes.post('/FiltrarHistorialB', FiltrarHistorialB);
+
+//Historial Bonificaciones
+routes.get('/ListarHistorialD', ListarHistorialD);
+// routes.post('/AgregarHistorialB', AgregarHistorialB);
+// routes.delete('/EliminarHistorialB', EliminarHistorialB);
+// routes.post('/FiltrarHistorialB', FiltrarHistorialB);
 
 
 // //Pago
