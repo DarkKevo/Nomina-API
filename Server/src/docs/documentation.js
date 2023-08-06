@@ -1848,3 +1848,358 @@
  *         description: No hay 
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Esquema de Datos de Historial Bonificaciones
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Historial Bonificaciones:
+ *       type: object
+ *       properties:
+ *         id_empleado:
+ *           type: int
+ *           description: Id del Empleado
+ *         nombres:
+ *           type: string
+ *           description: Nombre del historial Bonificaciones
+ *         bonificacion:
+ *           type: string
+ *           description: Tipo de Bonificaciones
+ *       example:
+ *         id_empleado: 1
+ *         nombres: "Seguro Social"
+ *         bonificacion: "10"
+ */
+
+/**
+ * @swagger
+ * /ListarHistorialB:
+ *   get:
+ *     summary: Listar el historial de Bonificaciones existentes
+ *     tags: [Historial Bonificaciones]
+ *     responses:
+ *       200:
+ *         description: Aprobado
+ *       400:
+ *         description: No hay historial de Bonificaciones
+ */
+
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Historial Bonificaciones:
+ *       type: object
+ *       properties:
+ *         Agregar_Historial:
+ *           type: string
+ *           description: Historial Bonificaciones (Tabla - Historialbonificaciones)
+ *       required:
+ *         -id_empleado
+ *         -nombres
+ *         -bonificacion
+ *       example:
+ *         id_empleado: 1
+ *         nombres: "Kevin Peña"
+ *         bonificacion: "Paternidad"
+ */
+
+/**
+ * @swagger
+ * /AgregarHistorialB:
+ *   post:
+ *     summary: Crear un nuevo historial de bonificaciones
+ *     tags: [Historial Bonificaciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Historial Bonificaciones'
+ *     responses:
+ *       200:
+ *         description: Historial Bonificaciones Creado
+ *       400:
+ *         description: Ya Registrado (Existente)
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Eliminar_bonificaciones:
+ *       type: object
+ *       properties:
+ *         id_b:
+ *           type: int
+ *           description: Id
+ *       required:
+ *         -id_b
+ *       example:
+ *         id_b: 1
+ */
+
+/**
+ * @swagger
+ * /EliminarHistorialB:
+ *   delete:
+ *     summary: Eliminar un Historial de bonificaciones
+ *     tags: [Historial Bonificaciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Eliminar_bonificaciones'
+ *     responses:
+ *       200:
+ *         description: Historial de bonificaciones eliminada
+ *       400:
+ *         description: Historial de bonificacionesno existe
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Filtrar_bonificaciones:
+ *       type: object
+ *       properties:
+ *         id_b:
+ *           type: int
+ *           description: Id
+ *       required:
+ *         -id_b
+ *       example:
+ *         id_b: 1
+ */
+
+/**
+ * @swagger
+ * /FiltrarHistorialB:
+ *   get:
+ *     summary: Filtrar un Historial de bonificaciones
+ *     tags: [Historial Bonificaciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Filtrar_bonificaciones'
+ *     responses:
+ *       200:
+ *         description: Historial de bonificaciones filtrada
+ *       400:
+ *         description: Historial de bonificacionesno existe
+ */
+
+
+
+
+
+
+
+
+
+//Esquema de Datos de Historial Deducciones
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Historial_Deducciones:
+ *       type: object
+ *       properties:
+ *         id_empleado:
+ *           type: int
+ *           description: Id del Empleado
+ *         nombres:
+ *           type: string
+ *           description: Nombre del historial deducciones
+ *         deducciones:
+ *           type: string
+ *           description: Tipo de deducción
+ *       example:
+ *         id_empleado: 1
+ *         nombres: "Seguro Social"
+ *         deducciones: "10"
+ */
+
+/**
+ * @swagger
+ * /ListarHistorialD:
+ *   get:
+ *     summary: Listar el historial de deducciones existentes
+ *     tags: [Historial_Deducciones]
+ *     responses:
+ *       200:
+ *         description: Aprobado
+ *       400:
+ *         description: No hay historial de deducciones
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Historial_Deducciones:
+ *       type: object
+ *       properties:
+ *         Agregar_Deducciones:
+ *           type: string
+ *           description: Historial_Deducciones (Tabla - Historialbonificaciones)
+ *       required:
+ *         -id_empleado
+ *         -nombres
+ *         -deducciones
+ *       example:
+ *         id_empleado: 1
+ *         nombres: "Kevin Peña"
+ *         deducciones: "Retención"
+ */
+
+/**
+ * @swagger
+ * /AgregarHistorialD:
+ *   post:
+ *     summary: Crear un nuevo historial de Deducciones
+ *     tags: [Historial_Deducciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Historial_Deducciones'
+ *     responses:
+ *       200:
+ *         description: Historial Deducciones Creado
+ *       400:
+ *         description: Ya Registrado (Existente)
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Eliminar_deducciones:
+ *       type: object
+ *       properties:
+ *         id_d:
+ *           type: int
+ *           description: Id
+ *       required:
+ *         -id_d
+ *       example:
+ *         id_d: 1
+ */
+
+/**
+ * @swagger
+ * /EliminarHistoriald:
+ *   delete:
+ *     summary: Eliminar un Historial de deducciones
+ *     tags: [Historial_Deducciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Eliminar_deducciones'
+ *     responses:
+ *       200:
+ *         description: Historial de deducciones eliminada
+ *       400:
+ *         description: Historial de deducciones no existe
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Filtrar_deducciones:
+ *       type: object
+ *       properties:
+ *         id_d:
+ *           type: int
+ *           description: Id
+ *       required:
+ *         -id_d
+ *       example:
+ *         id_d: 1
+ */
+
+/**
+ * @swagger
+ * /filtrar_h_deducciones:
+ *   get:
+ *     summary: Filtrar un Historial de deducciones
+ *     tags: [Historial_Deducciones]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Filtrar_deducciones'
+ *     responses:
+ *       200:
+ *         description: Historial de deducciones friltradas
+ *       400:
+ *         description: Historial de deducciones no existe
+ */
+
+

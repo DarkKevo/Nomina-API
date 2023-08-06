@@ -13,7 +13,7 @@ USE `nomina_database` ;
 CREATE TABLE IF NOT EXISTS `nomina_database`.`bonificaciones` (
   `idbonificaciones` INT NOT NULL AUTO_INCREMENT,
   `descripcion_bonificacion` VARCHAR(500) NOT NULL,
-  `monto_bonificacion` INT NOT NULL,
+  `monto_bonificacion` FLOAT NOT NULL,
   PRIMARY KEY (`idbonificaciones`))
 ENGINE = InnoDB;
 
@@ -33,12 +33,12 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`respaldo_pagos` (
   `dias_descanso` VARCHAR(500) NOT NULL,
   `fechas` VARCHAR(500) NOT NULL,
   `horas_trabajadas` INT NOT NULL,
-  `monto_base` INT NOT NULL,
+  `monto_base` FLOAT NOT NULL,
   `horas_extras` INT NOT NULL,
-  `monto_extra` INT NOT NULL,
-  `monto_deduccion` INT NOT NULL,
-  `monto_bonificacion` INT NOT NULL,
-  `pagoTotal` INT NOT NULL,
+  `monto_extra` FLOAT NOT NULL,
+  `monto_deduccion` FLOAT NOT NULL,
+  `monto_bonificacion` FLOAT NOT NULL,
+  `pagoTotal` FLOAT NOT NULL,
   `fecha_pago` DATE NOT NULL,
   PRIMARY KEY (`id_pagos`))
 ENGINE = InnoDB;
@@ -145,7 +145,7 @@ COLLATE = utf8mb4_spanish2_ci;
 CREATE TABLE IF NOT EXISTS `nomina_database`.`cargos` (
   `idcargos` INT(11) NOT NULL AUTO_INCREMENT,
   `cargo` VARCHAR(500) NOT NULL,
-  `salario` INT(11) NOT NULL,
+  `salario` FLOAT NOT NULL,
   PRIMARY KEY (`idcargos`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -158,7 +158,7 @@ COLLATE = utf8mb4_spanish2_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nomina_database`.`deducciones` (
   `iddeducciones` INT(11) NOT NULL AUTO_INCREMENT,
-  `monto_deduccion` INT(11) NOT NULL,
+  `monto_deduccion` FLOAT NOT NULL,
   `descripcion_deduccion` VARCHAR(5000) NOT NULL,
   PRIMARY KEY (`iddeducciones`))
 ENGINE = InnoDB
