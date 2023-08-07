@@ -64,7 +64,6 @@ export const GenerarPagos = (req, res) => {
             console.log(err);
             conexion.end();
           } else {
-            conexion.end();
           }
         });
       }
@@ -73,10 +72,8 @@ export const GenerarPagos = (req, res) => {
 
   function calculo2(data1) {
 
-    console.log(data1);
     let quincena_bonificacion =
       (data1.suma_bonificaciones / 30) * (data1.resultado + data1.fin_semana);
-console.log(quincena_bonificacion);
     let total =
       data1.monto_base +
       data1.Salario_horas_extra +
@@ -247,7 +244,7 @@ console.log(quincena_bonificacion);
                 fechas: `${fecha_corta(fecha2)} al ${fecha_corta(fecha1)} `,
                 horas_trabajadas: element.horas_trabajadas,
                 horas_extras: element.horas_extras,
-                resultado: resultado.length,
+                resultado: parseInt(element.horas_trabajadas/8),
                 fecha1,
                 fecha2,
                 diferencia,
