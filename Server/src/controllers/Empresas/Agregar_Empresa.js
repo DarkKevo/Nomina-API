@@ -20,19 +20,19 @@ export const CrearEmpresa = async (req, res) => {
   });
 
   try {
-   /* const archivo = req.file;
-    console.log("Archivo recibido:", archivo);
+    const archivo = req.file;
     if (!req.file) {
       return res
         .status(400)
         .json({ error: "No se proporcionó ningún archivo de imagen" });
     }
-    const result = await cloudinary.uploader.upload(req.file);
+    const result = await cloudinary.uploader.upload(req.file.path);
     if (!result || !result.secure_url) {
       return res.status(500).json({ error: "Error al subir la imagen" });
     }
 
-    const imageUrl = result.secure_url;*/
+    const imageUrl = result.secure_url;
+    console.log(imageUrl)
     const { rif, nombre, direccion, telefono, correo } = req.body;
 
     let verify = "SELECT * FROM nomina_database.Empresas";
@@ -40,7 +40,7 @@ export const CrearEmpresa = async (req, res) => {
     let query =
       "INSERT INTO `nomina_database`.`Empresas` (`idEmpresas`,`imageURL`,`rif`, `nombre`, `direccion` , `telefono` , `correo` ) VALUES ";
 
-    query += `(1,'', '${rif} ', '${nombre}', '${direccion}', '${telefono}', '${correo}')`;
+    query += `(1,'${imageUrl}', '${rif} ', '${nombre}', '${direccion}', '${telefono}', '${correo}')`;
 
     conexion.query(verify, (err, result) => {
       if (err) {
