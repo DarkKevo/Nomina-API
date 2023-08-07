@@ -34,7 +34,6 @@ export const Crear_Empleado = (req, res) => {
     codigo_empresa,
     numero_cuenta,
     estado,
-    pass,
     codigo_deduccion,
     codigo_bonificaciones,
   } = req.body;
@@ -46,12 +45,12 @@ export const Crear_Empleado = (req, res) => {
 
   
 
-  let encripted_password = bcrypt.hashSync(pass, parseInt(SaltRounds));
+  //let encripted_password = bcrypt.hashSync(pass, parseInt(SaltRounds));
 
   let query =
-    'INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`, `pass`, `codigo_deduccion`, `codigo_bonificaciones` ) VALUES ';
+    'INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado` ) VALUES ';
 
-  query += `('${cedula}', '${nombres}', '${apellidos}', '${fecha_nacimiento}', '${direccion}', '${correo}', '${telefono}', '${codigo_cargo}', '${codigo_departamento}', '${codigo_empresa}', '${numero_cuenta}', '${antiguedad}', 0, 0, '${estado}', '${encripted_password}', '${codigo_deduccion}', '${codigo_bonificaciones}')`;
+  query += `('${cedula}', '${nombres}', '${apellidos}', '${fecha_nacimiento}', '${direccion}', '${correo}', '${telefono}', '${codigo_cargo}', '${codigo_departamento}', '${codigo_empresa}', '${numero_cuenta}', '${antiguedad}', 0, 0, '${estado}')`;
 
   //Verificar la Existencia del Empleado
   conexion.query(verify, (err, result) => {

@@ -1,11 +1,12 @@
 import Express from 'express';
 
-//Planilla
-import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
-import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
 
 //Registros
 import { ListarRegistro } from '../controllers/Registro_De_Horas/ListarRegistro.js';
+
+//Cargar Horas
+import { CargarHoras } from '../controllers/Carga_Horas/Cargar_horas.js';
+import { ListarHoras } from '../controllers/Carga_Horas/Listar_Horas.js';
 
 //Empleados
 import { Crear_Empleado } from '../controllers/Empleados/Registrar_Empleado.js';
@@ -62,10 +63,20 @@ import { ListarEmpresa } from '../controllers/Empresas/Listar_Empresa.js';
 import { ActualizarEmpresa } from '../controllers/Empresas/Actualizar_Empresa.js';
 import { CrearEmpresa } from '../controllers/Empresas/Agregar_Empresa.js';
 
-
 //Empresas
 import { descargartxt } from '../controllers/download_file/download.js';
-export const routes = Express.Router();
+
+//Historial de Bonificaciones
+import { ListarHistorialB } from '../controllers/HistorialBonificaciones/ListarHistorialB.js';
+import { AgregarHistorialB } from '../controllers/HistorialBonificaciones/AñadirHistoriaB.js';
+import { EliminarHistorialB } from '../controllers/HistorialBonificaciones/EliminarHistorialB.js';
+import { FiltrarHistorialB } from '../controllers/HistorialBonificaciones/FiltrarHistorialB.js';
+
+//Historial de Deducciones
+import { ListarHistorialD } from '../controllers/HistorialDeducciones/ListarHistoriaD.js';
+import { AgregarHistorialD } from '../controllers/HistorialDeducciones/Agregardeducciones.js';
+import { EliminarHistoriald } from '../controllers/HistorialDeducciones/EliminarhistorialD.js';
+import { filtrar_h_deducciones } from '../controllers/HistorialDeducciones/filtrar_h_deducciones.js';
 
 //Vacaciones
 import { ListarVacaciones } from '../controllers/vacaciones/Listar_vacaciones.js';
@@ -73,19 +84,18 @@ import { CalcularVacaciones } from '../controllers/vacaciones/calcular_vacacione
 import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
 
 //Listar Pago
-import { ListarPago } from '../controllers/Planilla_Pago/listar_pago.js';
+ import { ListarPago } from '../controllers/Planilla_Pago/listar_pago.js';
 
 
-//Cargar Horas
-import { CargarHoras } from '../controllers/Carga_Horas/Cargar_horas.js';
-import { ListarHoras } from '../controllers/Carga_Horas/Listar_Horas.js';
+//Planilla
+import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
+import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
+
+export const routes = Express.Router();
 
 //Usuarios
 routes.post('/newUser', newUser);
 routes.post('/loginUser', IniciarSesion);
-
-//Pago
-routes.get('/ListarPago', ListarPago);
 
 //Deducciones
 routes.get('/ListarDeducciones', ListarDeduccion);
@@ -113,10 +123,6 @@ routes.delete('/EliminarCargo', EliminarCargo);
 routes.put('/ActualizarCargo', ActualizarCargo);
 routes.post('/BuscarCargo', BuscarCargo);
 
-//Generar Pagos
-routes.get('/GenerarPagos', GenerarPagos);
-routes.post('/FiltrarPagos', FiltrarPagos);
-
 //Departamentos
 routes.get('/ListarDepartamento', ListarDepartamento);
 routes.post('/CrearDepartamento', CrearDepartamento);
@@ -126,13 +132,11 @@ routes.delete('/EliminarDepartamento', EliminarDepartamento);
 //Registros
 routes.get('/ListarRegistros', ListarRegistro);
 
-
 //Bancos
 routes.get('/ListarBanco', ListarBanco);
 routes.put('/ActualizaBanco', ActualizaBanco);
 routes.post('/CrearBanco', CrearBanco);
 routes.delete('/EliminarBancos', EliminarBancos);
-
 
 //Setup
 routes.get('/Listarsetup', Listarsetup);
@@ -148,15 +152,35 @@ routes.post('/CrearEmpresa', CrearEmpresa);
 //Empresa
 routes.get('/descargartxt', descargartxt);
 
-//Vacaciones
-routes.get('/ListarVacaciones', ListarVacaciones);
-routes.get('/CalcularVacaciones', CalcularVacaciones);
-routes.post('/UsarVacaciones', UsarVacaciones);
-
-
 //Cargar horas
 routes.post('/cargarHoras', CargarHoras);
 routes.get('/listarHoras', ListarHoras);
 
 //Txt
 routes.post('/descargartxt', descargartxt);
+
+//Historial Bonificaciones
+routes.get('/ListarHistorialB', ListarHistorialB);
+routes.post('/AgregarHistorialB', AgregarHistorialB);
+routes.delete('/EliminarHistorialB', EliminarHistorialB);
+routes.post('/FiltrarHistorialB', FiltrarHistorialB);
+
+//Historial Deducciones
+routes.get('/ListarHistorialD', ListarHistorialD);
+routes.post('/AgregarHistorialD', AgregarHistorialD);
+routes.delete('/EliminarHistorialD', EliminarHistoriald);
+routes.post('/FiltrarHistorialD', filtrar_h_deducciones);
+
+
+// //Pago
+routes.get('/ListarPago', ListarPago);
+
+// //Generar Pagos
+routes.get('/GenerarPagos', GenerarPagos);
+ routes.post('/FiltrarPagos', FiltrarPagos);
+
+// //Vacaciones
+routes.get('/ListarVacaciones', ListarVacaciones);
+routes.get('/CalcularVacaciones', CalcularVacaciones);
+routes.post('/UsarVacaciones', UsarVacaciones);
+

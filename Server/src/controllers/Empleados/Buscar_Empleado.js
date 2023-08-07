@@ -19,7 +19,7 @@ export const BuscarEmpleado = (req, res) => {
   });
 
   const { idEmpleados } = req.body;
-
+  console.log(idEmpleados);
   let query =
   `SELECT E.idEmpleados,
 	E.cedula,

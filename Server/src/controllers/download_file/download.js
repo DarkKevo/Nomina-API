@@ -27,26 +27,21 @@ export const descargartxt = async (req, res) => {
          });
       });
       const query = `
-      select 
-      concat( (e.numero_cuenta)
-       ,f.separadores
-       ,(concat('V',(( LEFT('0000000000', 10 - length(e.cedula)))), e.cedula))
-        ,f.separadores
-        ,(replace((concat((LEFT('0000000000', 15 - length((round(((c.salario/30)* count(h.fecha)),2))))), (round(((c.salario/30)* count(h.fecha)),2)))),'.',''))
-        ,f.separadores
-       ,(concat((concat(e.apellidos)), ',', concat(e.nombres)))) nombres  
-   from 
-   nomina_database.empleados e
-   ,nomina_database.registro_horas h
-   ,nomina_database.cargos c
-   ,nomina_database.setup_banco_file f
-   where h.idEmpleados = e.idempleados
-   and c.idcargos = e.codigo_cargo
-   and h.fecha >= '${fecha_init}'
-   and h.fecha <= '${fecha_final}'
-   and f.idfile = ${id_file}
-   group by e.numero_cuenta, e.cedula, c.salario, e.horas_trabajadas, e.apellidos, e.nombres
-   `;
+      select  
+	      concat((cuenta)
+         ,(f.separadores)
+         ,((concat('V',(( LEFT('0000000000', 10 - length(cedula)))), cedula)))   
+         ,(f.separadores)
+         ,(concat(LEFT('0000000000', 15 - length((replace(round(pagoTotal,2),'.', '')))),(replace(round(pagoTotal,2),'.', ''))))
+         ,(f.separadores)
+         ,(nombre)) nombre
+      from
+      nomina_database.respaldo_pagos p
+      ,nomina_database.setup_banco_file f
+      where  fecha_pago >= '${fecha_init}'
+      and fecha_pago    <= '${fecha_final}'
+      and f.idfile = ${id_file}`;
+      
       const result = await new Promise((resolve, reject) => {
          conexion.query(query, (err, result) => {
             if (err) {

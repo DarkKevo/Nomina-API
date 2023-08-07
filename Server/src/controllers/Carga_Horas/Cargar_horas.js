@@ -45,7 +45,7 @@ export const CargarHoras = (req, res) => {
           'INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ' +
           `('${result[0].nombres}', '${
             result[0].apellidos
-          }', '${horas}', '${horas_extra}', '${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDate()}', ${result[0].idEmpleados})`;
+          }', '${horas}', '${horas_extra}', '${fecha.getFullYear()}/${fecha.getMonth()+1}/${fecha.getDate()}', ${result[0].idEmpleados})`;
 
         conexion.query(carga, (err, result2) => {
           if (err) {

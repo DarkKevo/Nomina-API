@@ -13,7 +13,7 @@ USE `nomina_database` ;
 CREATE TABLE IF NOT EXISTS `nomina_database`.`bonificaciones` (
   `idbonificaciones` INT NOT NULL AUTO_INCREMENT,
   `descripcion_bonificacion` VARCHAR(500) NOT NULL,
-  `monto_bonificacion` INT NOT NULL,
+  `monto_bonificacion` FLOAT NOT NULL,
   PRIMARY KEY (`idbonificaciones`))
 ENGINE = InnoDB;
 
@@ -22,17 +22,26 @@ ENGINE = InnoDB;
 -- Table `mydb`.`respaldo_pagos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nomina_database`.`respaldo_pagos` (
-  `idrespaldo_pagos` INT NOT NULL AUTO_INCREMENT,
+  `id_pagos` INT NOT NULL AUTO_INCREMENT,
+  `idEmpleado` INT NOT NULL,
+  `cedula` VARCHAR(500) NOT NULL,
   `nombre` VARCHAR(500) NOT NULL,
+  `departamento` VARCHAR(500) NOT NULL,
   `cargo` VARCHAR(500) NOT NULL,
   `cuenta` VARCHAR(500) NOT NULL,
-  `pagoDiasLaborales` INT NOT NULL,
-  `pagoDiasExtras` INT NOT NULL,
-  `pagoDiasDescanso` INT NOT NULL,
-  `pagoTotal` INT NOT NULL,
-  `idEmpleado` INT NOT NULL,
-  `fecha` DATE NOT NULL,
-  PRIMARY KEY (`idrespaldo_pagos`))
+  `correo` VARCHAR(500) NOT NULL,
+  `dias` VARCHAR(500) NOT NULL,
+  `dias_descanso` VARCHAR(500) NOT NULL,
+  `fechas` VARCHAR(500) NOT NULL,
+  `horas_trabajadas` INT NOT NULL,
+  `monto_base` FLOAT NOT NULL,
+  `horas_extras` INT NOT NULL,
+  `monto_extra` FLOAT NOT NULL,
+  `monto_deduccion` FLOAT NOT NULL,
+  `monto_bonificacion` FLOAT NOT NULL,
+  `pagoTotal` FLOAT NOT NULL,
+  `fecha_pago` DATE NOT NULL,
+  PRIMARY KEY (`id_pagos`))
 ENGINE = InnoDB;
 
 USE `nomina_database` ;
@@ -67,6 +76,37 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
+
+
+-- -----------------------------------------------------
+-- Table `nomina_database`.`bonificaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nomina_database`.`historialBonificacion` (
+  `id_b` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_empleado` INT NOT NULL,
+  `nombres` VARCHAR(400) NOT NULL,
+  `bonificacion` VARCHAR(400) NOT NULL,
+  PRIMARY KEY (`id_b`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_spanish2_ci;
+
+
+-- -----------------------------------------------------
+-- Table `nomina_database`.`deducciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nomina_database`.`historialDeducciones` (
+  `id_d` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_empleado` INT NOT NULL,
+  `nombres` VARCHAR(400) NOT NULL,
+  `deducciones` VARCHAR(400) NOT NULL,
+  PRIMARY KEY (`id_d`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_spanish2_ci;
+
 
 -- -----------------------------------------------------
 -- Table `nomina_database`.`Empresas`
@@ -106,7 +146,7 @@ COLLATE = utf8mb4_spanish2_ci;
 CREATE TABLE IF NOT EXISTS `nomina_database`.`cargos` (
   `idcargos` INT(11) NOT NULL AUTO_INCREMENT,
   `cargo` VARCHAR(500) NOT NULL,
-  `salario` INT(11) NOT NULL,
+  `salario` FLOAT NOT NULL,
   PRIMARY KEY (`idcargos`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -119,7 +159,7 @@ COLLATE = utf8mb4_spanish2_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nomina_database`.`deducciones` (
   `iddeducciones` INT(11) NOT NULL AUTO_INCREMENT,
-  `monto_deduccion` INT(11) NOT NULL,
+  `monto_deduccion` FLOAT NOT NULL,
   `descripcion_deduccion` VARCHAR(5000) NOT NULL,
   PRIMARY KEY (`iddeducciones`))
 ENGINE = InnoDB
@@ -161,15 +201,10 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`empleados` (
   `horas_trabajadas` INT(11) NOT NULL,
   `horas_extras` INT(11) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
-  `codigo_deduccion` INT NOT NULL,
-  `pass` VARCHAR(100) NOT NULL,
-  `codigo_bonificaciones` INT NOT NULL,
   PRIMARY KEY (`idEmpleados`),
   INDEX `fk_empleados_idx` (`codigo_empresa` ASC) ,
   INDEX `fk_cargo_idx` (`codigo_cargo` ASC) ,
   INDEX `fk_departamento_idx` (`codigo_departamento` ASC) ,
-  INDEX `fk_deduccion_idx` (`codigo_deduccion` ASC) ,
-  INDEX `fk_bonificacion_idx` (`codigo_bonificaciones` ASC) ,
   CONSTRAINT `fk_cargo`
     FOREIGN KEY (`codigo_cargo`)
     REFERENCES `nomina_database`.`cargos` (`idcargos`)
@@ -183,16 +218,6 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`empleados` (
   CONSTRAINT `fk_empleados`
     FOREIGN KEY (`codigo_empresa`)
     REFERENCES `nomina_database`.`Empresas` (`idEmpresas`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_deduccion`
-    FOREIGN KEY (`codigo_deduccion`)
-    REFERENCES `nomina_database`.`deducciones` (`iddeducciones`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_bonificacion`
-    FOREIGN KEY (`codigo_bonificaciones`)
-    REFERENCES `nomina_database`.`bonificaciones` (`idbonificaciones`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -261,8 +286,12 @@ INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Seguridad I
 INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Productor de Software', '100');
 INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Analista de Mercado', '100');
 INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Empleado (Normal)', '80');
-INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('15', 'Impuestos + Seguro de Salud');
-INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('4', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('5', 'Regimen Prestacional');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('1', 'Retención de Ley de Politica habitacional ');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('10', 'Seguro Social Patronal');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('2', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('2', 'Ley de Politica Habitacional (LPH)');
 
 INSERT INTO `nomina_database`.`Bancos` (codigo   ,nombre    ,cuenta) VALUES (    0108       ,'Banco Provincial'     ,'010803781501000'    );
 
@@ -270,4 +299,4 @@ INSERT INTO `nomina_database`.`Bancos` (codigo   ,nombre    ,cuenta) VALUES (   
 INSERT INTO `nomina_database`.`setup_banco_file` (idfile   ,idbancos    , separadores, tipo_file, columnasfile) VALUES (   1 , 1, ' ', 'txt','cuenta,cedula,monto, nombre , apellido');
 
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ('Sin Bonificacion', 0);
-INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Maternidad', 150 );
+INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Rendimiento', 250);
