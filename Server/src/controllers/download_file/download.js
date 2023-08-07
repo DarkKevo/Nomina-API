@@ -6,8 +6,7 @@ import fs from 'fs';
 export const descargartxt = async (req, res) => {
    var id_file = req.body.id_file;
    var fecha_init = req.body.fecha_init;
-   var fecha_final = req.body.fecha_final;
-  
+
    const conexion = mysql.createConnection({
       host: host,
       port: port,
@@ -34,14 +33,14 @@ export const descargartxt = async (req, res) => {
          ,(f.separadores)
          ,(concat(LEFT('0000000000', 15 - length((replace(round(pagoTotal,2),'.', '')))),(replace(round(pagoTotal,2),'.', ''))))
          ,(f.separadores)
-         ,(nombre)) nombre
+         ,(nombre)) nombres
       from
       nomina_database.respaldo_pagos p
       ,nomina_database.setup_banco_file f
-      where  fecha_pago >= '${fecha_init}'
-      and fecha_pago    <= '${fecha_final}'
-      and f.idfile = ${id_file}`;
+      where  fecha_pago =   '${fecha_init}'
+      and f.idfile = ${id_file} `;
       
+
       const result = await new Promise((resolve, reject) => {
          conexion.query(query, (err, result) => {
             if (err) {
