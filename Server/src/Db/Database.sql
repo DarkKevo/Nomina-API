@@ -24,6 +24,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `nomina_database`.`respaldo_pagos` (
   `id_pagos` INT NOT NULL AUTO_INCREMENT,
   `idEmpleado` INT NOT NULL,
+  `cedula`     INT NOT NULL,
   `nombre` VARCHAR(500) NOT NULL,
   `departamento` VARCHAR(500) NOT NULL,
   `cargo` VARCHAR(500) NOT NULL,
@@ -285,8 +286,12 @@ INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Seguridad I
 INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Productor de Software', '100');
 INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Analista de Mercado', '100');
 INSERT INTO `nomina_database`.`cargos` (`cargo`, `salario`) VALUES ('Empleado (Normal)', '80');
-INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('15', 'Impuestos + Seguro de Salud');
-INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('30', 'Impuestos + Seguro de Salud + Plan de Jubilacion');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('4', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('5', 'Regimen Prestacional');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('1', 'Retención de Ley de Politica habitacional ');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('10', 'Seguro Social Patronal');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('2', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`deducciones` (`monto_deduccion`, `descripcion_deduccion`) VALUES ('2', 'Ley de Politica Habitacional (LPH)');
 
 INSERT INTO `nomina_database`.`Bancos` (codigo   ,nombre    ,cuenta) VALUES (    0108       ,'Banco Provincial'     ,'010803781501000'    );
 
@@ -294,4 +299,4 @@ INSERT INTO `nomina_database`.`Bancos` (codigo   ,nombre    ,cuenta) VALUES (   
 INSERT INTO `nomina_database`.`setup_banco_file` (idfile   ,idbancos    , separadores, tipo_file, columnasfile) VALUES (   1 , 1, ' ', 'txt','cuenta,cedula,monto, nombre , apellido');
 
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ('Sin Bonificacion', 0);
-INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Maternidad', 150 );
+INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Rendimiento', 250);
