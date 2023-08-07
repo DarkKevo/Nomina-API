@@ -72,13 +72,15 @@ export const GenerarPagos = (req, res) => {
   }
 
   function calculo2(data1) {
+
+    console.log(data1);
     let quincena_bonificacion =
       (data1.suma_bonificaciones / 30) * (data1.resultado + data1.fin_semana);
-
+console.log(quincena_bonificacion);
     let total =
       data1.monto_base +
       data1.Salario_horas_extra +
-      data1.suma_bonificaciones -
+      quincena_bonificacion -
       data1.suma_deducciones;
     let fecha = new Date();
     let hoy = fecha_corta(fecha);
