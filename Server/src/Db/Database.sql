@@ -370,10 +370,40 @@ INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos
 INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('9', 'Matheos Jose', 'Rosales', '0', '0');
 INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('10', 'Orlando Jose', 'Angarita', '0', '0');
 
-
 INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('1', 'Kevin Peña', 'Rendimiento');
 INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Rendimiento');
 INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('4', 'Yerson Gonzalez', 'Rendimiento');
 INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('5', 'Roberto	Michelle', 'Rendimiento');
 INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('10', 'Orlando Jose Angarita', 'Rendimiento');
+
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('6', 'Yumary	Valecillos', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('6', 'Yumary	Valecillos', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('6', 'Yumary	Valecillos', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('7', 'Juan Andres Araujo Gonzalez', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('7', 'Juan Andres Araujo Gonzalez', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('7', 'Juan Andres Araujo Gonzalez', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('8', 'Jose Carlos Araujo Gonzalez', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('8', 'Jose Carlos Araujo Gonzalez', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('8', 'Jose Carlos Araujo Gonzalez', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('9', 'Matheos Jose Rosales', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('9', 'Matheos Jose Rosales', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('9', 'Matheos Jose Rosales', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('10', 'Orlando Jose Angarita', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('10', 'Orlando Jose Angarita', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('10', 'Orlando Jose Angarita', 'Retención de Ley de Politica habitacional');
 
