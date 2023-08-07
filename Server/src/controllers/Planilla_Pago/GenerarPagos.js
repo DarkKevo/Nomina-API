@@ -132,7 +132,7 @@ export const GenerarPagos = (req, res) => {
               conexion.end();
             } else {
               let quincena_deduccion =
-                ((element.salario * 12) / 52) *
+                ((data1.salario_mensual * 12) / 52) *
                 (r_dec[0].monto_deduccion / 100) *
                 2;
               suma_deducciones += quincena_deduccion;
@@ -232,6 +232,7 @@ export const GenerarPagos = (req, res) => {
               let Historial_D = `SELECT * FROM nomina_database.historialdeducciones WHERE id_empleado = ${element.idEmpleados}`;
 
               let data1 = {
+                salario_mensual: element.salario,
                 index: index,
                 array: array.length,
                 idEmpleado: element.idEmpleados,
