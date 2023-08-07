@@ -300,3 +300,4 @@ INSERT INTO `nomina_database`.`setup_banco_file` (idfile   ,idbancos    , separa
 
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ('Sin Bonificacion', 0);
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Rendimiento', 250);
+INSERT INTO `nomina_database`.`empresas` (`idEmpresas`, `rif`, `nombre`, `direccion`, `telefono`, `correo`, `imageURL`) VALUES ('1', 'J-31356421-4 ', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@edu.ve', 'https://uvm.edu.ve/wp-content/uploads/2022/10/LOGO-RIF.png');
