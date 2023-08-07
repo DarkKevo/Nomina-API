@@ -301,3 +301,64 @@ INSERT INTO `nomina_database`.`setup_banco_file` (idfile   ,idbancos    , separa
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ('Sin Bonificacion', 0);
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Rendimiento', 250);
 INSERT INTO `nomina_database`.`empresas` (`idEmpresas`, `rif`, `nombre`, `direccion`, `telefono`, `correo`, `imageURL`) VALUES ('1', 'J-31356421-4 ', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@edu.ve', 'https://uvm.edu.ve/wp-content/uploads/2022/10/LOGO-RIF.png');
+
+
+
+
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259086', 'Kevin Alejandro', 'Araujo Gonzalez', '2004-02-07', 'La Arboleda', 'kevinaraujogonzalez@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2023-08-07', '88', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259085', 'Jose Mauricio', 'Camacho Angarita', '2004-02-07', 'Sabanalibre', 'jose@gmail.com', '04141234567', '1', '1', '1', '01020378150100067152', '2023-08-07', '32', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259084', 'Victoria', 'Gonzalez', '2004-02-07', 'Carvajal', 'victoria@gmail.com', '04145789122', '1', '1', '1', '0108037815010006854', '2023-08-07', '24', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259083', 'Yerson', 'Gonzalez', '2004-02-07', 'Carvajal', 'yerson@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2023-08-07', '0', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-27268361', 'Roberto', 'Michelle', '2004-02-07', 'La Arboleda', 'roberto@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2023-08-07', '0', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-27268081', 'Yumary', 'Valecillos', '2004-02-07', 'Trujillo', 'yumaryz@gmail.com', '04145789631', '1', '1', '1', '01080304751247000125', '2023-08-07', '0', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-1512595', 'Juan Andres', 'Araujo Gonzalez', '2004-02-07', 'Trujillo', 'juanandres@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2023-08-07', '0', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259087', 'Jose Carlos', 'Araujo Gonzalez', '2004-02-07', 'La Arboleda', 'josecarlos@gmail.com', '041457891234', '1', '1', '1', '01080304751247015425', '2023-08-07', '0', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259088', 'Matheos Jose', 'Rosales', '2004-02-07', 'La Arboleda', 'matheus@gmail.com', '04145789632', '1', '1', '1', '0102058745247000125', '2023-08-07', '0', '0', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259090', 'Orlando Jose', 'Angarita', '2004-02-07', 'Valera', 'orlando@gmail.com', '04145789157', '1', '1', '1', '01020304751247111358', '2023-08-07', '0', '0', 'activo');
+
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-01', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-02', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-03', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-04', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-05', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-06', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-07', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-08', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-09', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-10', '1');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-11', '1');
+
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Mauricio', 'Camacho Angarita', '8', '0', '2023-07-11', '2');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Mauricio', 'Camacho Angarita', '8', '0', '2023-07-12', '2');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Mauricio', 'Camacho Angarita', '8', '0', '2023-07-13', '2');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Mauricio', 'Camacho Angarita', '8', '0', '2023-07-14', '2');
+
+
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Victoria', 'Gonzalez', '8', '0', '2023-07-13', '3');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Victoria', 'Gonzalez', '8', '0', '2023-07-14', '3');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Victoria', 'Gonzalez', '8', '0', '2023-07-15', '3');
+
+
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Yerson', 'Gonzalez', '8', '0', '2023-07-13', '4');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Yerson', 'Gonzalez', '8', '0', '2023-07-14', '4');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Yerson', 'Gonzalez', '8', '0', '2023-07-15', '4');
+
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Roberto', 'Michelle', '8', '0', '2023-07-13', '5');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Roberto', 'Michelle', '8', '0', '2023-07-14', '5');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Roberto', 'Michelle', '8', '0', '2023-07-15', '5');
+
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Yumary', 'Valecillos', '8', '2', '2023-07-13', '6');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Juan Andres', 'Araujo Gonzalez', '8', '0', '2023-07-14', '7');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Carlos', 'Araujo Gonzalez', '8', '2', '2023-07-15', '8');
+
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Matheos Jose', 'Rosales', '8', '3', '2023-07-13', '9');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Matheos Jose', 'Rosales', '8', '2', '2023-07-14', '9');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Matheos Jose', 'Rosales', '8', '2', '2023-07-15', '9');
+
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Orlando Jose', 'Angarita', '8', '0', '2023-07-13', '10');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Orlando Jose', 'Angarita', '8', '4', '2023-07-14', '10');
+INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Orlando Jose', 'Angarita', '8', '0', '2023-07-15', '10');
+
+
+
+
