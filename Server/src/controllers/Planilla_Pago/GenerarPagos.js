@@ -44,8 +44,7 @@ export const GenerarPagos = (req, res) => {
           console.log({error:"Error al guardar datos"});
           conexion.end();
         } else {
-          console.log("llegamos");
-          // resetRegistros(array);
+          resetRegistros(array);
         }
       });
     });
@@ -66,7 +65,6 @@ export const GenerarPagos = (req, res) => {
             conexion.end();
           } else {
             conexion.end();
-            res.status(200).send({ message: "Empleados Pagados" });
           }
         });
       }
@@ -87,6 +85,7 @@ export const GenerarPagos = (req, res) => {
 
     data_pagos.push({
       idEmpleado: data1.idEmpleado,
+      cedula: data1.cedula,
       nombre: data1.nombre,
       departamento: data1.departamento,
       cargo: data1.cargo,
@@ -279,6 +278,7 @@ export const GenerarPagos = (req, res) => {
       conexion.end();
     } else {
       Calculo(result);
+      res.status(200).send({ message: "Empleados Pagados" });
     }
   });
 };

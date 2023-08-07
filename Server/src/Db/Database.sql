@@ -24,7 +24,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `nomina_database`.`respaldo_pagos` (
   `id_pagos` INT NOT NULL AUTO_INCREMENT,
   `idEmpleado` INT NOT NULL,
-  `cedula`     INT NOT NULL,
+  `cedula` VARCHAR(500) NOT NULL,
   `nombre` VARCHAR(500) NOT NULL,
   `departamento` VARCHAR(500) NOT NULL,
   `cargo` VARCHAR(500) NOT NULL,
