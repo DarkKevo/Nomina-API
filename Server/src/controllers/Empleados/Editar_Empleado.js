@@ -33,15 +33,12 @@ export const EditarEmpleado = (req, res) => {
     codigo_departamento,
     codigo_empresa,
     numero_cuenta,
-    estado,
-    pass,
-    codigo_deduccion,
-    codigo_bonificaciones,
+    estado
   } = req.body;
 
   let verify = 'SELECT * FROM nomina_database.empleados where `idEmpleados`= ' + `'${idEmpleados}'`;
 
-  let encripted_password = bcrypt.hashSync(pass, parseInt(SaltRounds));
+  //let encripted_password = bcrypt.hashSync(pass, parseInt(SaltRounds));
 
   let update =
     'UPDATE nomina_database.empleados SET `cedula`= ' +
@@ -68,12 +65,6 @@ export const EditarEmpleado = (req, res) => {
     `'${numero_cuenta}'` +
     ', `estado`= ' +
     `'${estado}'` +
-    ', `pass`= ' +
-    `'${encripted_password}'` +
-    ', `codigo_deduccion`= ' +
-    `'${codigo_deduccion}'` +
-    ', `codigo_bonificaciones`= ' +
-    `'${codigo_bonificaciones}'` +
     'where `idEmpleados`= ' +
     `'${idEmpleados}'`;
 
