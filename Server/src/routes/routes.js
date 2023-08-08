@@ -189,4 +189,4 @@ routes.post("/UsarVacaciones", UsarVacaciones);
 routes.get("/Listarnomina", Listarnomina);
 routes.post("/Agregarnomina", Agregarnomina);
 routes.delete("/EliminarNomina", EliminarNomina);
-routes.get("/FiltrarNomina", FiltrarNomina);
+routes.post("/FiltrarNomina", FiltrarNomina);

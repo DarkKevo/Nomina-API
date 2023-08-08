@@ -72,8 +72,8 @@ export const GenerarPagos = (req, res) => {
   function respaldo(array) {
     array.forEach((element, index) => {
       let backup =
-        "INSERT INTO nomina_database.respaldo_pagos (`id_pagos`,`idEmpleado`,`cedula`,`nombre`,`departamento`, `cargo`, `cuenta`,`correo`,`dias`,`fecha_ini`,`fecha_cul`,`horas_trabajadas`,`monto_base`, `horas_extras`, `monto_extra`, `monto_deduccion`, `monto_bonificacion`, `pagoTotal`, `fecha_pago`) VALUES" +
-        `(${element.idEmpleado},${element.idEmpleado}, '${element.cedula}', '${
+        "INSERT INTO nomina_database.respaldo_pagos (`idEmpleado`,`cedula`,`nombre`,`departamento`, `cargo`, `cuenta`,`correo`,`dias`,`fecha_ini`,`fecha_cul`,`horas_trabajadas`,`monto_base`, `horas_extras`, `monto_extra`, `monto_deduccion`, `monto_bonificacion`, `pagoTotal`, `fecha_pago`) VALUES" +
+        `(${element.idEmpleado}, '${element.cedula}', '${
           element.nombre
         }', '${element.departamento}', '${element.cargo}', '${
           element.cuenta
