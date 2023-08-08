@@ -2345,7 +2345,7 @@
 
 /**
  * @swagger
- * /ListaPrePago:
+ * /ListarPrePago:
  *   get:
  *     summary: Listar los pagos existentes
  *     tags: [Pagos]
