@@ -102,6 +102,23 @@ COLLATE = utf8mb4_spanish2_ci;
 
 
 -- -----------------------------------------------------
+-- Table `nomina_database`.`historial_de_nomina`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nomina_database`.`historial_de_nomina` (
+  `id_nomina` INT(11) NOT NULL AUTO_INCREMENT,
+  `fecha_inicial` DATE NOT NULL,
+  `fecha_final` DATE NOT NULL,
+  `monto_nomina` FLOAT NOT NULL,
+  PRIMARY KEY (`id_nomina`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_spanish2_ci;
+
+
+
+
+-- -----------------------------------------------------
 -- Table `nomina_database`.`bonificaciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nomina_database`.`historialBonificacion` (
@@ -245,16 +262,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_spanish2_ci;
 
-
-CREATE TABLE IF NOT EXISTS `nomina_database`.`historial_de_nomina` (
-  `id_nomina` INT NOT NULL AUTO_INCREMENT,
-  `fecha_inicial` date NOT NULL,
-  `fecha_final` date NOT NULL,
-  `monto_nomina` FLOAT NOT NULL,
-  PRIMARY KEY (`id_nomina`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_spanish2_ci;
 
 -- -----------------------------------------------------
 -- Table `nomina_database`.`registro_horas`
