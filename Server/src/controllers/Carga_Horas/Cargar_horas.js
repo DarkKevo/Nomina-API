@@ -24,7 +24,7 @@ export const CargarHoras = (req, res) => {
   let query = `SELECT * FROM nomina_database.empleados inner join nomina_database.cargos on (empleados.codigo_cargo = cargos.idcargos) inner join nomina_database.departamentos on (empleados.codigo_departamento = departamentos.iddepartamentos) where empleados.estado = 'activo' and idEmpleados = '${id_empleado}'`;
 
   let data =
-    "SELECT `nombre`,`horas_trabajadas`, `horas_extras`, `idEmpleado` FROM nomina_database.pre_pagos where `idEmpleado`= " +
+    "SELECT `nombre`,`horas_trabajadas`, `horas_extras`,`monto_deduccion`,`monto_bonificacion`, `idEmpleado` FROM nomina_database.pre_pagos where `idEmpleado`= " +
     `'${id_empleado}'`;
 
   let fecha = new Date();
@@ -45,9 +45,12 @@ export const CargarHoras = (req, res) => {
           let salario_dias_trabajados = horas_trabajadas * salario_hora;
           let monto_base = salario_dias_trabajados;
           let monto_extra = horas_extras * salario_hora;
-
+        
           let total =
-            monto_base + monto_extra + quincena_bonificacion - data1.suma_deducciones;
+            monto_base +
+            monto_extra +
+            result[0].monto_bonificacion -
+            result[0].monto_deduccion;
           let carga =
             "UPDATE nomina_database.pre_pagos SET `horas_trabajadas`= " +
             `'${horas_trabajadas}'` +
@@ -57,6 +60,8 @@ export const CargarHoras = (req, res) => {
             `'${horas_extras}'` +
             ", `monto_extra`= " +
             `'${monto_extra}'` +
+            ", `pagoTotal`= " +
+            `'${total}'` +
             "where `idEmpleado`= " +
             `'${id_empleado}'`;
 
