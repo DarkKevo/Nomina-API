@@ -360,6 +360,27 @@
  *         descripcion: Impuestos + Seguro + Transporte
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * @swagger
  * components:
@@ -2220,4 +2241,76 @@
  *         description: Historial de nomina Creado
  *       400:
  *         description: Ya Registrado (Existente)
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Esquema de Datos de los Prepagos
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Prepago_Crear:
+ *       type: object
+ *       properties:
+ *         fecha_ini:
+ *           type: date
+ *           description: Fecha inicial
+ *         fecha_cul:
+ *           type: date
+ *           description: Fechafinal     
+ *       required:
+ *         -fecha_ini
+ *         -fecha_cul
+ *       example:
+ *         fecha_ini: "2023-08-01"
+ *         fecha_final: "2023-08-07"
+ */
+
+/**
+ * @swagger
+ * /PrePagos:
+ *   post:
+ *     summary: Registrar un Pre-pago
+ *     tags: [Pagos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Prepago_Crear'
+ *     responses:
+ *       200:
+ *         description: Pago Registrada
+ *       400:
+ *         description: Pago ya Registrada (Existente)
  */
