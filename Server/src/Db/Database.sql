@@ -338,3 +338,36 @@ INSERT INTO `nomina_database`.`setup_banco_file` (idfile   ,idbancos    , separa
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ('Sin Bonificacion', 0);
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Rendimiento', 250);
 INSERT INTO `nomina_database`.`empresas` (`idEmpresas`, `rif`, `nombre`, `direccion`, `telefono`, `correo`, `imageURL`) VALUES ('1', 'J-31356421-4 ', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@edu.ve', 'https://uvm.edu.ve/wp-content/uploads/2022/10/LOGO-RIF.png');
+
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `estado`) VALUES ('V-30259086', 'Kevin Alejandro', 'Araujo Gonzalez', '2004-02-07', 'La Arboleda', 'kevinaraujogonzalez@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2022-05-01', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `estado`) VALUES ('V-30259085', 'Jose Mauricio', 'Camacho Angarita', '2004-02-07', 'Sabanalibre', 'jose@gmail.com', '04141234567', '1', '1', '1', '01020378150100067152', '2023-05-04', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `estado`) VALUES ('V-30259084', 'Victoria', 'Gonzalez', '2004-02-07', 'Carvajal', 'victoria@gmail.com', '04145789122', '1', '1', '1', '0108037815010006854', '2020-08-01', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `estado`) VALUES ('V-30259083', 'Yerson', 'Gonzalez', '2004-02-07', 'Carvajal', 'yerson@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2022-07-07', 'activo');
+INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `estado`) VALUES ('V-27268361', 'Roberto', 'Michelle', '2004-02-07', 'La Arboleda', 'roberto@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2018-03-02', 'activo');
+
+INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('1', 'Kevin Alejandro', 'Araujo Gonzalez', '0', '0');
+INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('2', 'Jose Mauricio', 'Camacho Angarita', '0', '0');
+INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('3', 'Victoria', 'Gonzalez', '0', '0');
+INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('4', 'Yerson', 'Gonzalez', '0', '0');
+INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('5', 'Roberto', 'Michelle', '0', '0');
+
+INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('1', 'Kevin Peña', 'Rendimiento');
+INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('4', 'Yerson Gonzalez', 'Rendimiento');
+INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('5', 'Roberto	Michelle', 'Rendimiento');
+
+
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Retención de Ley de Politica habitacional');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Seguro Social SSO');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Regimen Prestacional de Empleo');
+INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Retención de Ley de Politica habitacional');
