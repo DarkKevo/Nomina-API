@@ -2181,3 +2181,43 @@
  */
 
 
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Historial de nomina:
+ *       type: object
+ *       properties:
+ *         Agregar_nomina:
+ *           type: string
+ *           description: Historial de nomina (Tabla - historial_de_nomina)
+ *       required:
+ *         -fecha_inicial
+ *         -fecha_final
+ *         -monto_nomina
+ *       example:
+ *         fecha_inicial: "2004-01-15" 
+ *         fecha_final: "2004-01-30"
+ *         monto_nomina:  400
+ */
+
+/**
+ * @swagger
+ * /Agregarnomina:
+ *   post:
+ *     summary: Crear un nuevo historial de nomina
+ *     tags: [Historial de nomina]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Historial de nomina'
+ *     responses:
+ *       200:
+ *         description: Historial de nomina Creado
+ *       400:
+ *         description: Ya Registrado (Existente)
+ */
