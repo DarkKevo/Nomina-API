@@ -367,6 +367,49 @@
 
 
 
+//Esquema de Datos de los Prepagos
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Prepago_Crear:
+ *       type: object
+ *       properties:
+ *         fecha_ini:
+ *           type: date
+ *           description: Fecha inicial
+ *         fecha_cul:
+ *           type: date
+ *           description: Fechafinal     
+ *       required:
+ *         -fecha_ini
+ *         -fecha_cul
+ *       example:
+ *         fecha_ini: "2023-08-01"
+ *         fecha_cul: "2023-08-07"
+ */
+
+/**
+ * @swagger
+ * /PrePagos:
+ *   post:
+ *     summary: Registrar un Pre-pago
+ *     tags: [Pagos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Prepago_Crear'
+ *     responses:
+ *       200:
+ *         description: Pago Registrada
+ *       400:
+ *         description: Pago ya Registrada (Existente)
+ */
+
 
 
 
@@ -2244,73 +2287,178 @@
  */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Esquema de Datos de los Prepagos
-
 /**
  * @swagger
  * components:
  *   schemas:
- *     Prepago_Crear:
+ *     Filtrar_nomina:
  *       type: object
  *       properties:
- *         fecha_ini:
- *           type: date
- *           description: Fecha inicial
- *         fecha_cul:
- *           type: date
- *           description: Fechafinal     
+ *         Filtrar_nomina:
+ *           type: string
+ *           description: Historial de nomina (Tabla - historial_de_nomina)
  *       required:
  *         -fecha_ini
  *         -fecha_cul
  *       example:
- *         fecha_ini: "2023-08-01"
- *         fecha_final: "2023-08-07"
+ *         fecha_ini: "2023-08-01" 
+ *         fecha_cul: "2004-08-15"
  */
 
 /**
  * @swagger
- * /PrePagos:
+ * /FiltrarPagos:
  *   post:
- *     summary: Registrar un Pre-pago
- *     tags: [Pagos]
+ *     summary: Crear un nuevo historial de nomina
+ *     tags: [Historial de nomina]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
- *             $ref: '#/components/schemas/Prepago_Crear'
+ *             $ref: '#/components/schemas/Filtrar_nomina'
  *     responses:
  *       200:
- *         description: Pago Registrada
+ *         description: Historial de nomina Creado
  *       400:
- *         description: Pago ya Registrada (Existente)
+ *         description: Ya Registrado (Existente)
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Historial de nomina:
+ *       type: object
+ *       properties:
+ *         id_nomina:
+ *           type: int
+ *           description: Id del nomina
+ *         fecha_inicial:
+ *           type: date
+ *           description: fecha
+ *         fecha_final:
+ *           type: date
+ *           description: fecha
+ *          monto_nomina
+ *              type: float
+ *              description: monto
+ *       example:
+ *         id_nomina: 1
+ *         fecha_inicial: "2023-08-01"
+ *         fecha_final: "2023-08-15"
+ */
+
+/**
+ * @swagger
+ * /Listarnomina:
+ *   get:
+ *     summary: Listar el historial de nominas existentes
+ *     tags: [Historial de nomina]
+ *     responses:
+ *       200:
+ *         description: Aprobado
+ *       400:
+ *         description: No hay registros
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     eliminar_nomina:
+ *       type: object
+ *       properties:
+ *         eliminar_nomina:
+ *           type: string
+ *           description: Historial de nomina (Tabla - historial_de_nomina)
+ *       required:
+ *         -id_nomina
+ *         -fecha_ini
+ *         -fecha_cul
+ *       example:
+ *         id_nomina: 1
+ *         fecha_ini : "2023-08-01"
+ *         fecha_cul : "2023-08-15"
+ */
+
+/**
+ * @swagger
+ * /EliminarNomina:
+ *   delete:
+ *     summary: Eliminar un historial de nomina
+ *     tags: [Historial de nomina]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/eliminar_nomina'
+ *     responses:
+ *       200:
+ *         description: Historial de nomina eliminado
+ *       400:
+ *         description: Ya eliminado (Inexistente)
+ */
+
+
