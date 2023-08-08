@@ -228,7 +228,7 @@ export const PrePagos = (req, res) => {
         conexion.end();
       } else {
         Calculo(result);
-        res.status(200).send({ message: "Empleados Pagados" });
+        res.status(200).send({ message: "Pre-Nomina Generada" });
       }
     });
   }
