@@ -93,7 +93,7 @@ import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
 import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
 
 import { Agregarnomina } from '../controllers/Historial_nomina/Crear_nomina.js';
-
+import { Listarnomina } from '../controllers/Historial_nomina/Listar_nomina.js';
 export const routes = Express.Router();
 
 //Usuarios
@@ -188,6 +188,6 @@ routes.get('/ListarVacaciones', ListarVacaciones);
 routes.get('/CalcularVacaciones', CalcularVacaciones);
 routes.post('/UsarVacaciones', UsarVacaciones);
 
-
+routes.get('/Listarnomina', Listarnomina);
 routes.post('/Agregarnomina', Agregarnomina);
 
