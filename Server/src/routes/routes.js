@@ -82,6 +82,8 @@ import { UsarVacaciones } from "../controllers/vacaciones/usar_vacaciones.js";
 
 //Listar Pago
 import { ListarPago } from "../controllers/Planilla_Pago/listar_pago.js";
+import { ListarPrePago } from "../controllers/Planilla_Pago/Listar_Prepagos.js";
+
 
 //Planilla
 import { PrePagos } from "../controllers/Planilla_Pago/PrePagos.js";
@@ -175,6 +177,7 @@ routes.post("/FiltrarHistorialD", filtrar_h_deducciones);
 
 // //Pago
 routes.get("/ListarPago", ListarPago);
+routes.get("/ListarPrePago", ListarPrePago);
 
 // //Generar Pagos
 routes.post("/PrePagos", PrePagos);

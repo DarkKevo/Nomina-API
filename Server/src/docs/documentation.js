@@ -1891,49 +1891,6 @@
  */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Esquema de Datos de Historial Bonificaciones
 
 /**
@@ -2370,34 +2327,6 @@
  *         description: No hay registros
  */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * @swagger
  * components:
@@ -2439,3 +2368,15 @@
  */
 
 
+/**
+ * @swagger
+ * /ListaPrePago:
+ *   get:
+ *     summary: Listar los pagos existentes
+ *     tags: [Pagos]
+ *     responses:
+ *       200:
+ *         description: Pagos Registradas
+ *       400:
+ *         description: No hay 
+ */
