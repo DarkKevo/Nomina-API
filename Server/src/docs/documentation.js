@@ -2270,9 +2270,9 @@
 
 /**
  * @swagger
- * /FiltrarPagos:
+ * /FiltrarNomina:
  *   post:
- *     summary: Crear un nuevo historial de nomina
+ *     summary: Filtrar Nomina
  *     tags: [Historial de nomina]
  *     requestBody:
  *       required: true
@@ -2288,31 +2288,6 @@
  *         description: Ya Registrado (Existente)
  */
 
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Historial_de_nomina:
- *       type: object
- *       properties:
- *         id_nomina:
- *           type: int
- *           description: Id del nomina
- *         fecha_inicial:
- *           type: date
- *           description: fecha
- *         fecha_final:
- *           type: date
- *           description: fecha
- *          monto_nomina
- *              type: float
- *              description: monto
- *       example:
- *         id_nomina: 1
- *         fecha_inicial: "2023-08-01"
- *         fecha_final: "2023-08-15"
- */
 
 /**
  * @swagger
@@ -2380,3 +2355,4 @@
  *       400:
  *         description: No hay 
  */
+
