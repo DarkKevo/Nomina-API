@@ -6,6 +6,7 @@ import fs from 'fs';
 export const descargartxt = async (req, res) => {
    var id_file = req.body.id_file;
    var fecha_init = req.body.fecha_init;
+   var fecha_final = req.body.fecha_final;
 
    const conexion = mysql.createConnection({
       host: host,
@@ -37,8 +38,9 @@ export const descargartxt = async (req, res) => {
       from
       nomina_database.respaldo_pagos p
       ,nomina_database.setup_banco_file f
-      where  fecha_pago =   '${fecha_init}'
-      and f.idfile = ${id_file} `;
+      where  fecha_ini =   '${fecha_final}'
+      and  fecha_cul  = '${fecha_init}'
+      and f.idfile = ${id_file}`;
       
 
       const result = await new Promise((resolve, reject) => {
