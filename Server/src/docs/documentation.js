@@ -360,6 +360,27 @@
  *         descripcion: Impuestos + Seguro + Transporte
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * @swagger
  * components:
@@ -2181,3 +2202,115 @@
  */
 
 
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Historial de nomina:
+ *       type: object
+ *       properties:
+ *         Agregar_nomina:
+ *           type: string
+ *           description: Historial de nomina (Tabla - historial_de_nomina)
+ *       required:
+ *         -fecha_inicial
+ *         -fecha_final
+ *         -monto_nomina
+ *       example:
+ *         fecha_inicial: "2004-01-15" 
+ *         fecha_final: "2004-01-30"
+ *         monto_nomina:  400
+ */
+
+/**
+ * @swagger
+ * /Agregarnomina:
+ *   post:
+ *     summary: Crear un nuevo historial de nomina
+ *     tags: [Historial de nomina]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Historial de nomina'
+ *     responses:
+ *       200:
+ *         description: Historial de nomina Creado
+ *       400:
+ *         description: Ya Registrado (Existente)
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Esquema de Datos de los Prepagos
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Prepago_Crear:
+ *       type: object
+ *       properties:
+ *         fecha_ini:
+ *           type: date
+ *           description: Fecha inicial
+ *         fecha_cul:
+ *           type: date
+ *           description: Fechafinal     
+ *       required:
+ *         -fecha_ini
+ *         -fecha_cul
+ *       example:
+ *         fecha_ini: "2023-08-01"
+ *         fecha_final: "2023-08-07"
+ */
+
+/**
+ * @swagger
+ * /PrePagos:
+ *   post:
+ *     summary: Registrar un Pre-pago
+ *     tags: [Pagos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Prepago_Crear'
+ *     responses:
+ *       200:
+ *         description: Pago Registrada
+ *       400:
+ *         description: Pago ya Registrada (Existente)
+ */
