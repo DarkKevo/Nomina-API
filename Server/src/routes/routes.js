@@ -88,6 +88,7 @@ import { UsarVacaciones } from '../controllers/vacaciones/usar_vacaciones.js';
 
 
 //Planilla
+import { PrePagos } from '../controllers/Planilla_Pago/PrePagos.js';
 import { GenerarPagos } from '../controllers/Planilla_Pago/GenerarPagos.js';
 import { FiltrarPagos } from '../controllers/Planilla_Pago/Filtrar_Pagos.js';
 
@@ -176,6 +177,7 @@ routes.post('/FiltrarHistorialD', filtrar_h_deducciones);
 routes.get('/ListarPago', ListarPago);
 
 // //Generar Pagos
+routes.post('/PrePagos', PrePagos);
 routes.get('/GenerarPagos', GenerarPagos);
  routes.post('/FiltrarPagos', FiltrarPagos);
 

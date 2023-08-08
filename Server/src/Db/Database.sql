@@ -31,8 +31,31 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`respaldo_pagos` (
   `cuenta` VARCHAR(500) NOT NULL,
   `correo` VARCHAR(500) NOT NULL,
   `dias` VARCHAR(500) NOT NULL,
-  `dias_descanso` VARCHAR(500) NOT NULL,
-  `fechas` VARCHAR(500) NOT NULL,
+  `fecha_ini` DATE NOT NULL,
+  `fecha_cul` DATE NOT NULL,
+  `horas_trabajadas` INT NOT NULL,
+  `monto_base` FLOAT NOT NULL,
+  `horas_extras` INT NOT NULL,
+  `monto_extra` FLOAT NOT NULL,
+  `monto_deduccion` FLOAT NOT NULL,
+  `monto_bonificacion` FLOAT NOT NULL,
+  `pagoTotal` FLOAT NOT NULL,
+  `fecha_pago` DATE NOT NULL,
+  PRIMARY KEY (`id_pagos`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `nomina_database`.`pre_pagos` (
+ `id_pagos` INT NOT NULL AUTO_INCREMENT,
+  `idEmpleado` INT NOT NULL,
+  `cedula` VARCHAR(500) NOT NULL,
+  `nombre` VARCHAR(500) NOT NULL,
+  `departamento` VARCHAR(500) NOT NULL,
+  `cargo` VARCHAR(500) NOT NULL,
+  `cuenta` VARCHAR(500) NOT NULL,
+  `correo` VARCHAR(500) NOT NULL,
+  `dias` VARCHAR(500) NOT NULL,
+  `fecha_ini` DATE NOT NULL,
+  `fecha_cul` DATE NOT NULL,
   `horas_trabajadas` INT NOT NULL,
   `monto_base` FLOAT NOT NULL,
   `horas_extras` INT NOT NULL,
@@ -198,8 +221,6 @@ CREATE TABLE IF NOT EXISTS `nomina_database`.`empleados` (
   `codigo_empresa` INT(11) NOT NULL,
   `numero_cuenta` VARCHAR(20) NOT NULL,
   `antiguedad` DATE NOT NULL,
-  `horas_trabajadas` INT(11) NOT NULL,
-  `horas_extras` INT(11) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEmpleados`),
   INDEX `fk_empleados_idx` (`codigo_empresa` ASC) ,
@@ -231,7 +252,6 @@ COLLATE = utf8mb4_spanish2_ci;
 CREATE TABLE IF NOT EXISTS `nomina_database`.`registro_horas` (
   `id_registro` INT(11) NOT NULL AUTO_INCREMENT,
   `nombres` VARCHAR(255) NOT NULL,
-  `apellidos` VARCHAR(255) NOT NULL,
   `horas_laboradas` INT(11) NOT NULL,
   `horas_extras` INT(11) NOT NULL,
   `fecha` DATE NOT NULL,
@@ -301,109 +321,3 @@ INSERT INTO `nomina_database`.`setup_banco_file` (idfile   ,idbancos    , separa
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ('Sin Bonificacion', 0);
 INSERT INTO `nomina_database`.`bonificaciones` (`descripcion_bonificacion`, `monto_bonificacion`) VALUES ( 'Rendimiento', 250);
 INSERT INTO `nomina_database`.`empresas` (`idEmpresas`, `rif`, `nombre`, `direccion`, `telefono`, `correo`, `imageURL`) VALUES ('1', 'J-31356421-4 ', 'Universidad Valle de Momboy', 'Carvajal', '02712351785', 'universidad@edu.ve', 'https://uvm.edu.ve/wp-content/uploads/2022/10/LOGO-RIF.png');
-
-
-
-
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259086', 'Kevin Alejandro', 'Araujo Gonzalez', '2004-02-07', 'La Arboleda', 'kevinaraujogonzalez@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2022-05-01', '88', '0', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259085', 'Jose Mauricio', 'Camacho Angarita', '2004-02-07', 'Sabanalibre', 'jose@gmail.com', '04141234567', '1', '1', '1', '01020378150100067152', '2023-05-04', '32', '0', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259084', 'Victoria', 'Gonzalez', '2004-02-07', 'Carvajal', 'victoria@gmail.com', '04145789122', '1', '1', '1', '0108037815010006854', '2023-08-01', '24', '0', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259083', 'Yerson', 'Gonzalez', '2004-02-07', 'Carvajal', 'yerson@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2022-07-07', '24', '0', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-27268361', 'Roberto', 'Michelle', '2004-02-07', 'La Arboleda', 'roberto@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2023-03-02', '24', '0', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-27268081', 'Yumary', 'Valecillos', '2004-02-07', 'Trujillo', 'yumaryz@gmail.com', '04145789631', '1', '1', '1', '01080304751247000125', '2022-04-07', '8', '2', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-1512595', 'Juan Andres', 'Araujo Gonzalez', '2004-02-07', 'Trujillo', 'juanandres@gmail.com', '04145789632', '1', '1', '1', '01020304751247000125', '2023-04-12', '8', '0', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259087', 'Jose Carlos', 'Araujo Gonzalez', '2004-02-07', 'La Arboleda', 'josecarlos@gmail.com', '041457891234', '1', '1', '1', '01080304751247015425', '2023-05-01', '8', '2', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259088', 'Matheos Jose', 'Rosales', '2004-02-07', 'La Arboleda', 'matheus@gmail.com', '04145789632', '1', '1', '1', '0102058745247000125', '2023-05-07', '24', '7', 'activo');
-INSERT INTO `nomina_database`.`empleados` (`cedula`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`, `codigo_cargo`, `codigo_departamento`, `codigo_empresa`, `numero_cuenta`, `antiguedad`, `horas_trabajadas`, `horas_extras`, `estado`) VALUES ('V-30259090', 'Orlando Jose', 'Angarita', '2004-02-07', 'Valera', 'orlando@gmail.com', '04145789157', '1', '1', '1', '01020304751247111358', '2023-01-10', '24', '4', 'activo');
-
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-01', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-02', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-03', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-04', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-05', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-06', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-07', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-08', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-09', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-10', '1');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Kevin Alejandro', 'Araujo Gonzalez', '8', '0', '2023-07-11', '1');
-
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Mauricio', 'Camacho Angarita', '8', '0', '2023-07-11', '2');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Mauricio', 'Camacho Angarita', '8', '0', '2023-07-12', '2');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Mauricio', 'Camacho Angarita', '8', '0', '2023-07-13', '2');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Mauricio', 'Camacho Angarita', '8', '0', '2023-07-14', '2');
-
-
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Victoria', 'Gonzalez', '8', '0', '2023-07-13', '3');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Victoria', 'Gonzalez', '8', '0', '2023-07-14', '3');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Victoria', 'Gonzalez', '8', '0', '2023-07-15', '3');
-
-
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Yerson', 'Gonzalez', '8', '0', '2023-07-13', '4');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Yerson', 'Gonzalez', '8', '0', '2023-07-14', '4');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Yerson', 'Gonzalez', '8', '0', '2023-07-15', '4');
-
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Roberto', 'Michelle', '8', '0', '2023-07-13', '5');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Roberto', 'Michelle', '8', '0', '2023-07-14', '5');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Roberto', 'Michelle', '8', '0', '2023-07-15', '5');
-
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Yumary', 'Valecillos', '8', '2', '2023-07-13', '6');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Juan Andres', 'Araujo Gonzalez', '8', '0', '2023-07-14', '7');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Jose Carlos', 'Araujo Gonzalez', '8', '2', '2023-07-15', '8');
-
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Matheos Jose', 'Rosales', '8', '3', '2023-07-13', '9');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Matheos Jose', 'Rosales', '8', '2', '2023-07-14', '9');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Matheos Jose', 'Rosales', '8', '2', '2023-07-15', '9');
-
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Orlando Jose', 'Angarita', '8', '0', '2023-07-13', '10');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Orlando Jose', 'Angarita', '8', '4', '2023-07-14', '10');
-INSERT INTO `nomina_database`.`registro_horas` (`nombres`, `apellidos`, `horas_laboradas`, `horas_extras`, `fecha`, `idEmpleados`) VALUES ('Orlando Jose', 'Angarita', '8', '0', '2023-07-15', '10');
-
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('1', 'Kevin Alejandro', 'Araujo Gonzalez', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('2', 'Jose Mauricio', 'Camacho Angarita', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('3', 'Victoria', 'Gonzalez', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('4', 'Yerson', 'Gonzalez', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('5', 'Roberto', 'Michelle', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('6', 'Yumary', 'Valecillos', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('7', 'Juan Andres', 'Araujo Gonzalez', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('8', 'Jose Carlos', 'Araujo Gonzalez', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('9', 'Matheos Jose', 'Rosales', '0', '0');
-INSERT INTO `nomina_database`.`vacaciones` (`id_empleado`, `nombres`, `apellidos`, `vacaciones_acumuladas`, `vacaciones_usadas`) VALUES ('10', 'Orlando Jose', 'Angarita', '0', '0');
-
-INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('1', 'Kevin Peña', 'Rendimiento');
-INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Rendimiento');
-INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('4', 'Yerson Gonzalez', 'Rendimiento');
-INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('5', 'Roberto	Michelle', 'Rendimiento');
-INSERT INTO `nomina_database`.`historialbonificacion` (`id_empleado`, `nombres`, `bonificacion`) VALUES ('10', 'Orlando Jose Angarita', 'Rendimiento');
-
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('1', 'Kevin Peña', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('2', 'Jose Mauricio Camacho Angarita', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('3', 'Victoria Gonzalez', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('4', 'Yerson	Gonzalez', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('5', 'Roberto Michelle', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('6', 'Yumary	Valecillos', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('6', 'Yumary	Valecillos', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('6', 'Yumary	Valecillos', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('7', 'Juan Andres Araujo Gonzalez', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('7', 'Juan Andres Araujo Gonzalez', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('7', 'Juan Andres Araujo Gonzalez', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('8', 'Jose Carlos Araujo Gonzalez', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('8', 'Jose Carlos Araujo Gonzalez', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('8', 'Jose Carlos Araujo Gonzalez', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('9', 'Matheos Jose Rosales', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('9', 'Matheos Jose Rosales', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('9', 'Matheos Jose Rosales', 'Retención de Ley de Politica habitacional');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('10', 'Orlando Jose Angarita', 'Seguro Social SSO');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('10', 'Orlando Jose Angarita', 'Regimen Prestacional de Empleo');
-INSERT INTO `nomina_database`.`historialdeducciones` (`id_empleado`, `nombres`, `deducciones`) VALUES ('10', 'Orlando Jose Angarita', 'Retención de Ley de Politica habitacional');
-

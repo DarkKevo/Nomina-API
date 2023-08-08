@@ -29,7 +29,7 @@ export const descargartxt = async (req, res) => {
       select  
 	      concat((cuenta)
          ,(f.separadores)
-         ,((concat('V',(( LEFT('0000000000', 10 - length(cedula)))), cedula)))   
+         ,((concat((( LEFT('0000000000', 10 - length(cedula)))), cedula)))   
          ,(f.separadores)
          ,(concat(LEFT('0000000000', 15 - length((replace(round(pagoTotal,2),'.', '')))),(replace(round(pagoTotal,2),'.', ''))))
          ,(f.separadores)
