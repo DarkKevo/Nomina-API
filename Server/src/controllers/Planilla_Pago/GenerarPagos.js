@@ -27,20 +27,23 @@ export const GenerarPagos = (req, res) => {
     return formattedDate;
   }
 
-  function GuardarNominna(monto_nomina) {
-    let save = `DELETE FROM nomina_database.registro_horas;`;
+  function GuardarNominna(monto_nomina,fecha_inicial,fecha_final) {
+    let save =
+      "INSERT INTO `nomina_database`.`historial_de_nomina` (`fecha_inicial`,`fecha_final`,`monto_nomina`) VALUES ";
+
+    save += `('${fecha_inicial}', '${fecha_final} ', '${monto_nomina}')`;
 
     conexion.query(save, (err, res) => {
       if (err) {
         console.log(err);
         conexion.end();
       } else {
-        
+        console.log("Nomina Insertada")
       }
     });
   }
 
-  function resetRegistros(monto_nomina) {
+  function resetRegistros(monto_nomina,fecha_inicial,fecha_final) {
     let reset = `DELETE FROM nomina_database.registro_horas;`;
 
     conexion.query(reset, (err, res) => {
@@ -48,13 +51,12 @@ export const GenerarPagos = (req, res) => {
         console.log(err);
         conexion.end();
       } else {
-        GuardarNominna(monto_nomina)
+        GuardarNominna(monto_nomina,fecha_inicial,fecha_final);
       }
     });
   }
 
-
-  function resetPreNomina(monto_nomina) {
+  function resetPreNomina(monto_nomina,fecha_inicial,fecha_final) {
     let reset = `DELETE FROM nomina_database.pre_pagos`;
 
     conexion.query(reset, (err, res) => {
@@ -62,7 +64,7 @@ export const GenerarPagos = (req, res) => {
         console.log(err);
         conexion.end();
       } else {
-        resetRegistros(monto_nomina)
+        resetRegistros(monto_nomina,fecha_inicial,fecha_final);
       }
     });
   }
@@ -93,7 +95,7 @@ export const GenerarPagos = (req, res) => {
         } else {
           monto_nomina += element.pagoTotal;
           if (index == array.length - 1) {
-            resetPreNomina(monto_nomina);
+            resetPreNomina(monto_nomina, date_short(element.fecha_ini),date_short(element.fecha_cul));
           }
         }
       });
