@@ -188,8 +188,8 @@ export const PrePagos = (req, res) => {
       let salario_dias_trabajados = horas_totales * salario_hora;
       let monto_base = salario_dias_trabajados;
 
-      let Historial_B = `SELECT * FROM nomina_database.historialbonificacion WHERE id_empleado = ${element.idEmpleados}`;
-      let Historial_D = `SELECT * FROM nomina_database.historialdeducciones WHERE id_empleado = ${element.idEmpleados}`;
+      let Historial_B = `SELECT * FROM nomina_database.historialBonificacion WHERE id_empleado = ${element.idEmpleados}`;
+      let Historial_D = `SELECT * FROM nomina_database.historialDeducciones WHERE id_empleado = ${element.idEmpleados}`;
 
       let data1 = {
         salario_mensual: element.salario,

@@ -20,9 +20,9 @@ export const EliminarHistoriald = (req, res) => {
 
   const { id_d } = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.historialdeducciones where `id_d`= ' + `'${id_d}'`;
+  let verify = 'SELECT * FROM nomina_database.historialDeducciones where `id_d`= ' + `'${id_d}'`;
 
-  let DELETE = 'DELETE FROM nomina_database.historialdeducciones where `id_d`= ' + `'${id_d}'`;
+  let DELETE = 'DELETE FROM nomina_database.historialDeducciones where `id_d`= ' + `'${id_d}'`;
 
   //Verificando la existencia del Setup
   conexion.query(verify, (err, result) => {

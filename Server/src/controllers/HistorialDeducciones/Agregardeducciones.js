@@ -20,9 +20,9 @@ export const AgregarHistorialD = (req, res) => {
 
   const { id_empleado, nombres, deducciones} = req.body;
 
-  let verify = 'SELECT * FROM nomina_database.historialdeducciones where deducciones =' + `'${deducciones}'`;
+  let verify = 'SELECT * FROM nomina_database.historialDeducciones where deducciones =' + `'${deducciones}'`;
 
-  let query = 'INSERT INTO nomina_database.historialdeducciones (`id_empleado`, `nombres`, `deducciones`) VALUES ';
+  let query = 'INSERT INTO nomina_database.historialDeducciones (`id_empleado`, `nombres`, `deducciones`) VALUES ';
 
   query += `(${id_empleado},` + `'${nombres}',` + `'${deducciones}')`;
 

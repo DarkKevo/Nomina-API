@@ -18,7 +18,7 @@ export const filtrar_h_deducciones = (req, res) => {
     }
   });
   const {id_empleado} = req.body
-  let query = 'SELECT * FROM nomina_database.historialdeducciones  WHERE id_empleado = ' + `'${id_empleado}'`;
+  let query = 'SELECT * FROM nomina_database.historialDeducciones  WHERE id_empleado = ' + `'${id_empleado}'`;
 
   conexion.query(query, (err, result) => {
     if (err) {

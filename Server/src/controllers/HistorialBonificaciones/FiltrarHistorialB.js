@@ -18,7 +18,7 @@ export const FiltrarHistorialB = (req, res) => {
     }
   });
   const {id_empleado} = req.body
-  let query = 'SELECT * FROM nomina_database.historialbonificacion WHERE id_empleado = ' + `'${id_empleado}'`;
+  let query = 'SELECT * FROM nomina_database.historialBonificacion WHERE id_empleado = ' + `'${id_empleado}'`;
 
   conexion.query(query, (err, result) => {
     if (err) {

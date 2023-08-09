@@ -18,7 +18,7 @@ export const ListarHistorialB = (req, res) => {
     }
   });
 
-  let query = 'SELECT * FROM nomina_database.historialbonificacion';
+  let query = 'SELECT * FROM nomina_database.historialBonificacion';
 
   conexion.query(query, (err, result) => {
     if (err) {

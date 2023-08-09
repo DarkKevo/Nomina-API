@@ -18,7 +18,7 @@ export const ListarHistorialD = (req, res) => {
     }
   });
 
-  let query = "SELECT * FROM nomina_database.historialdeducciones";
+  let query = "SELECT * FROM nomina_database.historialDeducciones";
 
   //Verificando la existencia de la configuracion de Deducciones
   conexion.query(query, (err, result) => {
