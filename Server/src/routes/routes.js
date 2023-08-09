@@ -95,6 +95,8 @@ import { Listarnomina } from "../controllers/Historial_nomina/Listar_nomina.js";
 import { EliminarNomina } from "../controllers/Historial_nomina/eliminar_nomina.js";
 import { FiltrarNomina } from "../controllers/Historial_nomina/Filtrar_nomina.js";
 
+import { descargarpdf } from "../controllers/pdf/pdf.js";
+
 export const routes = Express.Router();
 
 //Usuarios
@@ -155,6 +157,8 @@ routes.post("/CrearEmpresa", CrearEmpresa);
 
 //Empresa
 routes.get("/descargartxt", descargartxt);
+routes.get("/descargarpdf", descargarpdf);
+
 
 //Cargar horas
 routes.post("/cargarHoras", CargarHoras);
