@@ -1028,7 +1028,7 @@
 
 /**
  * @swagger
- * /ListarEmpleados:
+ * /ListarEmpleados?page=1&limit=3:
  *   get:
  *     summary: Listar los Empleados existentes
  *     tags: [Empleados]
@@ -1879,7 +1879,7 @@
 
 /**
  * @swagger
- * /ListarPago:
+ * /ListarPago?page=1&limit=3:
  *   get:
  *     summary: Listar los pagos existentes
  *     tags: [Pagos]

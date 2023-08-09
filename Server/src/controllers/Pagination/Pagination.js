@@ -1,6 +1,6 @@
-export function paginate(data, page, limit) {
-  const page = parseInt(page);
-  const limit = parseInt(limit);
+export function paginate(data, pagina, limite) {
+  const page = parseInt(pagina);
+  const limit = parseInt(limite);
 
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;

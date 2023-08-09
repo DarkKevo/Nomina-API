@@ -2,7 +2,13 @@ import mysql from 'mysql2';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
 
+import {paginate} from '../Pagination/Pagination.js'
+
 export const ListarEmpleado = (req, res) => {
+
+  let pagina = parseInt(req.query.page);
+  let limite = parseInt(req.query.limit);
+
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -35,9 +41,9 @@ FROM nomina_database.empleados E,
 nomina_database.cargos c,
 nomina_database.departamentos d,
 nomina_database.Empresas em
-where c.idcargos = e.codigo_cargo
-and d.iddepartamentos = e.codigo_departamento
-and em.idEmpresas = e.codigo_empresa`;
+where c.idcargos = E.codigo_cargo
+and d.iddepartamentos = E.codigo_departamento
+and em.idEmpresas = E.codigo_empresa`;
 
   //Verificando la existencia de los empleados
   conexion.query(query, (err, result) => {
@@ -53,7 +59,7 @@ and em.idEmpresas = e.codigo_empresa`;
     } else {
       //Empleados Listados
       conexion.end();
-      res.send(result);
+      res.send(paginate(result, pagina, limite));
     }
   });
 };
