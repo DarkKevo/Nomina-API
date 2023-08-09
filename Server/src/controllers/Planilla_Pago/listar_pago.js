@@ -1,12 +1,8 @@
 import mysql from 'mysql2';
 
 import { host, port, username, password } from '../../Config/MySqlConfig.js';
-import { paginate } from '../Pagination/Pagination.js';
 
 export const ListarPago = (req, res) => {
-  let pagina = parseInt(req.query.page);
-  let limite = parseInt(req.query.limit);
-
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -35,7 +31,7 @@ export const ListarPago = (req, res) => {
       res.status(400).send({ error: 'no hay datos' });
     } else {
       conexion.end();
-      res.send(paginate(result, pagina, limite));
+      res.send(result);
     }
   });
 };
